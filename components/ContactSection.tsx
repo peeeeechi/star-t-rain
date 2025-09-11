@@ -1,6 +1,58 @@
 'use client';
 
+import { useState, FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
+
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '研究に関するお問い合わせ',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: '中村桃太朗先生',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '研究に関するお問い合わせ',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -83,14 +135,18 @@ export default function ContactSection() {
                 メッセージフォーム
               </h3>
               
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    お名前
+                    お名前 *
                   </label>
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
                     placeholder="山田 太郎"
                   />
@@ -98,11 +154,15 @@ export default function ContactSection() {
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    メールアドレス
+                    メールアドレス *
                   </label>
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
                     placeholder="example@email.com"
                   />
@@ -114,6 +174,9 @@ export default function ContactSection() {
                   </label>
                   <select
                     id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
                   >
                     <option>研究に関するお問い合わせ</option>
@@ -126,21 +189,42 @@ export default function ContactSection() {
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    メッセージ
+                    メッセージ *
                   </label>
                   <textarea
                     id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     rows={4}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
                     placeholder="お問い合わせ内容をご記入ください"
                   ></textarea>
                 </div>
+
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-600 rounded-lg">
+                    <p className="text-green-700 dark:text-green-300">
+                      ✅ メッセージを送信しました。お返事をお待ちください。
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 rounded-lg">
+                    <p className="text-red-700 dark:text-red-300">
+                      ❌ 送信に失敗しました。しばらくしてから再度お試しください。
+                    </p>
+                  </div>
+                )}
                 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-cosmic-600 text-white rounded-lg hover:bg-cosmic-700 transition-colors shadow-lg hover:shadow-xl"
+                  disabled={isSubmitting}
+                  className="w-full px-6 py-3 bg-cosmic-600 text-white rounded-lg hover:bg-cosmic-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-lg hover:shadow-xl"
                 >
-                  送信する
+                  {isSubmitting ? '送信中...' : '送信する'}
                 </button>
               </form>
             </div>
