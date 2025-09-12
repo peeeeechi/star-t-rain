@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- メインページ -->
+  <url>
+    <loc>https://star-t-rain.vercel.app/</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://star-t-rain.vercel.app/profile.png</image:loc>
+      <image:title>中村桃太朗研究室</image:title>
+      <image:caption>電波天文学・AI教育研究</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 研究セクション -->
+  <url>
+    <loc>https://star-t-rain.vercel.app/#research</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 研究業績セクション -->
+  <url>
+    <loc>https://star-t-rain.vercel.app/#publications</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 教育活動セクション -->
+  <url>
+    <loc>https://star-t-rain.vercel.app/#education</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ブログセクション -->
+  <url>
+    <loc>https://star-t-rain.vercel.app/#blog</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ニュースセクション -->
+  <url>
+    <loc>https://star-t-rain.vercel.app/#news</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- お問い合わせセクション -->
+  <url>
+    <loc>https://star-t-rain.vercel.app/#contact</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

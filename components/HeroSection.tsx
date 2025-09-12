@@ -103,13 +103,15 @@ export default function HeroSection() {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-              星の形成過程の電波での観測的研究と、生成AIを活用したアプリケーション開発の2つの軸で研究を展開しています。
+              星の形成過程の電波での観測的研究と、生成AIを活用した教育的アプリ開発の2つの軸で研究を展開しています。
             </p>
             
             <div className="space-y-4 text-lg text-gray-700 dark:text-gray-200">
               <p>
                 <span className="font-semibold text-cosmic-600 dark:text-cosmic-400">中村 桃太朗</span>
-                <span className="ml-2">（Momotaro Nakamura）　修士（理学）</span>
+                <span className="ml-2">（Momotaro Nakamura）</span>
+                <span className="ml-2"> 修士（理学）</span>
+
               </p>
               <p className="text-base">
                 専門分野：電波天文学、大質量星形成、VLBI観測、生成AI活用教育、天文教育普及、アプリ・教材開発
@@ -128,7 +130,7 @@ export default function HeroSection() {
                     <Bot className="w-6 h-6 mr-3 group-hover:animate-pulse" />
                     AI開発研究
                   </p>
-                  <p className="group-hover:text-stellar-600 dark:group-hover:text-stellar-400 transition-colors">生成AIを活用した教育・アプリケーション開発</p>
+                  <p className="group-hover:text-stellar-600 dark:group-hover:text-stellar-400 transition-colors">生成AIを活用した教育コンテンツ・アプリケーション開発</p>
                   <div className="mt-3 h-1 w-0 bg-gradient-to-r from-stellar-500 to-nebula-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
               </div>
