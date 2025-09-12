@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 import StructuredData from "@/components/StructuredData";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://star-t-rain.vercel.app'),
   title: "中村桃太朗研究室 | 電波天文学・AI教育研究 | 大島商船高専",
   description: "大島商船高等専門学校・中村桃太朗による電波天文学とAI活用教育の研究。VLBI観測、大質量星形成、生成AI教育、メーザー天文学の最新研究成果を発信。",
   keywords: [
@@ -54,6 +56,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://star-t-rain.vercel.app",
   },
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -67,6 +77,9 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className="antialiased min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
+        {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
+          <GoogleAnalytics trackingId={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
+        )}
         <ClientLayout>
           {children}
         </ClientLayout>

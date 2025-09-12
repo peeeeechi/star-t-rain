@@ -106,7 +106,7 @@ export default function EducationSection() {
     },
     {
       id: '3',
-      title: '大島商船経由のバスの運転本数の最適化に関する研究',
+      title: '大島商船高専経由のバス利用状況調査と​運行体系最適化の検討',
       student: '2024年度卒業生',
       year: 2024,
     },
@@ -118,6 +118,12 @@ export default function EducationSection() {
     },
     {
       id: '5',
+      title: 'スペースデブリの連鎖衝突シミュレーションと臨界密度の推定',
+      student: '2024年度卒業生',
+      year: 2024,
+    },
+    {
+      id: '6',
       title: 'Python による天文観測データ解析',
       student: '2023年度卒業生',
       year: 2023,

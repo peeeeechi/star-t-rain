@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
+import Image from 'next/image';
 import { 
   Mail, 
   Building, 
@@ -319,9 +320,11 @@ export default function ContactSection() {
             className="text-gray-600 dark:text-gray-400 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors"
             aria-label="researchmap"
           >
-            <img 
+            <Image 
               src="/researchmap-banner.png" 
               alt="researchmap" 
+              width={120}
+              height={24}
               className="h-6 w-auto hover:opacity-80 transition-opacity"
             />
           </a>
