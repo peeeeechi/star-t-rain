@@ -62,7 +62,7 @@ export default function ResearchSection() {
     {
       id: 'generative-ai-education',
       title: '生成AI活用教育の実践研究',
-      description: 'GitHub Copilot、ChatGPT等を活用した新しい教育手法の開発',
+      description: 'ChatGPT・Claude Code等を活用した新しい教育手法の開発',
       Icon: Bot,
       details: [
         'AI駆動開発を取り入れた演習授業の設計と実践',
@@ -80,9 +80,9 @@ export default function ResearchSection() {
       description: '天文学の魅力と最新研究成果を社会に伝える活動',
       Icon: Star,
       details: [
-        '天文教育普及研究会での教育実践報告',
-        '高専生向け天文学実習プログラムの開発',
-        '一般向け天文講座・観望会の企画運営',
+        // '天文教育普及研究会での教育実践報告',
+        // '高専生向け天文学実習プログラムの開発',
+        // '一般向け天文講座・観望会の企画運営',
         '天文学研究成果の分かりやすい発信',
       ],
       audience: 'general',

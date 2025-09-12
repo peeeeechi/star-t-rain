@@ -48,9 +48,9 @@ export default function HeroSection() {
                 天文学×AI
               </span>
               <br />
-              <span className="bg-gradient-to-r from-stellar-600 to-cosmic-600 bg-clip-text text-transparent">
+              {/* <span className="bg-gradient-to-r from-stellar-600 to-cosmic-600 bg-clip-text text-transparent">
                 二軸研究
-              </span>
+              </span> */}
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
