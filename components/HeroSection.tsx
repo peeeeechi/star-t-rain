@@ -115,7 +115,7 @@ export default function HeroSection() {
                 <span className="ml-2">学位：修士（理学）</span>
               </p>              
               <p className="text-base">
-                元鉄道系IT子会社でシステムエンジニアとして開発プロジェクトに参画。データ分析・機械学習の導入を検討。
+                元鉄道系IT子会社にてシステムエンジニアとして開発プロジェクトに参画。データ分析や機械学習ソフトウェアの導入・活用を検討。
               </p>
               <p className="text-base">
                 専門分野：電波天文学、大質量星形成、VLBI観測、生成AI活用教育、天文教育普及、アプリ・教材開発
@@ -193,16 +193,13 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16 text-center">
-          <a 
-            href="#research" 
-            className="group inline-flex items-center space-x-3 px-6 py-3 rounded-full bg-gradient-to-r from-cosmic-500/10 to-stellar-500/10 border border-cosmic-300/20 dark:border-cosmic-600/30 text-gray-600 dark:text-gray-300 hover:text-cosmic-600 dark:hover:text-cosmic-400 hover:bg-cosmic-500/20 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cosmic-500/20"
-          >
-            <span className="text-sm md:text-base font-medium">詳細を見る</span>
-            <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:animate-bounce transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+            <span>詳細を見る</span>
+            <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-          </a>
+          </div>
         </div>
       </div>
     </section>
