@@ -3,12 +3,12 @@ import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 
 export const metadata: Metadata = {
-  title: "高専研究者ポートフォリオ | 天文学・宇宙物理学研究",
+  title: " 中村桃太朗研究室 | 研究者ポートフォリオ | 天文学・アプリ開発研究",
   description: "高等専門学校における天文学・宇宙物理学研究。研究内容、論文、教育活動について紹介します。",
-  keywords: "高専, 研究, 天文学, 宇宙物理学, 教育",
+  keywords: "高専, 研究, 天文学, 宇宙物理学, 教育, アプリ開発",
   openGraph: {
-    title: "高専研究者ポートフォリオ",
-    description: "天文学・宇宙物理学研究と教育活動",
+    title: "中村桃太朗研究室 | 研究者ポートフォリオ | 天文学・アプリ開発研究",
+    description: "天文学研究と教育活動、アプリ開発",
     type: "website",
   },
 };

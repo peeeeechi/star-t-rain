@@ -34,7 +34,7 @@ export default function Navigation() {
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-2xl">🌌</span>
             <span className="font-bold text-xl bg-gradient-to-r from-cosmic-600 to-stellar-600 bg-clip-text text-transparent">
-              StarLab
+              Momotaro-Lab
             </span>
           </Link>
 

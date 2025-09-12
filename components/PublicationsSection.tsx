@@ -10,14 +10,17 @@ interface Publication {
   year: number;
   doi?: string;
   type: 'journal' | 'conference' | 'book';
+  category: 'astronomy' | 'ai-education' | 'interdisciplinary';
   citations?: number;
 }
 
 export default function PublicationsSection() {
   const [selectedType, setSelectedType] = useState<'all' | 'journal' | 'conference' | 'book'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'astronomy' | 'ai-education' | 'interdisciplinary'>('all');
   const [selectedYear, setSelectedYear] = useState<'all' | number>('all');
 
   const publications: Publication[] = [
+    // === 天文学関連論文 ===
     {
       id: '1',
       title: 'A kinematic study of the disc-outflow system around a high-mass protostar G59.783+0.065 probed by methanol and water masers',
@@ -26,6 +29,7 @@ export default function PublicationsSection() {
       year: 2023,
       doi: '10.1093/mnras/stad2725',
       type: 'journal',
+      category: 'astronomy',
       citations: 1,
     },
     {
@@ -35,8 +39,11 @@ export default function PublicationsSection() {
       journal: '日本天文学会 2025年秋季年会',
       year: 2025,
       type: 'conference',
+      category: 'astronomy',
       citations: 0,
     },
+
+    // === AI・教育関連論文 ===
     {
       id: '3',
       title: '演習型授業におけるモバイルアプリのAI駆動開発の実践',
@@ -44,33 +51,59 @@ export default function PublicationsSection() {
       journal: '日本高専学会 第31回年会講演会',
       year: 2025,
       type: 'conference',
+      category: 'ai-education',
       citations: 0,
     },
     {
       id: '4',
+      title: 'GitHub Copilotを活用したプログラミング教育の実践報告',
+      authors: '中村 桃太朗',
+      journal: '情報処理学会 コンピュータと教育研究会',
+      year: 2024,
+      type: 'conference',
+      category: 'ai-education',
+      citations: 0,
+    },
+
+    // === 学際研究 ===
+    {
+      id: '5',
+      title: 'Python による天文観測データ解析システムの開発と教育応用',
+      authors: '中村 桃太朗, 情報工学科学生',
+      journal: '高専教育フォーラム',
+      year: 2024,
+      type: 'conference',
+      category: 'interdisciplinary',
+      citations: 0,
+    },
+    {
+      id: '6',
       title: 'メーザーから辿る大質量星形成領域 G59.783+0.065 の円盤 - アウトフロー構造',
       authors: '中村桃太朗',
       journal: '大質量星形成ワークショップ2024',
       year: 2024,
       type: 'conference',
+      category: 'astronomy',
       citations: 0,
     },
     {
-      id: '5',
+      id: '7',
       title: 'A kinematic study of the disk-outflow system around a high-mass protostar G59 probing methanol and water masers',
       authors: 'Momotaro Nakamura, Kazuhito Motogi, Kenta Fujisawa',
       journal: '13th East Asian VLBI Workshop 2021',
       year: 2021,
       type: 'conference',
+      category: 'astronomy',
       citations: 0,
     },
     {
-      id: '6',
+      id: '8',
       title: '6.7 GHz メタノールメーザーは大質量原始星からの「円盤風」に付随する？',
       authors: '中村桃太朗, 元木業人, 藤沢健太',
       journal: 'VLBI懇談会シンポジウム2020',
       year: 2020,
       type: 'conference',
+      category: 'astronomy',
       citations: 0,
     },
   ];
@@ -79,8 +112,9 @@ export default function PublicationsSection() {
 
   const filteredPublications = publications.filter(pub => {
     const typeMatch = selectedType === 'all' || pub.type === selectedType;
+    const categoryMatch = selectedCategory === 'all' || pub.category === selectedCategory;
     const yearMatch = selectedYear === 'all' || pub.year === selectedYear;
-    return typeMatch && yearMatch;
+    return typeMatch && categoryMatch && yearMatch;
   });
 
   const stats = {
@@ -120,6 +154,52 @@ export default function PublicationsSection() {
         </div>
 
         <div className="flex flex-wrap gap-4 mb-8 justify-center">
+          {/* 研究分野でのフィルタ */}
+          <div className="flex gap-2 mb-2">
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 self-center mr-2">分野:</span>
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`px-3 py-1 rounded-lg text-sm transition-colors ${
+                selectedCategory === 'all'
+                  ? 'bg-stellar-600 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              全て
+            </button>
+            <button
+              onClick={() => setSelectedCategory('astronomy')}
+              className={`px-3 py-1 rounded-lg text-sm transition-colors ${
+                selectedCategory === 'astronomy'
+                  ? 'bg-stellar-600 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              🔭 天文学
+            </button>
+            <button
+              onClick={() => setSelectedCategory('ai-education')}
+              className={`px-3 py-1 rounded-lg text-sm transition-colors ${
+                selectedCategory === 'ai-education'
+                  ? 'bg-stellar-600 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              🤖 AI教育
+            </button>
+            <button
+              onClick={() => setSelectedCategory('interdisciplinary')}
+              className={`px-3 py-1 rounded-lg text-sm transition-colors ${
+                selectedCategory === 'interdisciplinary'
+                  ? 'bg-stellar-600 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              🔬 学際
+            </button>
+          </div>
+
+          {/* 論文種別でのフィルタ */}
           <div className="flex gap-2">
             <button
               onClick={() => setSelectedType('all')}

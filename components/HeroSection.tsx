@@ -44,16 +44,16 @@ export default function HeroSection() {
           <div className="text-center md:text-left">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-cosmic-500 via-stellar-500 to-cosmic-700 bg-clip-text text-transparent">
-                電波で探る
+                星形成×AI
               </span>
               <br />
               <span className="bg-gradient-to-r from-stellar-600 to-cosmic-600 bg-clip-text text-transparent">
-                星の誕生
+                二軸研究
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-              宇宙には1000億の銀河があり、その銀河には1000億の星があると言われています。その星の誕生を電波で観測しています。
+              電波天文学による星の形成過程の観測的研究と、生成AIを活用したアプリケーション開発の2つの軸で研究を展開しています。
             </p>
             
             <div className="space-y-4 text-lg text-gray-700 dark:text-gray-200">
@@ -62,12 +62,18 @@ export default function HeroSection() {
                 <span className="ml-2">（Momotaro Nakamura）　修士（理学）</span>
               </p>
               <p className="text-base">
-                専門分野：電波天文学、大質量星形成、VLBI観測
+                専門分野：電波天文学、大質量星形成、VLBI観測、生成AI活用教育
               </p>
-              <p className="text-base leading-relaxed">
-                メーザー電波と超長基線電波干渉計（VLBI）を駆使して、
-                大質量星の赤ちゃん星の様子を研究しています。
-              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-base leading-relaxed">
+                <div className="bg-cosmic-50 dark:bg-cosmic-900/20 p-4 rounded-lg">
+                  <p className="font-semibold text-cosmic-700 dark:text-cosmic-300 mb-2">🔭 天文学研究</p>
+                  <p>メーザー電波とVLBI技術で大質量星形成の謎を解明</p>
+                </div>
+                <div className="bg-stellar-50 dark:bg-stellar-900/20 p-4 rounded-lg">
+                  <p className="font-semibold text-stellar-700 dark:text-stellar-300 mb-2">🤖 AI開発研究</p>
+                  <p>生成AIを活用した教育・アプリケーション開発</p>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">
@@ -99,15 +105,15 @@ export default function HeroSection() {
             <div className="mt-8 grid grid-cols-3 gap-4 text-center">
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-lg p-4 shadow-lg">
                 <div className="text-2xl font-bold text-cosmic-600">7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">学会発表</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">天文学発表</div>
               </div>
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-lg p-4 shadow-lg">
-                <div className="text-2xl font-bold text-stellar-600">VLBI</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">観測技術</div>
+                <div className="text-2xl font-bold text-stellar-600">AI</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">教育実践</div>
               </div>
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-lg p-4 shadow-lg">
                 <div className="text-2xl font-bold text-nebula-600">2</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">受賞歴</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">研究軸</div>
               </div>
             </div>
           </div>
