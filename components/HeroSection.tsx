@@ -175,7 +175,7 @@ export default function HeroSection() {
             <div className="mt-8 grid grid-cols-3 gap-4 text-center">
               <div className="group bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-white/30 dark:border-gray-600/30 hover:shadow-cosmic-500/30 hover:scale-110 hover:-rotate-2 transition-all duration-500">
                 <div className="text-3xl font-bold text-cosmic-600 group-hover:scale-125 transition-transform duration-300">7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-cosmic-600 dark:group-hover:text-cosmic-400 transition-colors">天文学発表</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-cosmic-600 dark:group-hover:text-cosmic-400 transition-colors">研究発表</div>
               </div>
               <div className="group bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-white/30 dark:border-gray-600/30 hover:shadow-stellar-500/30 hover:scale-110 transition-all duration-500">
                 <div className="text-3xl font-bold text-stellar-600 group-hover:scale-125 transition-transform duration-300">AI</div>

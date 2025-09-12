@@ -18,6 +18,7 @@ export default function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -30,21 +31,43 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setErrorMessage('');
+
+    // 環境変数の確認
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey || 
+        serviceId === 'your_service_id_here' || 
+        templateId === 'your_template_id_here' || 
+        publicKey === 'your_public_key_here') {
+      setSubmitStatus('error');
+      setErrorMessage('EmailJS設定が完了していません。.env.localファイルを確認してください。');
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
+      console.log('EmailJS送信開始...');
+      console.log('Service ID:', serviceId);
+      console.log('Template ID:', templateId);
+      
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
           to_name: '中村桃太朗先生',
+          reply_to: formData.email,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        publicKey
       );
       
+      console.log('EmailJS送信成功');
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -52,9 +75,19 @@ export default function ContactSection() {
         subject: '研究に関するお問い合わせ',
         message: ''
       });
-    } catch (error) {
-      console.error('EmailJS error:', error);
+    } catch (error: any) {
+      console.error('EmailJS送信エラー:', error);
       setSubmitStatus('error');
+      
+      if (error.status === 400) {
+        setErrorMessage('入力内容に問題があります。フォームを確認してください。');
+      } else if (error.status === 401) {
+        setErrorMessage('EmailJS認証エラー。設定を確認してください。');
+      } else if (error.status === 404) {
+        setErrorMessage('EmailJSテンプレートまたはサービスが見つかりません。');
+      } else {
+        setErrorMessage(`送信エラー: ${error.text || error.message || '不明なエラー'}`);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -228,8 +261,13 @@ export default function ContactSection() {
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 rounded-lg">
                     <p className="text-red-700 dark:text-red-300">
-                      ❌ 送信に失敗しました。しばらくしてから再度お試しください。
+                      ❌ 送信に失敗しました
                     </p>
+                    {errorMessage && (
+                      <p className="text-red-600 dark:text-red-400 text-sm mt-2">
+                        詳細: {errorMessage}
+                      </p>
+                    )}
                   </div>
                 )}
                 
