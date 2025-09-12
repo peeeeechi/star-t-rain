@@ -195,7 +195,7 @@ export default function PublicationsSection() {
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
               }`}
             >
-              🔭 天文学
+              天文学
             </button>
             <button
               onClick={() => setSelectedCategory('ai-education')}
@@ -205,7 +205,7 @@ export default function PublicationsSection() {
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
               }`}
             >
-              🤖 AI教育
+              AI教育
             </button>
             <button
               onClick={() => setSelectedCategory('interdisciplinary')}
@@ -215,7 +215,7 @@ export default function PublicationsSection() {
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
               }`}
             >
-              🔬 学際
+              学際
             </button>
           </div>
 

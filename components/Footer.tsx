@@ -34,7 +34,7 @@ export default function Footer() {
             </div>
             
             <p className="text-gray-400 leading-relaxed">
-              電波天文学による大質量星形成研究と生成AI活用教育の二軸で、
+              電波天文による大質量星形成研究と生成AI活用教育の二軸で、
               次世代の科学技術発展に貢献する研究・教育活動を展開しています。
             </p>
             
