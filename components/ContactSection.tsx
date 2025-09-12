@@ -75,18 +75,20 @@ export default function ContactSection() {
         subject: '研究に関するお問い合わせ',
         message: ''
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error('EmailJS送信エラー:', error);
       setSubmitStatus('error');
       
-      if (error.status === 400) {
+      const err = error as { status?: number; text?: string; message?: string };
+      
+      if (err.status === 400) {
         setErrorMessage('入力内容に問題があります。フォームを確認してください。');
-      } else if (error.status === 401) {
+      } else if (err.status === 401) {
         setErrorMessage('EmailJS認証エラー。設定を確認してください。');
-      } else if (error.status === 404) {
+      } else if (err.status === 404) {
         setErrorMessage('EmailJSテンプレートまたはサービスが見つかりません。');
       } else {
-        setErrorMessage(`送信エラー: ${error.text || error.message || '不明なエラー'}`);
+        setErrorMessage(`送信エラー: ${err.text || err.message || '不明なエラー'}`);
       }
     } finally {
       setIsSubmitting(false);

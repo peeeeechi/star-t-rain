@@ -55,11 +55,11 @@ export default function EducationSection() {
     {
       id: '4',
       title: '実験実習',
-      level: '2-3年生',
+      level: '2-4年生',
       semester: '通年',
       students: '~40',
       description: '情報工学における実践的な実験と実習',
-      topics: ['プログラミング実習', 'ネットワーク実験', 'システム構築演習'],
+      topics: ['プログラミング実習', 'データベース実験'],
     },
     {
       id: '5',

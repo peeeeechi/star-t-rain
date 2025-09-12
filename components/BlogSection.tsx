@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getPublishedPosts, BlogPost, getFeaturedPosts, getRecentPosts } from '@/lib/blog-data';
+import { getPublishedPosts, BlogPost, getFeaturedPosts } from '@/lib/blog-data';
 import { 
   FileText, 
   Telescope, 
