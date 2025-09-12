@@ -56,6 +56,12 @@ export default {
         'twinkle': 'twinkle 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'sparkle': 'sparkle 2s ease-in-out infinite',
+        'comet': 'comet 8s linear infinite',
+        'float-up': 'float-up 15s linear infinite',
+        'float-diagonal': 'float-diagonal 20s linear infinite',
+        'spin-slow': 'spin 8s linear infinite',
+        'spin-reverse': 'spin-reverse 12s linear infinite',
       },
       keyframes: {
         twinkle: {
@@ -65,6 +71,34 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        sparkle: {
+          '0%, 100%': { opacity: '1', transform: 'scale(1) rotate(0deg)' },
+          '25%': { opacity: '0.8', transform: 'scale(1.2) rotate(90deg)' },
+          '50%': { opacity: '0.6', transform: 'scale(0.8) rotate(180deg)' },
+          '75%': { opacity: '0.9', transform: 'scale(1.1) rotate(270deg)' },
+        },
+        comet: {
+          '0%': { transform: 'translateX(-100px) translateY(-100px)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '90%': { opacity: '1' },
+          '100%': { transform: 'translateX(100px) translateY(100px)', opacity: '0' },
+        },
+        'float-up': {
+          '0%': { transform: 'translateY(100vh) translateX(0)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '90%': { opacity: '1' },
+          '100%': { transform: 'translateY(-10px) translateX(20px)', opacity: '0' },
+        },
+        'float-diagonal': {
+          '0%': { transform: 'translateY(100vh) translateX(-50px)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '90%': { opacity: '1' },
+          '100%': { transform: 'translateY(-10px) translateX(50px)', opacity: '0' },
+        },
+        'spin-reverse': {
+          from: { transform: 'rotate(360deg)' },
+          to: { transform: 'rotate(0deg)' },
         }
       },
       fontFamily: {
