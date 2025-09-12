@@ -290,7 +290,7 @@ export default function ContactSection() {
 
         <div className="mt-12 flex justify-center space-x-6">
           <a
-            href="https://twitter.com/momomo0413"
+            href="https://twitter.com/peach_sun84"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors"

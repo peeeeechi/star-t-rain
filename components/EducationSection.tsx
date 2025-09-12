@@ -94,7 +94,7 @@ export default function EducationSection() {
     {
       id: '1',
       title: 'DX推進学生支援アプリケーションの開発プロジェクト',
-      student: '情報工学科4年生',
+      student: '情報工学科4年生・5年生(継続課題)',
       year: 2024,
       award: '演習生が成果発表会にてクラス最優秀評価を獲得',
     },
@@ -124,6 +124,12 @@ export default function EducationSection() {
     },
     {
       id: '6',
+      title: 'Python による天文観測データ解析',
+      student: '2023年度卒業生',
+      year: 2023,
+    },
+    {
+      id: '7',
       title: 'Python による天文観測データ解析',
       student: '2023年度卒業生',
       year: 2023,
@@ -167,7 +173,7 @@ export default function EducationSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            次世代の科学者を育成し、科学の魅力を社会に伝える
+            次世代の科学技術者を育成し、科学技術の魅力を社会に伝える
           </p>
         </div>
 
