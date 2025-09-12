@@ -109,8 +109,8 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -199,7 +199,7 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white text-sm sm:text-base"
                     placeholder="山田 太郎"
                   />
                 </div>
@@ -215,7 +215,7 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white text-sm sm:text-base"
                     placeholder="example@email.com"
                   />
                 </div>
@@ -229,7 +229,7 @@ export default function ContactSection() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white text-sm sm:text-base"
                   >
                     <option>研究に関するお問い合わせ</option>
                     <option>講演・セミナーの依頼</option>
@@ -250,7 +250,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cosmic-500 focus:border-cosmic-500 dark:bg-gray-700 dark:text-white text-sm sm:text-base"
                     placeholder="お問い合わせ内容をご記入ください"
                   ></textarea>
                 </div>
