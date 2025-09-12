@@ -37,11 +37,16 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      isScrolled 
-        ? 'bg-gradient-to-r from-white/90 via-white/95 to-white/90 dark:from-gray-900/90 dark:via-gray-800/95 dark:to-gray-900/90 backdrop-blur-xl shadow-2xl border-b border-white/20 dark:border-gray-700/30' 
-        : 'bg-transparent'
-    }`}>
+    <nav 
+      id="navigation"
+      role="navigation"
+      aria-label="メインナビゲーション"
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled 
+          ? 'bg-gradient-to-r from-white/90 via-white/95 to-white/90 dark:from-gray-900/90 dark:via-gray-800/95 dark:to-gray-900/90 backdrop-blur-xl shadow-2xl border-b border-white/20 dark:border-gray-700/30' 
+          : 'bg-transparent'
+      }`}
+    >
       {/* 背景の光効果 */}
       {isScrolled && (
         <div className="absolute inset-0 bg-gradient-to-r from-cosmic-500/5 via-stellar-500/10 to-nebula-500/5 animate-pulse-slow"></div>
