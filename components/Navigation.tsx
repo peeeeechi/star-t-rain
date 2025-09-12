@@ -19,6 +19,7 @@ export default function Navigation() {
     { label: '研究', href: '#research', icon: '🔬' },
     { label: '業績', href: '#publications', icon: '📚' },
     { label: '教育', href: '#education', icon: '🎓' },
+    { label: 'ブログ', href: '#blog', icon: '📝' },
     { label: 'ニュース', href: '#news', icon: '📰' },
     { label: 'お問い合わせ', href: '#contact', icon: '✉️' },
   ];
