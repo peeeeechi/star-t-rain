@@ -2,6 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { 
+  Telescope, 
+  BookOpen, 
+  GraduationCap, 
+  FileText, 
+  Newspaper, 
+  Mail,
+  Sparkles
+} from 'lucide-react';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,12 +25,12 @@ export default function Navigation() {
   }, []);
 
   const navItems = [
-    { label: '研究', href: '#research', icon: '🔬' },
-    { label: '業績', href: '#publications', icon: '📚' },
-    { label: '教育', href: '#education', icon: '🎓' },
-    { label: 'ブログ', href: '#blog', icon: '📝' },
-    { label: 'ニュース', href: '#news', icon: '📰' },
-    { label: 'お問い合わせ', href: '#contact', icon: '✉️' },
+    { label: '研究', href: '#research', Icon: Telescope },
+    { label: '業績', href: '#publications', Icon: BookOpen },
+    { label: '教育', href: '#education', Icon: GraduationCap },
+    { label: 'ブログ', href: '#blog', Icon: FileText },
+    { label: 'ニュース', href: '#news', Icon: Newspaper },
+    { label: 'お問い合わせ', href: '#contact', Icon: Mail },
   ];
 
   return (
@@ -33,7 +42,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl">🌌</span>
+            <Sparkles className="w-6 h-6 text-cosmic-600 dark:text-cosmic-400" />
             <span className="font-bold text-xl bg-gradient-to-r from-cosmic-600 to-stellar-600 bg-clip-text text-transparent">
               Momotaro-Lab
             </span>
@@ -46,7 +55,7 @@ export default function Navigation() {
                 href={item.href}
                 className="flex items-center space-x-1 text-gray-700 dark:text-gray-300 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors"
               >
-                <span className="text-sm">{item.icon}</span>
+                <item.Icon className="w-4 h-4" />
                 <span>{item.label}</span>
               </Link>
             ))}
@@ -75,7 +84,7 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center space-x-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
               >
-                <span>{item.icon}</span>
+                <item.Icon className="w-5 h-5" />
                 <span>{item.label}</span>
               </Link>
             ))}

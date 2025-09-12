@@ -2,6 +2,19 @@
 
 import { useState } from 'react';
 import { getPublishedPosts, BlogPost, getFeaturedPosts, getRecentPosts } from '@/lib/blog-data';
+import { 
+  FileText, 
+  Telescope, 
+  Bot, 
+  GraduationCap, 
+  FlaskConical, 
+  BookOpen,
+  Star,
+  Grid3X3,
+  List,
+  ChevronDown,
+  PenTool
+} from 'lucide-react';
 
 export default function BlogSection() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | BlogPost['category']>('all');
@@ -9,12 +22,12 @@ export default function BlogSection() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const categories = [
-    { value: 'all', label: '全て', icon: '📝' },
-    { value: 'astronomy', label: '天文学', icon: '🔭' },
-    { value: 'ai', label: 'AI・技術', icon: '🤖' },
-    { value: 'education', label: '教育', icon: '🎓' },
-    { value: 'research', label: '研究', icon: '🔬' },
-    { value: 'general', label: '一般', icon: '📖' },
+    { value: 'all', label: '全て', Icon: FileText },
+    { value: 'astronomy', label: '天文学', Icon: Telescope },
+    { value: 'ai', label: 'AI・技術', Icon: Bot },
+    { value: 'education', label: '教育', Icon: GraduationCap },
+    { value: 'research', label: '研究', Icon: FlaskConical },
+    { value: 'general', label: '一般', Icon: BookOpen },
   ];
 
   const publishedPosts = getPublishedPosts();
@@ -66,7 +79,11 @@ export default function BlogSection() {
         {/* 記事がない場合のメッセージ */}
         {publishedPosts.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-6xl mb-4">📝</div>
+            <div className="flex justify-center mb-4">
+              <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-full">
+                <PenTool className="w-12 h-12 text-gray-400" />
+              </div>
+            </div>
             <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
               準備中
             </h3>
@@ -80,7 +97,7 @@ export default function BlogSection() {
         {featuredPosts.length > 0 && (
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-              <span className="mr-2">⭐</span>
+              <Star className="w-6 h-6 mr-2 text-yellow-500" />
               注目の記事
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
@@ -137,7 +154,7 @@ export default function BlogSection() {
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
-                <span className="mr-1">{category.icon}</span>
+                <category.Icon className="w-4 h-4 mr-1" />
                 {category.label}
               </button>
             ))}
@@ -153,9 +170,7 @@ export default function BlogSection() {
               }`}
               aria-label="Grid view"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
+              <Grid3X3 className="w-5 h-5" />
             </button>
             <button
               onClick={() => setViewMode('list')}
@@ -166,9 +181,7 @@ export default function BlogSection() {
               }`}
               aria-label="List view"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <List className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -240,9 +253,7 @@ export default function BlogSection() {
                     className="text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 text-sm font-semibold flex items-center"
                   >
                     {expandedPost === post.id ? '閉じる' : '続きを読む'}
-                    <svg className={`w-4 h-4 ml-1 transform transition-transform ${expandedPost === post.id ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                    <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${expandedPost === post.id ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
               </div>

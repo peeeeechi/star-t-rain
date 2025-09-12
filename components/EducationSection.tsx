@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { BookOpen, GraduationCap, Globe2, FlaskConical, Users, Trophy } from 'lucide-react';
 
 interface Course {
   id: string;
@@ -114,25 +115,25 @@ export default function EducationSection() {
       title: '天文教育普及研究会',
       description: '天文学の教育普及活動を推進する学会活動',
       participants: '全国の教育関係者',
-      icon: '🌟',
+      Icon: FlaskConical,
     },
     {
       title: 'VLBI懇談会活動',
       description: '電波天文学の研究交流と学生教育支援',
       participants: '学生幹事として貢献',
-      icon: '📡',
+      Icon: Users,
     },
     {
       title: '高専学会での教育実践報告',
       description: 'AI駆動開発など最新教育手法の紹介',
       participants: '全国高専教員',
-      icon: '👨‍🏫',
+      Icon: GraduationCap,
     },
     {
       title: '天文学研究成果の社会発信',
       description: 'e-MERLINニュースなど国際的な研究成果発信',
       participants: '国際天文学コミュニティ',
-      icon: '🌐',
+      Icon: Globe2,
     },
   ];
 
@@ -153,35 +154,35 @@ export default function EducationSection() {
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <button
             onClick={() => setActiveTab('courses')}
-            className={`px-6 py-3 rounded-full transition-all ${
+            className={`px-6 py-3 rounded-full transition-all flex items-center ${
               activeTab === 'courses'
                 ? 'bg-nebula-600 text-white shadow-lg'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
-            <span className="mr-2">📚</span>
+            <BookOpen className="w-5 h-5 mr-2" />
             担当授業
           </button>
           <button
             onClick={() => setActiveTab('supervision')}
-            className={`px-6 py-3 rounded-full transition-all ${
+            className={`px-6 py-3 rounded-full transition-all flex items-center ${
               activeTab === 'supervision'
                 ? 'bg-nebula-600 text-white shadow-lg'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
-            <span className="mr-2">🎓</span>
+            <GraduationCap className="w-5 h-5 mr-2" />
             学生指導
           </button>
           <button
             onClick={() => setActiveTab('outreach')}
-            className={`px-6 py-3 rounded-full transition-all ${
+            className={`px-6 py-3 rounded-full transition-all flex items-center ${
               activeTab === 'outreach'
                 ? 'bg-nebula-600 text-white shadow-lg'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
-            <span className="mr-2">🌍</span>
+            <Globe2 className="w-5 h-5 mr-2" />
             アウトリーチ
           </button>
         </div>
@@ -249,8 +250,9 @@ export default function EducationSection() {
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       {project.student} ({project.year}年度)
                       {project.award && (
-                        <span className="ml-2 px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 rounded text-xs">
-                          🏆 {project.award}
+                        <span className="ml-2 px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 rounded text-xs flex items-center">
+                          <Trophy className="w-3 h-3 mr-1" />
+                          {project.award}
                         </span>
                       )}
                     </p>
@@ -284,7 +286,9 @@ export default function EducationSection() {
                 className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="flex items-center mb-4">
-                  <span className="text-4xl mr-4">{activity.icon}</span>
+                  <div className="p-3 bg-nebula-100 dark:bg-nebula-900/30 rounded-lg mr-4">
+                    <activity.Icon className="w-6 h-6 text-nebula-600 dark:text-nebula-400" />
+                  </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {activity.title}
                   </h3>

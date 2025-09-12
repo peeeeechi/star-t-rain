@@ -1,5 +1,7 @@
 'use client';
 
+import { ChevronRight } from 'lucide-react';
+
 interface NewsItem {
   id: string;
   date: string;
@@ -28,7 +30,7 @@ export default function NewsSection() {
     {
       id: '3',
       date: '2025.04.01',
-      title: '山口大学非常勤講師に就任',
+      title: '山口大学非常勤講師でキャリアデザインⅡを担当',
       description: '山口大学大学院創成科学研究科にて「キャリアデザインⅡ」の非常勤講師を担当しています。',
       category: 'event',
     },
@@ -36,7 +38,7 @@ export default function NewsSection() {
       id: '4',
       date: '2024.06.01',
       title: 'e-MERLIN Newsで研究成果が紹介',
-      description: 'G59.783+0.065における大質量星形成研究が e-MERLIN News で紹介されました。',
+      description: 'G59.783+0.065におけるVLBI観測の研究が e-MERLIN News で紹介されました。',
       category: 'media',
       link: 'https://e-merlin.ac.uk/',
     },
@@ -127,9 +129,7 @@ export default function NewsSection() {
                     className="inline-flex items-center text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 text-sm font-semibold"
                   >
                     詳細を見る
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    <ChevronRight className="w-4 h-4 ml-1" />
                   </a>
                 )}
               </div>
@@ -143,9 +143,7 @@ export default function NewsSection() {
             className="inline-flex items-center px-6 py-3 bg-stellar-600 text-white rounded-full hover:bg-stellar-700 transition-colors shadow-lg"
           >
             過去のニュースを見る
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+            <ChevronRight className="w-4 h-4 ml-2" />
           </a>
         </div>
       </div>

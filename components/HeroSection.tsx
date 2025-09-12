@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Telescope, Bot } from 'lucide-react';
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -66,11 +67,17 @@ export default function HeroSection() {
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-base leading-relaxed">
                 <div className="bg-cosmic-50 dark:bg-cosmic-900/20 p-4 rounded-lg">
-                  <p className="font-semibold text-cosmic-700 dark:text-cosmic-300 mb-2">🔭 天文学研究</p>
+                  <p className="font-semibold text-cosmic-700 dark:text-cosmic-300 mb-2 flex items-center">
+                    <Telescope className="w-5 h-5 mr-2" />
+                    天文学研究
+                  </p>
                   <p>メーザー電波とVLBI技術で大質量星形成の謎を解明</p>
                 </div>
                 <div className="bg-stellar-50 dark:bg-stellar-900/20 p-4 rounded-lg">
-                  <p className="font-semibold text-stellar-700 dark:text-stellar-300 mb-2">🤖 AI開発研究</p>
+                  <p className="font-semibold text-stellar-700 dark:text-stellar-300 mb-2 flex items-center">
+                    <Bot className="w-5 h-5 mr-2" />
+                    AI開発研究
+                  </p>
                   <p>生成AIを活用した教育・アプリケーション開発</p>
                 </div>
               </div>
@@ -97,7 +104,7 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-r from-cosmic-400 to-stellar-400 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
               <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-full p-8 shadow-2xl">
                 <div className="aspect-square rounded-full bg-gradient-to-br from-cosmic-100 to-stellar-100 dark:from-cosmic-900 dark:to-stellar-900 flex items-center justify-center">
-                  <span className="text-6xl">🔭</span>
+                  <Telescope className="w-24 h-24 text-cosmic-600 dark:text-cosmic-400" />
                 </div>
               </div>
             </div>

@@ -2,6 +2,12 @@
 
 import { useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
+import { 
+  Mail, 
+  Building, 
+  MapPin, 
+  User
+} from 'lucide-react';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -77,7 +83,9 @@ export default function ContactSection() {
                 
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <span className="text-2xl mr-4">📧</span>
+                    <div className="p-2 bg-cosmic-100 dark:bg-cosmic-900/30 rounded-lg mr-4">
+                      <Mail className="w-5 h-5 text-cosmic-600 dark:text-cosmic-400" />
+                    </div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">メール</p>
                       <p className="text-gray-600 dark:text-gray-400">1: nakamura.momotaro_at_oshima-k.ac.jp</p>
@@ -86,7 +94,9 @@ export default function ContactSection() {
                   </div>
                   
                   <div className="flex items-start">
-                    <span className="text-2xl mr-4">🏢</span>
+                    <div className="p-2 bg-stellar-100 dark:bg-stellar-900/30 rounded-lg mr-4">
+                      <Building className="w-5 h-5 text-stellar-600 dark:text-stellar-400" />
+                    </div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">所属</p>
                       <p className="text-gray-600 dark:text-gray-400">
@@ -97,7 +107,9 @@ export default function ContactSection() {
                   </div>
                   
                   <div className="flex items-start">
-                    <span className="text-2xl mr-4">📍</span>
+                    <div className="p-2 bg-nebula-100 dark:bg-nebula-900/30 rounded-lg mr-4">
+                      <MapPin className="w-5 h-5 text-nebula-600 dark:text-nebula-400" />
+                    </div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">住所</p>
                       <p className="text-gray-600 dark:text-gray-400">
@@ -108,7 +120,9 @@ export default function ContactSection() {
                   </div>
                   
                   <div className="flex items-start">
-                    <span className="text-2xl mr-4">🆔</span>
+                    <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg mr-4">
+                      <User className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+                    </div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">ORCID ID</p>
                       <p className="text-gray-600 dark:text-gray-400">0009-0001-5054-3527</p>

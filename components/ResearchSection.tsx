@@ -1,12 +1,26 @@
 'use client';
 
 import { useState } from 'react';
+import { 
+  Radio, 
+  Satellite, 
+  Bot, 
+  Star, 
+  Laptop, 
+  Microscope,
+  Globe,
+  FlaskConical,
+  BookOpen,
+  Users,
+  ChevronDown,
+  ChevronUp
+} from 'lucide-react';
 
 interface ResearchItem {
   id: string;
   title: string;
   description: string;
-  icon: string;
+  Icon: React.ElementType;
   details: string[];
   audience: 'researcher' | 'student' | 'general';
 }
@@ -21,7 +35,7 @@ export default function ResearchSection() {
       id: 'radio-astronomy',
       title: '電波天文学による大質量星形成研究',
       description: 'メーザー電波を用いて大質量原始星の形成過程を観測的に解明',
-      icon: '📡',
+      Icon: Radio,
       details: [
         'G59.783+0.065における円盤-アウトフロー構造の詳細解析',
         '6.7 GHzメタノールメーザーと22 GHz水メーザーの運動学的研究',
@@ -34,7 +48,7 @@ export default function ResearchSection() {
       id: 'vlbi-observations',
       title: 'VLBI観測技術の開発と応用',
       description: '超長基線電波干渉計を用いたミリ秒角分解能での天体観測',
-      icon: '🛰️',
+      Icon: Satellite,
       details: [
         'e-MERLIN、VLBA等の国際VLBI観測ネットワークでの共同研究',
         '複数epoch VLBI観測による天体の固有運動測定',
@@ -49,7 +63,7 @@ export default function ResearchSection() {
       id: 'generative-ai-education',
       title: '生成AI活用教育の実践研究',
       description: 'GitHub Copilot、ChatGPT等を活用した新しい教育手法の開発',
-      icon: '🤖',
+      Icon: Bot,
       details: [
         'AI駆動開発を取り入れた演習授業の設計と実践',
         'プロンプトエンジニアリングの教育カリキュラム開発',
@@ -64,7 +78,7 @@ export default function ResearchSection() {
       id: 'astronomy-education-outreach',
       title: '天文教育普及活動',
       description: '天文学の魅力と最新研究成果を社会に伝える活動',
-      icon: '🌟',
+      Icon: Star,
       details: [
         '天文教育普及研究会での教育実践報告',
         '高専生向け天文学実習プログラムの開発',
@@ -79,7 +93,7 @@ export default function ResearchSection() {
       id: 'app-material-development',
       title: 'アプリケーション・教材開発',
       description: '教育支援システムと天文データ解析ツールの開発',
-      icon: '💻',
+      Icon: Laptop,
       details: [
         'モバイルアプリによる学習支援システムの開発',
         'Python による天文観測データ解析システムの構築',
@@ -94,7 +108,7 @@ export default function ResearchSection() {
       id: 'interdisciplinary-research',
       title: '天文学とAI技術の融合研究',
       description: '天文観測データへの機械学習適用など学際的アプローチ',
-      icon: '🔬',
+      Icon: Microscope,
       details: [
         '機械学習を用いた天文観測データの自動解析',
         'AIによるメーザー源の自動検出システム開発',
@@ -106,10 +120,10 @@ export default function ResearchSection() {
   ];
 
   const audienceButtons = [
-    { value: 'all', label: '全て', icon: '🌍' },
-    { value: 'researcher', label: '研究者向け', icon: '🔬' },
-    { value: 'student', label: '学生向け', icon: '📚' },
-    { value: 'general', label: '一般向け', icon: '👥' },
+    { value: 'all', label: '全て', Icon: Globe },
+    { value: 'researcher', label: '研究者向け', Icon: FlaskConical },
+    { value: 'student', label: '学生向け', Icon: BookOpen },
+    { value: 'general', label: '一般向け', Icon: Users },
   ];
 
   const filteredItems = selectedAudience === 'all' 
@@ -141,7 +155,7 @@ export default function ResearchSection() {
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
-              <span className="mr-2">{button.icon}</span>
+              <button.Icon className="w-4 h-4 mr-2" />
               {button.label}
             </button>
           ))}
@@ -155,7 +169,9 @@ export default function ResearchSection() {
             >
               <div className="p-6">
                 <div className="flex items-center mb-4">
-                  <span className="text-4xl mr-4">{item.icon}</span>
+                  <div className="p-3 bg-cosmic-100 dark:bg-cosmic-900/30 rounded-lg mr-4">
+                    <item.Icon className="w-6 h-6 text-cosmic-600 dark:text-cosmic-400" />
+                  </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {item.title}
                   </h3>
@@ -170,16 +186,11 @@ export default function ResearchSection() {
                   className="text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 font-semibold flex items-center"
                 >
                   {expandedItem === item.id ? '詳細を閉じる' : '詳細を見る'}
-                  <svg
-                    className={`w-4 h-4 ml-2 transition-transform ${
-                      expandedItem === item.id ? 'rotate-180' : ''
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  {expandedItem === item.id ? (
+                    <ChevronUp className="w-4 h-4 ml-2" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  )}
                 </button>
 
                 {expandedItem === item.id && (
