@@ -42,7 +42,7 @@ export default function NewsSection() {
       title: 'e-MERLIN Newsで研究成果が紹介',
       description: 'G59.783+0.065におけるVLBI観測の研究が e-MERLIN News で紹介されました。',
       category: 'media',
-      link: 'https://e-merlin.ac.uk/',
+      link: 'https://www.e-merlin.ac.uk/news.html#Nakamura',
     },
     {
       id: '5',
@@ -58,6 +58,7 @@ export default function NewsSection() {
       title: '山口大学大学院創成科学研究科長表彰受賞',
       description: '博士前期課程における研究成果が評価され、研究科長表彰を受賞しました。',
       category: 'award',
+      link: 'https://www.yamaguchi-u.ac.jp/sci/wp-content/uploads/2022/07/sci_wonderla30.pdf'
     },
   ];
 

@@ -123,8 +123,10 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">メール</p>
-                      <p className="text-gray-600 dark:text-gray-400">1: nakamura.momotaro_at_oshima-k.ac.jp</p>
-                      <p className="text-gray-600 dark:text-gray-400">2: nakamura.momotaroh_at_gmail.com</p>
+                      <p className="text-gray-600 dark:text-gray-400"> mail1: nakamura.momotaro_at_oshima-k.ac.jp</p>
+                      <p className="text-gray-600 dark:text-gray-400"> mail2: nakamura.momotaroh_at_gmail.com</p>
+                      <p className="text-gray-600 dark:text-gray-400"> （_at_を@に変えて下さい）</p>
+
                     </div>
                   </div>
                   
@@ -287,17 +289,21 @@ export default function ContactSection() {
 
         <div className="mt-12 flex justify-center space-x-6">
           <a
-            href="#"
+            href="https://twitter.com/momomo0413"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors"
-            aria-label="Twitter"
+            aria-label="X (Twitter)"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </a>
           
           <a
-            href="#"
+            href="https://github.com/peeeeechi"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors"
             aria-label="GitHub"
           >
@@ -307,13 +313,17 @@ export default function ContactSection() {
           </a>
           
           <a
-            href="#"
+            href="https://researchmap.jp/kibidango_sun"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors"
-            aria-label="ResearchGate"
+            aria-label="researchmap"
           >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.821 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.335-.244.698-.363 1.138-.363.418 0 .756.13 1.054.39.298.26.47.604.542 1.022.031.172.031.34.031.512 0 .094.046.14.14.14h1.57c.094 0 .14-.046.14-.14 0-.261.023-.52.023-.779 0-.097-.008-.192-.024-.287a6.68 6.68 0 0 0-.151-.71 3.885 3.885 0 0 0-1.288-1.943c-.602-.454-1.34-.681-2.206-.681zM0 6.90323h1.67c.082 0 .123.035.123.105v8.03c0 .102-.039.152-.117.152H.292c-.101 0-.152-.05-.152-.152v-.31c0-.094.047-.14.14-.14h.644c.07 0 .105-.034.105-.103V8.138c0-.07-.035-.105-.105-.105H.28c-.093 0-.14-.047-.14-.14v-.883c0-.07.04-.105.123-.105h1.408v-.002z"/>
-            </svg>
+            <img 
+              src="/researchmap-banner.png" 
+              alt="researchmap" 
+              className="h-6 w-auto hover:opacity-80 transition-opacity"
+            />
           </a>
         </div>
       </div>

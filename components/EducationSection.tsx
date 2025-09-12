@@ -93,10 +93,10 @@ export default function EducationSection() {
   const studentProjects: StudentProject[] = [
     {
       id: '1',
-      title: 'AI駆動モバイルアプリ開発プロジェクト',
+      title: 'DX推進学生支援アプリケーションの開発プロジェクト',
       student: '情報工学科4年生',
       year: 2024,
-      award: '演習生がクラス最優秀評価を獲得',
+      award: '演習生が成果発表会にてクラス最優秀評価を獲得',
     },
     {
       id: '2',
@@ -250,7 +250,7 @@ export default function EducationSection() {
           <div className="space-y-6">
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                最近の卒業研究指導
+                最近の本研究室における演習・研究指導テーマ
               </h3>
               <div className="space-y-4">
                 {studentProjects.map((project) => (
@@ -278,11 +278,11 @@ export default function EducationSection() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-gradient-to-br from-cosmic-100 to-stellar-100 dark:from-cosmic-900 dark:to-stellar-900 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-cosmic-700 dark:text-cosmic-300">10</div>
-                <div className="text-sm text-gray-700 dark:text-gray-300">卒業研究指導</div>
+                <div className="text-sm text-gray-700 dark:text-gray-300">卒業研究指導累計学生数</div>
               </div>
               <div className="bg-gradient-to-br from-stellar-100 to-nebula-100 dark:from-stellar-900 dark:to-nebula-900 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-stellar-700 dark:text-stellar-300">3</div>
-                <div className="text-sm text-gray-700 dark:text-gray-300">来年度演習生受け入れ</div>
+                <div className="text-sm text-gray-700 dark:text-gray-300">2025年度演習生受け入れ人数</div>
               </div>
               {/* <div className="bg-gradient-to-br from-nebula-100 to-cosmic-100 dark:from-nebula-900 dark:to-cosmic-900 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-nebula-700 dark:text-nebula-300">5</div>
