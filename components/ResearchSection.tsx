@@ -144,19 +144,65 @@ export default function ResearchSection() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {audienceButtons.map((button) => (
+        <div className="flex flex-wrap justify-center gap-6 mb-12">
+          {audienceButtons.map((button, index) => (
             <button
               key={button.value}
               onClick={() => setSelectedAudience(button.value as 'all' | 'researcher' | 'student' | 'general')}
-              className={`px-6 py-3 rounded-full transition-all ${
+              className={`group relative px-8 py-4 rounded-2xl overflow-hidden transition-all duration-500 transform hover:scale-105 hover:-rotate-1 ${
                 selectedAudience === button.value
-                  ? 'bg-cosmic-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  ? 'bg-gradient-to-r from-cosmic-600 via-stellar-600 to-cosmic-700 text-white shadow-2xl shadow-cosmic-500/40'
+                  : 'bg-gradient-to-br from-white/90 via-white/80 to-white/70 dark:from-gray-800/90 dark:via-gray-800/80 dark:to-gray-900/70 text-gray-700 dark:text-gray-300 hover:text-cosmic-600 dark:hover:text-cosmic-400 shadow-lg hover:shadow-xl hover:shadow-cosmic-500/20 backdrop-blur-sm border border-white/50 dark:border-gray-600/50'
               }`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <button.Icon className="w-4 h-4 mr-2" />
-              {button.label}
+              {/* 3D背景効果 */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cosmic-500/10 via-stellar-500/15 to-nebula-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent dark:via-gray-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              
+              {/* ホログラフィック境界線 */}
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cosmic-400/60 to-transparent group-hover:via-cosmic-400 transition-all duration-500"></div>
+              <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-t from-transparent via-stellar-400/60 to-transparent group-hover:via-stellar-400 transition-all duration-500"></div>
+              
+              <div className="relative z-10 flex items-center space-x-3">
+                <div className={`relative p-2 rounded-xl transition-all duration-300 ${
+                  selectedAudience === button.value 
+                    ? 'bg-white/20 shadow-inner' 
+                    : 'bg-gradient-to-br from-cosmic-100/60 to-stellar-100/40 dark:from-cosmic-900/40 dark:to-stellar-900/30 group-hover:scale-110 group-hover:rotate-12'
+                }`}>
+                  <button.Icon className={`w-5 h-5 transition-all duration-300 ${
+                    selectedAudience === button.value 
+                      ? 'text-white' 
+                      : 'text-cosmic-600 dark:text-cosmic-400 group-hover:text-cosmic-700 dark:group-hover:text-cosmic-300'
+                  }`} />
+                  
+                  {/* アイコン周りの光効果 */}
+                  {selectedAudience !== button.value && (
+                    <>
+                      <div className="absolute inset-0 bg-cosmic-500/20 dark:bg-cosmic-400/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-cosmic-500/30 to-stellar-500/30 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    </>
+                  )}
+                </div>
+                
+                <span className={`font-semibold text-lg transition-all duration-300 ${
+                  selectedAudience === button.value 
+                    ? 'text-white drop-shadow-sm' 
+                    : 'group-hover:text-cosmic-700 dark:group-hover:text-cosmic-300'
+                }`}>
+                  {button.label}
+                </span>
+              </div>
+              
+              {/* アクティブ時の下線効果 */}
+              {selectedAudience === button.value && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-white/60 to-transparent rounded-full animate-pulse"></div>
+              )}
+              
+              {/* 非アクティブ時のホバー効果 */}
+              {selectedAudience !== button.value && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-cosmic-500 to-stellar-500 group-hover:w-3/4 transition-all duration-500 rounded-full"></div>
+              )}
             </button>
           ))}
         </div>

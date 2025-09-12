@@ -102,7 +102,7 @@ export default function HeroSection() {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-              電波天文学による星の形成過程の観測的研究と、生成AIを活用したアプリケーション開発の2つの軸で研究を展開しています。
+              星の形成過程の電波での観測的研究と、生成AIを活用したアプリケーション開発の2つの軸で研究を展開しています。
             </p>
             
             <div className="space-y-4 text-lg text-gray-700 dark:text-gray-200">
