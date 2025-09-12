@@ -19,6 +19,7 @@ export default function NewsSection() {
       title: '日本天文学会2025年秋季年会で講演',
       description: 'メタノールメーザーと水メーザーで探る大質量原始星 G59.783+0.065 周囲のダイナミクスについて発表しました。',
       category: 'research',
+      link: 'https://www.asj.or.jp/nenkai/archive/2025b/pdf/P114a.pdf', 
     },
     {
       id: '2',
@@ -26,6 +27,7 @@ export default function NewsSection() {
       title: '日本高専学会でAI教育実践を発表',
       description: '演習型授業におけるモバイルアプリのAI駆動開発の実践について報告しました。',
       category: 'research',
+      link: 'https://jact.sakura.ne.jp/nenkai/nenkai31/jact31_program_oral_20250822.pdf',
     },
     {
       id: '3',
@@ -48,7 +50,7 @@ export default function NewsSection() {
       title: 'MNRAS誌に主著論文掲載',
       description: 'メタノールと水メーザーによる大質量原始星の運動学的研究がMNRASに掲載されました。',
       category: 'research',
-      link: '#',
+      link: 'https://doi.org/10.1093/mnras/stad2725',
     },
     {
       id: '6',

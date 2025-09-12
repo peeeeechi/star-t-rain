@@ -28,34 +28,34 @@ export default function EducationSection() {
     {
       id: '1',
       title: '情報工学概論',
-      level: '2年生',
+      level: '情報工学科2年生',
       semester: '通年',
       students: '~40',
       description: '情報工学の基礎概念と技術全般を学習',
-      topics: ['情報数学', 'ハードウェア・ソフトウェア', 'システム基礎'],
+      topics: ['情報数学', 'ハードウェア・ソフトウェア', 'システム基礎', '経営・開発・技術戦略', 'AI・データ利活用'],
     },
     {
       id: '2',
       title: 'データベース',
-      level: '4年生',
+      level: '情報工学科4年生',
       semester: '通年',
       students: '~40',
-      description: 'データベース設計と管理技術を習得',
+      description: 'データベース設計・操作と管理技術を習得',
       topics: ['関係データベース', 'SQL操作', 'データベース設計'],
     },
     {
       id: '3',
       title: '応用物理学Ⅱ',
-      level: '4年生',
+      level: '情報工学科4年生',
       semester: '通年',
       students: '~40',
-      description: '物理学の応用分野について学習',
+      description: '物理学の応用レベルの問題について学習',
       topics: ['力学', '流体力学', '電磁気学'],
     },
     {
       id: '4',
       title: '実験実習',
-      level: '2-4年生',
+      level: '情報工学科2-4年生',
       semester: '通年',
       students: '~40',
       description: '情報工学における実践的な実験と実習',
@@ -64,7 +64,7 @@ export default function EducationSection() {
     {
       id: '5',
       title: '創造演習Ⅱ',
-      level: '4年生',
+      level: '情報工学科4年生',
       semester: '後期',
       students: '若干',
       description: '創造的な問題解決能力を育成する演習科目',
@@ -72,8 +72,17 @@ export default function EducationSection() {
     },
     {
       id: '6',
-      title: 'キャリアデザインⅡ（非常勤）',
-      level: '大学院生',
+      title: '卒業研究',
+      level: '情報工学科5年生',
+      semester: '通年',
+      students: '若干',
+      description: '専門教育の仕上げとして、情報工学の基礎知識をもとに課題に対して自ら計画を立て、継続的に研究や開発を行う',
+      topics: ['アプリ開発', '画像認識・AI活用', '天文データ分析・解析', '授業教材開発'],
+    },
+    {
+      id: '7',
+      title: 'キャリアデザインⅡ',
+      level: '（外部）大学院生',
       semester: '前期',
       students: '若干',
       description: '山口大学での非常勤講師として担当',
@@ -87,7 +96,7 @@ export default function EducationSection() {
       title: 'AI駆動モバイルアプリ開発プロジェクト',
       student: '情報工学科4年生',
       year: 2024,
-      award: '最優秀評価プロジェクト',
+      award: '演習生がクラス最優秀評価を獲得',
     },
     {
       id: '2',
@@ -103,6 +112,12 @@ export default function EducationSection() {
     },
     {
       id: '4',
+      title: '本校寮生向けスマートフォンアプリの開発',
+      student: '2024年度卒業生',
+      year: 2024,
+    },
+    {
+      id: '5',
       title: 'Python による天文観測データ解析',
       student: '2023年度卒業生',
       year: 2023,
@@ -125,13 +140,13 @@ export default function EducationSection() {
     {
       title: '高専学会での教育実践報告',
       description: 'AI駆動開発など最新教育手法の紹介',
-      participants: '全国高専教員',
+      participants: '全国高専・連携大学・協賛企業等',
       Icon: GraduationCap,
     },
     {
       title: '天文学研究成果の社会発信',
       description: 'e-MERLINニュースなど国際的な研究成果発信',
-      participants: '国際天文学コミュニティ',
+      participants: '西欧のVLBI・天文学コミュニティ',
       Icon: Globe2,
     },
   ];
@@ -262,17 +277,17 @@ export default function EducationSection() {
 
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-gradient-to-br from-cosmic-100 to-stellar-100 dark:from-cosmic-900 dark:to-stellar-900 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-cosmic-700 dark:text-cosmic-300">25+</div>
+                <div className="text-3xl font-bold text-cosmic-700 dark:text-cosmic-300">10</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">卒業研究指導</div>
               </div>
               <div className="bg-gradient-to-br from-stellar-100 to-nebula-100 dark:from-stellar-900 dark:to-nebula-900 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-stellar-700 dark:text-stellar-300">10</div>
-                <div className="text-sm text-gray-700 dark:text-gray-300">学会発表</div>
+                <div className="text-3xl font-bold text-stellar-700 dark:text-stellar-300">3</div>
+                <div className="text-sm text-gray-700 dark:text-gray-300">来年度演習生受け入れ</div>
               </div>
-              <div className="bg-gradient-to-br from-nebula-100 to-cosmic-100 dark:from-nebula-900 dark:to-cosmic-900 rounded-lg p-6 text-center">
+              {/* <div className="bg-gradient-to-br from-nebula-100 to-cosmic-100 dark:from-nebula-900 dark:to-cosmic-900 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-nebula-700 dark:text-nebula-300">5</div>
                 <div className="text-sm text-gray-700 dark:text-gray-300">受賞学生</div>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Telescope, Bot, Sparkles, Zap } from 'lucide-react';
+import Image from 'next/image';
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -162,8 +163,19 @@ export default function HeroSection() {
               
               {/* メイン円形要素 */}
               <div className="relative bg-gradient-to-br from-white/10 to-gray-200/5 dark:from-gray-800/30 dark:to-gray-900/50 rounded-full p-8 shadow-2xl backdrop-blur-sm border border-white/20 dark:border-gray-700/30 hover:scale-105 transition-transform duration-700 hover:rotate-1">
-                <div className="aspect-square rounded-full bg-gradient-to-br from-cosmic-100/80 to-stellar-100/80 dark:from-cosmic-900/50 dark:to-stellar-900/50 flex items-center justify-center shadow-inner hover:shadow-2xl transition-shadow duration-500 backdrop-blur-sm">
-                  <Telescope className="w-28 h-28 text-cosmic-600 dark:text-cosmic-400 hover:scale-110 hover:rotate-12 transition-transform duration-500 drop-shadow-2xl" />
+                <div className="aspect-square rounded-full bg-gradient-to-br from-cosmic-100/80 to-stellar-100/80 dark:from-cosmic-900/50 dark:to-stellar-900/50 flex items-center justify-center shadow-inner hover:shadow-2xl transition-shadow duration-500 backdrop-blur-sm overflow-hidden">
+                  <div className="relative w-full h-full rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                    <Image
+                      src="/profile.png"
+                      alt="中村桃太朗 - 天文学研究者・技術教育者"
+                      fill
+                      className="object-cover object-center hover:scale-110 transition-transform duration-700"
+                      priority
+                    />
+                    {/* 画像上のオーバーレイ効果 */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-cosmic-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 ring-2 ring-cosmic-400/30 ring-inset rounded-full opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
                 </div>
                 
                 {/* 回転する装飾リング */}
@@ -172,20 +184,6 @@ export default function HeroSection() {
               </div>
             </div>
             
-            <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-              <div className="group bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-white/30 dark:border-gray-600/30 hover:shadow-cosmic-500/30 hover:scale-110 hover:-rotate-2 transition-all duration-500">
-                <div className="text-3xl font-bold text-cosmic-600 group-hover:scale-125 transition-transform duration-300">7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-cosmic-600 dark:group-hover:text-cosmic-400 transition-colors">研究発表</div>
-              </div>
-              <div className="group bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-white/30 dark:border-gray-600/30 hover:shadow-stellar-500/30 hover:scale-110 transition-all duration-500">
-                <div className="text-3xl font-bold text-stellar-600 group-hover:scale-125 transition-transform duration-300">AI</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-stellar-600 dark:group-hover:text-stellar-400 transition-colors">教育実践</div>
-              </div>
-              <div className="group bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-white/30 dark:border-gray-600/30 hover:shadow-nebula-500/30 hover:scale-110 hover:rotate-2 transition-all duration-500">
-                <div className="text-3xl font-bold text-nebula-600 group-hover:scale-125 transition-transform duration-300">2</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-nebula-600 dark:group-hover:text-nebula-400 transition-colors">研究軸</div>
-              </div>
-            </div>
           </div>
         </div>
 
