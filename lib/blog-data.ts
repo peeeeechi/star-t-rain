@@ -9,6 +9,7 @@ export interface BlogPost {
   imageUrl?: string;
   readTime: number; // in minutes
   featured?: boolean;
+  published: boolean; // 公開フラグ（true: 公開, false: 下書き）
 }
 
 export const blogPosts: BlogPost[] = [
@@ -37,6 +38,7 @@ export const blogPosts: BlogPost[] = [
     tags: ['VLBI', 'メーザー', '星形成', '研究成果'],
     readTime: 5,
     featured: true,
+    published: false, // 下書き状態
   },
   {
     id: 'ai-driven-development-education',
@@ -64,6 +66,7 @@ export const blogPosts: BlogPost[] = [
     tags: ['AI教育', 'GitHub Copilot', 'プログラミング', '高専'],
     readTime: 4,
     featured: true,
+    published: false, // 下書き状態
   },
   {
     id: 'vlbi-workshop-2024',
@@ -88,6 +91,7 @@ export const blogPosts: BlogPost[] = [
     category: 'research',
     tags: ['VLBI', '国際会議', '研究発表'],
     readTime: 3,
+    published: false, // 下書き状態
   },
   {
     id: 'astronomy-education-outreach',
@@ -112,6 +116,7 @@ export const blogPosts: BlogPost[] = [
     category: 'education',
     tags: ['天文教育', '観測会', '高専'],
     readTime: 3,
+    published: false, // 下書き状態
   },
   {
     id: 'python-astronomy-tools',
@@ -138,6 +143,7 @@ export const blogPosts: BlogPost[] = [
     category: 'ai',
     tags: ['Python', 'データ解析', 'プログラミング', '天文学'],
     readTime: 4,
+    published: false, // 下書き状態
   },
   {
     id: 'kosen-conference-2024',
@@ -160,28 +166,45 @@ export const blogPosts: BlogPost[] = [
     category: 'education',
     tags: ['学会発表', 'AI教育', '高専'],
     readTime: 3,
+    published: false, // 下書き状態
   },
 ];
 
 // ユーティリティ関数
-export function getBlogPostsByCategory(category: BlogPost['category']): BlogPost[] {
-  return blogPosts.filter(post => post.category === category);
+
+// 公開済み記事のみを取得
+export function getPublishedPosts(): BlogPost[] {
+  return blogPosts.filter(post => post.published);
 }
 
-export function getBlogPostsByTag(tag: string): BlogPost[] {
-  return blogPosts.filter(post => post.tags.includes(tag));
+// すべての記事を取得（管理画面用）
+export function getAllPosts(): BlogPost[] {
+  return blogPosts;
 }
 
-export function getFeaturedPosts(): BlogPost[] {
-  return blogPosts.filter(post => post.featured);
+export function getBlogPostsByCategory(category: BlogPost['category'], includeUnpublished = false): BlogPost[] {
+  const posts = includeUnpublished ? blogPosts : getPublishedPosts();
+  return posts.filter(post => post.category === category);
 }
 
-export function getRecentPosts(limit: number = 5): BlogPost[] {
-  return blogPosts
+export function getBlogPostsByTag(tag: string, includeUnpublished = false): BlogPost[] {
+  const posts = includeUnpublished ? blogPosts : getPublishedPosts();
+  return posts.filter(post => post.tags.includes(tag));
+}
+
+export function getFeaturedPosts(includeUnpublished = false): BlogPost[] {
+  const posts = includeUnpublished ? blogPosts : getPublishedPosts();
+  return posts.filter(post => post.featured);
+}
+
+export function getRecentPosts(limit: number = 5, includeUnpublished = false): BlogPost[] {
+  const posts = includeUnpublished ? blogPosts : getPublishedPosts();
+  return posts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit);
 }
 
-export function getBlogPostById(id: string): BlogPost | undefined {
-  return blogPosts.find(post => post.id === id);
+export function getBlogPostById(id: string, includeUnpublished = false): BlogPost | undefined {
+  const posts = includeUnpublished ? blogPosts : getPublishedPosts();
+  return posts.find(post => post.id === id);
 }

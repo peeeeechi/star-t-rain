@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { blogPosts, BlogPost, getFeaturedPosts, getRecentPosts } from '@/lib/blog-data';
+import { getPublishedPosts, BlogPost, getFeaturedPosts, getRecentPosts } from '@/lib/blog-data';
 
 export default function BlogSection() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | BlogPost['category']>('all');
@@ -17,9 +17,11 @@ export default function BlogSection() {
     { value: 'general', label: '一般', icon: '📖' },
   ];
 
+  const publishedPosts = getPublishedPosts();
+  
   const filteredPosts = selectedCategory === 'all' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
+    ? publishedPosts 
+    : publishedPosts.filter(post => post.category === selectedCategory);
 
   const featuredPosts = getFeaturedPosts();
 
@@ -61,6 +63,19 @@ export default function BlogSection() {
           </p>
         </div>
 
+        {/* 記事がない場合のメッセージ */}
+        {publishedPosts.length === 0 ? (
+          <div className="text-center py-20">
+            <div className="text-6xl mb-4">📝</div>
+            <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
+              準備中
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              ブログ記事を準備しています。もうしばらくお待ちください。
+            </p>
+          </div>
+        ) : (
+          <>
         {/* Featured Posts */}
         {featuredPosts.length > 0 && (
           <div className="mb-12">
@@ -241,6 +256,8 @@ export default function BlogSection() {
             さらに記事を読む
           </button>
         </div>
+        </>
+        )}
       </div>
     </section>
   );
