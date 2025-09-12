@@ -44,7 +44,7 @@ export default function HeroSection() {
           <div className="text-center md:text-left">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-cosmic-500 via-stellar-500 to-cosmic-700 bg-clip-text text-transparent">
-                星形成×AI
+                天文学×AI
               </span>
               <br />
               <span className="bg-gradient-to-r from-stellar-600 to-cosmic-600 bg-clip-text text-transparent">
@@ -62,7 +62,7 @@ export default function HeroSection() {
                 <span className="ml-2">（Momotaro Nakamura）　修士（理学）</span>
               </p>
               <p className="text-base">
-                専門分野：電波天文学、大質量星形成、VLBI観測、生成AI活用教育
+                専門分野：電波天文学、大質量星形成、VLBI観測、生成AI活用教育、天文教育普及、アプリ・教材開発
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-base leading-relaxed">
                 <div className="bg-cosmic-50 dark:bg-cosmic-900/20 p-4 rounded-lg">

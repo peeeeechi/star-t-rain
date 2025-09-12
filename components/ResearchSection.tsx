@@ -16,87 +16,92 @@ export default function ResearchSection() {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
   const researchItems: ResearchItem[] = [
-    // === 星の形成過程の観測的研究 ===
+    // === 電波天文学・大質量星形成 ===
     {
-      id: 'massive-star-formation',
-      title: '大質量星形成の観測的研究',
-      description: 'メーザー電波とVLBI技術を用いて大質量原始星周囲の構造と進化を解明',
-      icon: '⭐',
-      details: [
-        'G59.783+0.065における円盤-アウトフロー構造の詳細解析',
-        '6.7 GHzメタノールメーザーと22 GHz水メーザーの固有運動観測',
-        '大質量原始星からの「円盤風」の発見と解析',
-        'e-MERLIN、VLBA等の国際VLBI観測ネットワークを活用',
-      ],
-      audience: 'researcher',
-    },
-    {
-      id: 'vlbi-maser-observations',
-      title: 'VLBI-メーザー観測技術',
-      description: '超長基線電波干渉計とメーザー天文学を組み合わせた高分解能観測',
+      id: 'radio-astronomy',
+      title: '電波天文学による大質量星形成研究',
+      description: 'メーザー電波を用いて大質量原始星の形成過程を観測的に解明',
       icon: '📡',
       details: [
-        'ミリ秒角レベルの高分解能位置天文観測',
-        'メタノール・水メーザーによる星形成領域の探査',
-        '複数epoch VLBI観測による固有運動測定',
-        '星形成環境の3次元構造解析',
+        'G59.783+0.065における円盤-アウトフロー構造の詳細解析',
+        '6.7 GHzメタノールメーザーと22 GHz水メーザーの運動学的研究',
+        '大質量原始星からの「円盤風」の発見と物理メカニズムの解明',
+        '星形成領域の3次元構造と進化過程の研究',
       ],
       audience: 'researcher',
     },
-    
-    // === 生成AIを使ったアプリ開発 ===
     {
-      id: 'ai-driven-development',
-      title: '生成AIを活用したアプリケーション開発',
-      description: 'AI技術を教育現場に導入し、実践的なソフトウェア開発手法を研究',
+      id: 'vlbi-observations',
+      title: 'VLBI観測技術の開発と応用',
+      description: '超長基線電波干渉計を用いたミリ秒角分解能での天体観測',
+      icon: '🛰️',
+      details: [
+        'e-MERLIN、VLBA等の国際VLBI観測ネットワークでの共同研究',
+        '複数epoch VLBI観測による天体の固有運動測定',
+        'メーザースポットの位置天文学的解析',
+        'VLBI観測データの解析手法開発',
+      ],
+      audience: 'researcher',
+    },
+
+    // === 生成AI活用教育 ===
+    {
+      id: 'generative-ai-education',
+      title: '生成AI活用教育の実践研究',
+      description: 'GitHub Copilot、ChatGPT等を活用した新しい教育手法の開発',
       icon: '🤖',
       details: [
-        'GitHub Copilot、ChatGPTを活用したコーディング支援',
-        'AI駆動モバイルアプリ開発の教育実践',
-        '学生の創造演習におけるAI活用システム開発',
-        'プロンプトエンジニアリングによる開発効率向上',
+        'AI駆動開発を取り入れた演習授業の設計と実践',
+        'プロンプトエンジニアリングの教育カリキュラム開発',
+        '学生のAIリテラシー向上プログラムの構築',
+        'AI活用によるプログラミング教育の効果測定',
       ],
       audience: 'student',
     },
+
+    // === 天文教育普及 ===
     {
-      id: 'educational-ai-systems',
-      title: 'AI教育システムの開発',
-      description: '教育現場でのAI活用と学習効果向上のためのシステム研究',
-      icon: '📱',
+      id: 'astronomy-education-outreach',
+      title: '天文教育普及活動',
+      description: '天文学の魅力と最新研究成果を社会に伝える活動',
+      icon: '🌟',
       details: [
-        'モバイルアプリによる学習支援システム',
-        'DXプロジェクトでのAI技術活用',
-        '高専教育におけるAI駆動開発手法の確立',
-        'データベースとAIを組み合わせた教育ツール開発',
+        '天文教育普及研究会での教育実践報告',
+        '高専生向け天文学実習プログラムの開発',
+        '一般向け天文講座・観望会の企画運営',
+        '天文学研究成果の分かりやすい発信',
       ],
       audience: 'general',
     },
 
-    // === 教育・普及活動 ===
+    // === アプリ・教材開発 ===
     {
-      id: 'educational-outreach',
-      title: '天文教育・AI教育の普及活動',
-      description: '最新の研究成果と技術を教育現場・社会に還元',
-      icon: '🎓',
+      id: 'app-material-development',
+      title: 'アプリケーション・教材開発',
+      description: '教育支援システムと天文データ解析ツールの開発',
+      icon: '💻',
       details: [
-        '高専生向けの実践的天文学・情報工学教育',
-        'AI駆動開発の教育手法確立と普及',
-        '天文教育普及研究会・高専学会での成果発信',
-        '一般向け天文講座・技術セミナーの企画運営',
+        'モバイルアプリによる学習支援システムの開発',
+        'Python による天文観測データ解析システムの構築',
+        'Webベースの教育用天文シミュレーター開発',
+        'データベースと連携した教育ツールの設計',
       ],
-      audience: 'general',
+      audience: 'student',
     },
+
+    // === 学際的研究 ===
     {
-      id: 'radio-astronomy-basics',
-      title: '電波天文学入門',
-      description: '目に見えない電波で宇宙を観る技術と発見',
-      icon: '📻',
+      id: 'interdisciplinary-research',
+      title: '天文学とAI技術の融合研究',
+      description: '天文観測データへの機械学習適用など学際的アプローチ',
+      icon: '🔬',
       details: [
-        '電波望遠鏡の仕組みと観測原理',
-        '様々な天体が発する電波の特徴',
-        '電波観測が明かした宇宙の新しい姿',
+        '機械学習を用いた天文観測データの自動解析',
+        'AIによるメーザー源の自動検出システム開発',
+        '天文教育へのVR/AR技術の応用',
+        'ビッグデータ解析技術の天文学への適用',
       ],
-      audience: 'general',
+      audience: 'researcher',
     },
   ];
 
@@ -121,7 +126,7 @@ export default function ResearchSection() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            宇宙の謎に挑む、多角的な研究アプローチ
+            電波天文学とAI技術を融合した多角的な研究・教育活動
           </p>
         </div>
 
