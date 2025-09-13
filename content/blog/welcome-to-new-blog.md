@@ -4,7 +4,7 @@ date: "2025-09-12"
 excerpt: "WordPress から Next.js へ移行し、新しいブログサイトを立ち上げました。研究活動や技術的な発見について発信していきます。"
 category: "general"
 tags: ["お知らせ", "ブログ", "サイト移行"]
-author: "中村桃太朗"
+author: "peeeechi"
 published: true
 ---
 

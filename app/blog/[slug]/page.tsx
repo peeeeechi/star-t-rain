@@ -146,16 +146,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* 記事本文 */}
             <div 
               className="prose prose-lg dark:prose-invert max-w-none
-                prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-                prose-p:text-gray-700 dark:prose-p:text-gray-200
+                prose-headings:text-gray-900 dark:prose-headings:text-white
+                prose-p:text-gray-700 dark:prose-p:text-gray-100
                 prose-a:text-cosmic-600 dark:prose-a:text-cosmic-400
-                prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+                prose-strong:text-gray-900 dark:prose-strong:text-white
                 prose-code:text-stellar-600 dark:prose-code:text-stellar-400
                 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800
                 prose-blockquote:border-cosmic-500 prose-blockquote:bg-cosmic-50/50 dark:prose-blockquote:bg-cosmic-900/20
-                prose-li:text-gray-700 dark:prose-li:text-gray-200
-                prose-td:text-gray-700 dark:prose-td:text-gray-200
-                prose-th:text-gray-900 dark:prose-th:text-gray-100
+                prose-li:text-gray-700 dark:prose-li:text-gray-100
+                prose-td:text-gray-700 dark:prose-td:text-gray-100
+                prose-th:text-gray-900 dark:prose-th:text-white
                 prose-hr:border-gray-300 dark:prose-hr:border-gray-600"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
