@@ -145,30 +145,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* 記事本文 */}
             <div 
-              className="prose prose-lg max-w-none
-                prose-headings:text-gray-900 
-                prose-p:text-gray-700 
-                prose-a:text-cosmic-600 hover:prose-a:text-cosmic-700
-                prose-strong:text-gray-900 
-                prose-code:text-stellar-600 
-                prose-pre:bg-gray-100 
-                prose-blockquote:border-cosmic-500 prose-blockquote:bg-cosmic-50/50
-                prose-li:text-gray-700 
-                prose-td:text-gray-700 
-                prose-th:text-gray-900 
-                prose-hr:border-gray-300
-                dark:prose-invert
-                dark:prose-headings:text-gray-100
-                dark:prose-p:text-gray-300
-                dark:prose-a:text-cosmic-400 dark:hover:prose-a:text-cosmic-300
-                dark:prose-strong:text-gray-100
-                dark:prose-code:text-stellar-400
-                dark:prose-pre:bg-gray-800
-                dark:prose-blockquote:bg-cosmic-900/20
-                dark:prose-li:text-gray-300
-                dark:prose-td:text-gray-300
-                dark:prose-th:text-gray-100
-                dark:prose-hr:border-gray-600"
+              className="prose prose-lg max-w-none text-gray-700 dark:text-gray-100
+                [&>h1]:text-gray-900 [&>h1]:dark:text-white
+                [&>h2]:text-gray-900 [&>h2]:dark:text-white
+                [&>h3]:text-gray-900 [&>h3]:dark:text-white
+                [&>h4]:text-gray-900 [&>h4]:dark:text-white
+                [&>p]:text-gray-700 [&>p]:dark:text-gray-100
+                [&>ul]:text-gray-700 [&>ul]:dark:text-gray-100
+                [&>ol]:text-gray-700 [&>ol]:dark:text-gray-100
+                [&>li]:text-gray-700 [&>li]:dark:text-gray-100
+                [&>strong]:text-gray-900 [&>strong]:dark:text-white
+                [&>em]:text-gray-700 [&>em]:dark:text-gray-100
+                [&>a]:text-cosmic-600 [&>a]:dark:text-cosmic-400
+                [&>a:hover]:text-cosmic-700 [&>a:hover]:dark:text-cosmic-300
+                [&>code]:text-stellar-600 [&>code]:dark:text-stellar-400
+                [&>pre]:bg-gray-100 [&>pre]:dark:bg-gray-800
+                [&>blockquote]:border-cosmic-500 [&>blockquote]:bg-cosmic-50/50 [&>blockquote]:dark:bg-cosmic-900/20
+                [&>blockquote>p]:text-gray-700 [&>blockquote>p]:dark:text-gray-100
+                [&>table]:text-gray-700 [&>table]:dark:text-gray-100
+                [&>hr]:border-gray-300 [&>hr]:dark:border-gray-600"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>

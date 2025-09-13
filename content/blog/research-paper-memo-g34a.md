@@ -5,7 +5,7 @@ excerpt: "Hirota et al. (2014)による大質量星形成領域G34.26+0.15での
 category: "research"
 tags: ["論文メモ", "メタノールメーザー", "大質量星形成", "VLBI", "時変現象"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # 論文メモ: G34.26+0.15の大質量星形成領域におけるメタノールメーザーの時変観測

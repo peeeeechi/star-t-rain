@@ -5,7 +5,7 @@ excerpt: "ChatGPTやClaude、Geminiなどの大規模言語モデルが教育現
 category: "technology"
 tags: ["生成AI", "教育技術", "アプリ開発", "ChatGPT", "教育DX"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # 生成AIを活用した教育アプリ開発の可能性

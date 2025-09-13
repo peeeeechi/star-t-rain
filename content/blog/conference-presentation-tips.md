@@ -5,7 +5,7 @@ excerpt: "学会での口頭発表やポスター発表を効果的に行うた�
 category: "research"
 tags: ["学会発表", "プレゼンテーション", "研究発表", "コミュニケーション"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # 学会発表を成功させるコツ - 準備から質疑応答まで

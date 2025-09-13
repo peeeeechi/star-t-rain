@@ -5,7 +5,7 @@ excerpt: "VLBI（超長基線電波干渉法）は、地球上に分散した電
 category: "astronomy"
 tags: ["VLBI", "電波天文学", "大質量星形成", "観測技術"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # VLBI観測の基礎：なぜ地球サイズの望遠鏡が必要なのか

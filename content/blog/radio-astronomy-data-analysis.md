@@ -5,7 +5,7 @@ excerpt: "電波天文学データの解析に必要なツールと手法を実�
 category: "astronomy"
 tags: ["データ解析", "Python", "CASA", "電波天文学", "プログラミング"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # 電波天文学データ解析の実践 - PythonとCASAを使った現代的手法

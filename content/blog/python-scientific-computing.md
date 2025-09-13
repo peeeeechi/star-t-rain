@@ -5,7 +5,7 @@ excerpt: "科学研究におけるPythonの活用法を基礎から応用まで�
 category: "technology"
 tags: ["Python", "NumPy", "SciPy", "Matplotlib", "データ解析", "科学計算"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # Pythonで始める科学計算 - NumPy・SciPy・Matplotlibを使いこなす

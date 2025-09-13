@@ -5,7 +5,7 @@ excerpt: "研究者・学術関係者向けのWebサイトをNext.jsで構築す
 category: "technology"
 tags: ["Next.js", "React", "Web開発", "学術サイト", "TypeScript"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # Next.js で研究者向けWebサイトを構築する - 実装のポイントとベストプラクティス

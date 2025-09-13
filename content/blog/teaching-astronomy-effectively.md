@@ -5,7 +5,7 @@ excerpt: "高等専門学校での天文学教育において、学生の興味�
 category: "education"
 tags: ["天文学教育", "高専教育", "実践的学習", "観測実習", "教授法"]
 author: "中村桃太朗"
-published: true
+published: false
 ---
 
 # 効果的な天文学教育のアプローチ - 高専での実践例から
