@@ -145,18 +145,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* 記事本文 */}
             <div 
-              className="prose prose-lg dark:prose-invert max-w-none
-                prose-headings:text-gray-900 dark:prose-headings:text-white
-                prose-p:text-gray-700 dark:prose-p:text-gray-100
-                prose-a:text-cosmic-600 dark:prose-a:text-cosmic-400
-                prose-strong:text-gray-900 dark:prose-strong:text-white
-                prose-code:text-stellar-600 dark:prose-code:text-stellar-400
-                prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800
-                prose-blockquote:border-cosmic-500 prose-blockquote:bg-cosmic-50/50 dark:prose-blockquote:bg-cosmic-900/20
-                prose-li:text-gray-700 dark:prose-li:text-gray-100
-                prose-td:text-gray-700 dark:prose-td:text-gray-100
-                prose-th:text-gray-900 dark:prose-th:text-white
-                prose-hr:border-gray-300 dark:prose-hr:border-gray-600"
+              className="prose prose-lg max-w-none
+                prose-headings:text-gray-900 
+                prose-p:text-gray-700 
+                prose-a:text-cosmic-600 hover:prose-a:text-cosmic-700
+                prose-strong:text-gray-900 
+                prose-code:text-stellar-600 
+                prose-pre:bg-gray-100 
+                prose-blockquote:border-cosmic-500 prose-blockquote:bg-cosmic-50/50
+                prose-li:text-gray-700 
+                prose-td:text-gray-700 
+                prose-th:text-gray-900 
+                prose-hr:border-gray-300
+                dark:prose-invert
+                dark:prose-headings:text-gray-100
+                dark:prose-p:text-gray-300
+                dark:prose-a:text-cosmic-400 dark:hover:prose-a:text-cosmic-300
+                dark:prose-strong:text-gray-100
+                dark:prose-code:text-stellar-400
+                dark:prose-pre:bg-gray-800
+                dark:prose-blockquote:bg-cosmic-900/20
+                dark:prose-li:text-gray-300
+                dark:prose-td:text-gray-300
+                dark:prose-th:text-gray-100
+                dark:prose-hr:border-gray-600"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
