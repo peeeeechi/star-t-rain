@@ -13,7 +13,6 @@ import {
   Star,
   Grid3X3,
   List,
-  ChevronDown,
   PenTool
 } from 'lucide-react';
 
@@ -24,7 +23,6 @@ interface BlogSectionProps {
 
 export default function BlogSection({ publishedPosts, featuredPosts }: BlogSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<'all' | BlogCategory>('all');
-  const [expandedPost, setExpandedPost] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const categories = [
@@ -215,30 +213,16 @@ export default function BlogSection({ publishedPosts, featuredPosts }: BlogSecti
                   </time>
                 </div>
                 
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors cursor-pointer"
-                    onClick={() => setExpandedPost(expandedPost === post.slug ? null : post.slug)}>
-                  {post.title}
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  <Link href={`/blog/${post.slug}`} className="hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors">
+                    {post.title}
+                  </Link>
                 </h3>
                 
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {post.excerpt}
                 </p>
 
-                {expandedPost === post.slug && (
-                  <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <div className="prose dark:prose-invert max-w-none text-sm">
-                      <p className="text-gray-700 dark:text-gray-300">
-                        {post.excerpt}
-                      </p>
-                      <Link 
-                        href={`/blog/${post.slug}`}
-                        className="inline-flex items-center text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 font-medium mt-2"
-                      >
-                        記事を読む →
-                      </Link>
-                    </div>
-                  </div>
-                )}
                 
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex flex-wrap gap-2">
@@ -252,13 +236,12 @@ export default function BlogSection({ publishedPosts, featuredPosts }: BlogSecti
                     ))}
                   </div>
                   
-                  <button
-                    onClick={() => setExpandedPost(expandedPost === post.slug ? null : post.slug)}
+                  <Link
+                    href={`/blog/${post.slug}`}
                     className="text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 text-sm font-semibold flex items-center"
                   >
-                    {expandedPost === post.slug ? '閉じる' : '続きを読む'}
-                    <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${expandedPost === post.slug ? 'rotate-180' : ''}`} />
-                  </button>
+                    続きを読む →
+                  </Link>
                 </div>
               </div>
             </article>
