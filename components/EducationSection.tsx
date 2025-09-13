@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, GraduationCap, Globe2, FlaskConical, Users, Trophy } from 'lucide-react';
+import { BookOpen, GraduationCap, Globe2, FlaskConical, Users, Trophy, FileText } from 'lucide-react';
+import Link from 'next/link';
 
 interface Course {
   id: string;
@@ -22,7 +23,7 @@ interface StudentProject {
 }
 
 export default function EducationSection() {
-  const [activeTab, setActiveTab] = useState<'courses' | 'supervision' | 'outreach'>('courses');
+  const [activeTab, setActiveTab] = useState<'courses' | 'supervision' | 'outreach' | 'blog'>('courses');
 
   const courses: Course[] = [
     {
@@ -211,6 +212,17 @@ export default function EducationSection() {
             <Globe2 className="w-5 h-5 mr-2" />
             アウトリーチ
           </button>
+          <button
+            onClick={() => setActiveTab('blog')}
+            className={`px-6 py-3 rounded-full transition-all flex items-center ${
+              activeTab === 'blog'
+                ? 'bg-nebula-600 text-white shadow-lg'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            <FileText className="w-5 h-5 mr-2" />
+            ブログ・活動記録
+          </button>
         </div>
 
         {activeTab === 'courses' && (
@@ -327,6 +339,53 @@ export default function EducationSection() {
                 </p>
               </div>
             ))}
+          </div>
+        )}
+
+        {activeTab === 'blog' && (
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-nebula-50 to-cosmic-50 dark:from-nebula-900/20 dark:to-cosmic-900/20 rounded-2xl p-8 text-center border border-nebula-200/30 dark:border-nebula-600/30">
+              <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-nebula-600 to-cosmic-600 rounded-2xl mb-6">
+                <FileText className="w-10 h-10 text-white" />
+              </div>
+              
+              <h3 className="text-3xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-nebula-600 to-cosmic-600 bg-clip-text text-transparent">
+                  ブログ・活動記録
+                </span>
+              </h3>
+              
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+                研究活動、教育実践、技術解説など最新の情報を発信しています。天文学研究の進捗から生成AI活用教育まで、幅広いトピックをカバーしています。
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
+                  <div className="text-2xl font-bold text-nebula-600 dark:text-nebula-400">研究記録</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">VLBI観測・大質量星形成</div>
+                </div>
+                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
+                  <div className="text-2xl font-bold text-cosmic-600 dark:text-cosmic-400">教育実践</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">AI活用・プログラミング教育</div>
+                </div>
+                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
+                  <div className="text-2xl font-bold text-stellar-600 dark:text-stellar-400">技術解説</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">データ解析・開発ツール</div>
+                </div>
+              </div>
+
+              <Link
+                href="/blog"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-nebula-600 to-cosmic-600 text-white font-semibold rounded-full hover:from-cosmic-600 hover:to-nebula-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <FileText className="w-5 h-5 mr-2" />
+                ブログを見る
+              </Link>
+
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                3つの記事が公開済み • 定期的に更新中
+              </p>
+            </div>
           </div>
         )}
       </div>

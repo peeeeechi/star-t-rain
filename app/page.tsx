@@ -2,7 +2,7 @@ import HeroSection from '@/components/HeroSection';
 import ResearchSection from '@/components/ResearchSection';
 import PublicationsSection from '@/components/PublicationsSection';
 import EducationSection from '@/components/EducationSection';
-import BlogSection from '@/components/BlogSection';
+import BlogSectionWrapper from '@/components/BlogSectionWrapper';
 import NewsSection from '@/components/NewsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -14,7 +14,7 @@ export default function Home() {
       <ResearchSection />
       <PublicationsSection />
       <EducationSection />
-      <BlogSection />
+      <BlogSectionWrapper />
       <NewsSection />
       <ContactSection />
       <Footer />

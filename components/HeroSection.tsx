@@ -162,16 +162,16 @@ export default function HeroSection() {
               <p className="text-base">
                 元鉄道系IT子会社にてシステムエンジニアとして開発プロジェクトに参画。データ分析や機械学習ソフトウェアの導入・活用を検討。
               </p>
-              <p className="text-base">
+              {/* <p className="text-base">
                 専門分野：電波天文学、大質量星形成、VLBI、生成AI活用教育、天文教育普及、アプリ開発
-              </p>
+              </p> */}
               <div className="grid md:grid-cols-2 gap-4 text-base leading-relaxed">
                 <div className="group bg-gradient-to-br from-cosmic-50/80 via-cosmic-100/40 to-transparent dark:from-cosmic-900/30 dark:via-cosmic-800/20 dark:to-transparent p-6 rounded-2xl backdrop-blur-sm border border-cosmic-200/30 dark:border-cosmic-600/20 hover:shadow-2xl hover:shadow-cosmic-500/20 transition-all duration-500 hover:scale-105 hover:rotate-1">
                   <p className="font-semibold text-cosmic-700 dark:text-cosmic-300 mb-3 flex items-center">
                     <Telescope className="w-6 h-6 mr-3 group-hover:animate-spin" />
                     天文学研究
                   </p>
-                  <p className="group-hover:text-cosmic-600 dark:group-hover:text-cosmic-400 transition-colors">メーザー電波とVLBI技術で大質量星形成の謎を解明</p>
+                  <p className="group-hover:text-cosmic-600 dark:group-hover:text-cosmic-400 transition-colors">「メーザー」という強力な放射をVLBIで観測し、大質量星形成の謎を解明</p>
                   <div className="mt-3 h-1 w-0 bg-gradient-to-r from-cosmic-500 to-stellar-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
                 <div className="group bg-gradient-to-br from-stellar-50/80 via-stellar-100/40 to-transparent dark:from-stellar-900/30 dark:via-stellar-800/20 dark:to-transparent p-6 rounded-2xl backdrop-blur-sm border border-stellar-200/30 dark:border-stellar-600/20 hover:shadow-2xl hover:shadow-stellar-500/20 transition-all duration-500 hover:scale-105 hover:-rotate-1">
@@ -179,7 +179,7 @@ export default function HeroSection() {
                     <Bot className="w-6 h-6 mr-3 group-hover:animate-pulse" />
                     AI開発研究
                   </p>
-                  <p className="group-hover:text-stellar-600 dark:group-hover:text-stellar-400 transition-colors">生成AIを活用した教育コンテンツ・アプリケーション開発</p>
+                  <p className="group-hover:text-stellar-600 dark:group-hover:text-stellar-400 transition-colors">生成AIを活用した教育コンテンツ、アプリケーションの開発</p>
                   <div className="mt-3 h-1 w-0 bg-gradient-to-r from-stellar-500 to-nebula-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
               </div>

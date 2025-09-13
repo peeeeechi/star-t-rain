@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { getPublishedPosts, BlogPost, getFeaturedPosts } from '@/lib/blog-data';
+import { BlogCategory, BlogMetadata } from '@/types/blog';
+import Link from 'next/link';
 import { 
   FileText, 
   Telescope, 
@@ -16,38 +17,39 @@ import {
   PenTool
 } from 'lucide-react';
 
-export default function BlogSection() {
-  const [selectedCategory, setSelectedCategory] = useState<'all' | BlogPost['category']>('all');
+interface BlogSectionProps {
+  publishedPosts: BlogMetadata[];
+  featuredPosts: BlogMetadata[];
+}
+
+export default function BlogSection({ publishedPosts, featuredPosts }: BlogSectionProps) {
+  const [selectedCategory, setSelectedCategory] = useState<'all' | BlogCategory>('all');
   const [expandedPost, setExpandedPost] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const categories = [
     { value: 'all', label: '全て', Icon: FileText },
-    { value: 'astronomy', label: '天文学', Icon: Telescope },
-    { value: 'ai', label: 'AI・技術', Icon: Bot },
-    { value: 'education', label: '教育', Icon: GraduationCap },
-    { value: 'research', label: '研究', Icon: FlaskConical },
+    { value: 'astronomy', label: '天文学・宇宙', Icon: Telescope },
+    { value: 'technology', label: '情報技術', Icon: Bot },
+    { value: 'education', label: '教育・解説', Icon: GraduationCap },
+    { value: 'research', label: '研究ノート', Icon: FlaskConical },
     { value: 'general', label: '一般', Icon: BookOpen },
   ];
 
-  const publishedPosts = getPublishedPosts();
-  
   const filteredPosts = selectedCategory === 'all' 
     ? publishedPosts 
     : publishedPosts.filter(post => post.category === selectedCategory);
 
-  const featuredPosts = getFeaturedPosts();
-
-  const getCategoryColor = (category: BlogPost['category']) => {
+  const getCategoryColor = (category: BlogCategory) => {
     switch (category) {
       case 'astronomy':
         return 'bg-cosmic-100 text-cosmic-700 dark:bg-cosmic-900 dark:text-cosmic-300';
-      case 'ai':
+      case 'technology':
         return 'bg-stellar-100 text-stellar-700 dark:bg-stellar-900 dark:text-stellar-300';
       case 'education':
-        return 'bg-nebula-100 text-nebula-700 dark:bg-nebula-900 dark:text-nebula-300';
+        return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300';
       case 'research':
-        return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
+        return 'bg-nebula-100 text-nebula-700 dark:bg-nebula-900 dark:text-nebula-300';
       case 'general':
         return 'bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-300';
     }
@@ -103,11 +105,11 @@ export default function BlogSection() {
             <div className="grid md:grid-cols-2 gap-6">
               {featuredPosts.map((post) => (
                 <article
-                  key={post.id}
+                  key={post.slug}
                   className="bg-gradient-to-br from-cosmic-50 to-stellar-50 dark:from-cosmic-900/20 dark:to-stellar-900/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(post.category)}`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(post.category as BlogCategory)}`}>
                       {categories.find(c => c.value === post.category)?.label}
                     </span>
                     <time className="text-sm text-gray-500 dark:text-gray-400">
@@ -125,7 +127,7 @@ export default function BlogSection() {
                       {post.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 bg-white/50 dark:bg-gray-800/50 rounded text-xs"
+                          className="px-2 py-1 bg-white/50 dark:bg-gray-800/50 rounded text-xs text-gray-700 dark:text-gray-300"
                         >
                           #{tag}
                         </span>
@@ -147,14 +149,14 @@ export default function BlogSection() {
             {categories.map((category) => (
               <button
                 key={category.value}
-                onClick={() => setSelectedCategory(category.value as 'all' | BlogPost['category'])}
-                className={`px-4 py-2 rounded-full transition-all ${
+                onClick={() => setSelectedCategory(category.value as 'all' | BlogCategory)}
+                className={`flex items-center px-4 py-2 rounded-full transition-all ${
                   selectedCategory === category.value
                     ? 'bg-stellar-600 text-white shadow-lg'
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
-                <category.Icon className="w-4 h-4 mr-1" />
+                <category.Icon className="w-4 h-4 mr-2" />
                 {category.label}
               </button>
             ))}
@@ -194,18 +196,18 @@ export default function BlogSection() {
         }`}>
           {filteredPosts.map((post) => (
             <article
-              key={post.id}
+              key={post.slug}
               className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all overflow-hidden ${
                 viewMode === 'list' ? 'flex flex-col md:flex-row' : ''
               }`}
             >
-              {viewMode === 'list' && post.imageUrl && (
+              {viewMode === 'list' && (
                 <div className="md:w-48 h-48 bg-gradient-to-br from-cosmic-100 to-stellar-100 dark:from-cosmic-900 dark:to-stellar-900 flex-shrink-0" />
               )}
               
               <div className="p-6 flex-grow">
                 <div className="flex items-start justify-between mb-3">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(post.category)}`}>
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(post.category as BlogCategory)}`}>
                     {categories.find(c => c.value === post.category)?.label}
                   </span>
                   <time className="text-sm text-gray-500 dark:text-gray-400">
@@ -214,7 +216,7 @@ export default function BlogSection() {
                 </div>
                 
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors cursor-pointer"
-                    onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}>
+                    onClick={() => setExpandedPost(expandedPost === post.slug ? null : post.slug)}>
                   {post.title}
                 </h3>
                 
@@ -222,16 +224,18 @@ export default function BlogSection() {
                   {post.excerpt}
                 </p>
 
-                {expandedPost === post.id && (
+                {expandedPost === post.slug && (
                   <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <div className="prose dark:prose-invert max-w-none text-sm">
-                      {post.content.split('\n').map((paragraph, index) => (
-                        paragraph.trim() && (
-                          <p key={index} className="mb-2 text-gray-700 dark:text-gray-300">
-                            {paragraph.trim()}
-                          </p>
-                        )
-                      ))}
+                      <p className="text-gray-700 dark:text-gray-300">
+                        {post.excerpt}
+                      </p>
+                      <Link 
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 font-medium mt-2"
+                      >
+                        記事を読む →
+                      </Link>
                     </div>
                   </div>
                 )}
@@ -249,11 +253,11 @@ export default function BlogSection() {
                   </div>
                   
                   <button
-                    onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}
+                    onClick={() => setExpandedPost(expandedPost === post.slug ? null : post.slug)}
                     className="text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 text-sm font-semibold flex items-center"
                   >
-                    {expandedPost === post.id ? '閉じる' : '続きを読む'}
-                    <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${expandedPost === post.id ? 'rotate-180' : ''}`} />
+                    {expandedPost === post.slug ? '閉じる' : '続きを読む'}
+                    <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform ${expandedPost === post.slug ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
               </div>
@@ -263,9 +267,12 @@ export default function BlogSection() {
 
         {/* Load More Button */}
         <div className="mt-12 text-center">
-          <button className="px-6 py-3 bg-stellar-600 text-white rounded-full hover:bg-stellar-700 transition-colors shadow-lg">
+          <Link 
+            href="/blog"
+            className="inline-block px-6 py-3 bg-stellar-600 text-white rounded-full hover:bg-stellar-700 transition-colors shadow-lg"
+          >
             さらに記事を読む
-          </button>
+          </Link>
         </div>
         </>
         )}

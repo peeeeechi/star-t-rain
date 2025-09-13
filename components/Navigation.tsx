@@ -28,12 +28,12 @@ export default function Navigation() {
   }, []);
 
   const navItems = [
-    { label: '研究', href: '#research', Icon: Telescope },
-    { label: '業績', href: '#publications', Icon: BookOpen },
-    { label: '教育', href: '#education', Icon: GraduationCap },
-    { label: 'ブログ', href: '#blog', Icon: FileText },
-    { label: 'ニュース', href: '#news', Icon: Newspaper },
-    { label: 'お問い合わせ', href: '#contact', Icon: Mail },
+    { label: '研究', href: '/#research', Icon: Telescope },
+    { label: '業績', href: '/#publications', Icon: BookOpen },
+    { label: '教育', href: '/#education', Icon: GraduationCap },
+    { label: 'ブログ', href: '/blog', Icon: FileText },
+    { label: 'ニュース', href: '/#news', Icon: Newspaper },
+    { label: 'お問い合わせ', href: '/#contact', Icon: Mail },
   ];
 
   return (

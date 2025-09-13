@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { 
   Radio, 
   Satellite, 
@@ -13,7 +14,8 @@ import {
   BookOpen,
   Users,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  FileText
 } from 'lucide-react';
 
 interface ResearchItem {
@@ -33,8 +35,8 @@ export default function ResearchSection() {
     // === 電波天文学・大質量星形成 ===
     {
       id: 'radio-astronomy',
-      title: '電波天文学による大質量星形成研究',
-      description: 'メーザー電波を用いて大質量原始星の形成過程を観測的に解明',
+      title: '大質量星の形成過程の謎に迫る',
+      description: '「メーザー」と呼ばれる強力な電波を観測し、大質量原始星の形成過程を解明',
       Icon: Radio,
       details: [
         'G59.783+0.065における円盤-アウトフロー構造の詳細解析',
@@ -116,6 +118,7 @@ export default function ResearchSection() {
       ],
       audience: 'researcher',
     },
+
   ];
 
   const audienceButtons = [
@@ -245,20 +248,31 @@ export default function ResearchSection() {
                   {item.description}
                 </p>
 
-                <button
-                  onClick={() => setExpandedItem(expandedItem === item.id ? null : item.id)}
-                  className="group/btn relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-cosmic-600/10 to-stellar-600/10 hover:from-cosmic-600 hover:to-stellar-600 text-cosmic-600 dark:text-cosmic-400 hover:text-white font-semibold rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
-                >
-                  <span className="relative z-10">{expandedItem === item.id ? '詳細を閉じる' : '詳細を見る'}</span>
-                  {expandedItem === item.id ? (
-                    <ChevronUp className="relative z-10 w-5 h-5 ml-2 group-hover/btn:rotate-180 transition-transform duration-300" />
-                  ) : (
-                    <ChevronDown className="relative z-10 w-5 h-5 ml-2 group-hover/btn:rotate-180 transition-transform duration-300" />
-                  )}
-                  <div className="absolute inset-0 bg-white/20 dark:bg-gray-800/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                </button>
+                {item.id === 'blog-activities' ? (
+                  <Link
+                    href="/blog"
+                    className="group/btn relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-cosmic-600/10 to-stellar-600/10 hover:from-cosmic-600 hover:to-stellar-600 text-cosmic-600 dark:text-cosmic-400 hover:text-white font-semibold rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
+                  >
+                    <span className="relative z-10">ブログを見る</span>
+                    <FileText className="relative z-10 w-5 h-5 ml-2 group-hover/btn:scale-110 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-white/20 dark:bg-gray-800/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => setExpandedItem(expandedItem === item.id ? null : item.id)}
+                    className="group/btn relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-cosmic-600/10 to-stellar-600/10 hover:from-cosmic-600 hover:to-stellar-600 text-cosmic-600 dark:text-cosmic-400 hover:text-white font-semibold rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
+                  >
+                    <span className="relative z-10">{expandedItem === item.id ? '詳細を閉じる' : '詳細を見る'}</span>
+                    {expandedItem === item.id ? (
+                      <ChevronUp className="relative z-10 w-5 h-5 ml-2 group-hover/btn:rotate-180 transition-transform duration-300" />
+                    ) : (
+                      <ChevronDown className="relative z-10 w-5 h-5 ml-2 group-hover/btn:rotate-180 transition-transform duration-300" />
+                    )}
+                    <div className="absolute inset-0 bg-white/20 dark:bg-gray-800/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                  </button>
+                )}
 
-                {expandedItem === item.id && (
+                {expandedItem === item.id && item.id !== 'blog-activities' && (
                   <div className="mt-6 pt-6 border-t border-gradient-to-r from-transparent via-cosmic-200 to-transparent dark:via-cosmic-700">
                     <ul className="space-y-4">
                       {item.details.map((detail, detailIndex) => (
