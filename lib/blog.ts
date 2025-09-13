@@ -1,8 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
 import { BlogPost, BlogMetadata, BlogCategory, CategoryInfo } from '@/types/blog';
 
 const blogDirectory = path.join(process.cwd(), 'content/blog');
@@ -84,20 +82,13 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
-    
-    // MarkdownをHTMLに変換
-    const processedContent = await remark()
-      .use(html, { sanitize: false })
-      .process(matterResult.content);
-    
-    const contentHtml = processedContent.toString();
 
     return {
       slug,
       title: matterResult.data.title || '',
       date: matterResult.data.date || '',
       excerpt: matterResult.data.excerpt || '',
-      content: contentHtml,
+      content: matterResult.content, // Raw markdown content
       category: matterResult.data.category || 'general',
       tags: matterResult.data.tags || [],
       author: matterResult.data.author || '中村桃太朗',
