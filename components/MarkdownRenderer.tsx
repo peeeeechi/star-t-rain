@@ -98,7 +98,7 @@ const components: Components = {
   ),
   
   // コード
-  code: ({ node, inline, className, children, ...props }) => {
+  code: ({ inline, className, children, ...props }: any) => {
     if (inline) {
       return (
         <code 
