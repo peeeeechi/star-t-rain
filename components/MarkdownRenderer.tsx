@@ -98,6 +98,7 @@ const components: Components = {
   ),
   
   // コード
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   code: ({ inline, className, children, ...props }: any) => {
     if (inline) {
       return (
@@ -152,8 +153,9 @@ const components: Components = {
   ),
   
   // 画像
-  img: ({ src, alt }) => {
-    if (!src) return null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  img: ({ src, alt }: any) => {
+    if (!src || typeof src !== 'string') return null;
     
     return (
       <div className="my-8 flex justify-center">
@@ -169,7 +171,8 @@ const components: Components = {
   },
   
   // チェックボックス（GitHub Flavored Markdown）
-  input: ({ type, checked, disabled }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  input: ({ type, checked, disabled }: any) => {
     if (type === 'checkbox') {
       return (
         <input 
