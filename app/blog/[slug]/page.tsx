@@ -145,27 +145,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* 記事本文 */}
             <div 
-              className="prose prose-xl max-w-none
+              className="prose prose-xl max-w-none dark:prose-invert
                 prose-headings:font-bold
-                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-gray-900 prose-h2:dark:text-white
-                prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-gray-900 prose-h3:dark:text-white
-                prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-h4:text-gray-900 prose-h4:dark:text-white
-                prose-p:text-lg prose-p:leading-relaxed prose-p:mb-6 prose-p:text-gray-700 prose-p:dark:text-gray-100
-                prose-ul:text-lg prose-ul:my-6 prose-ul:text-gray-700 prose-ul:dark:text-gray-100
-                prose-ol:text-lg prose-ol:my-6 prose-ol:text-gray-700 prose-ol:dark:text-gray-100
-                prose-li:my-2 prose-li:text-gray-700 prose-li:dark:text-gray-100
-                prose-strong:text-gray-900 prose-strong:dark:text-white prose-strong:font-bold
-                prose-em:text-gray-700 prose-em:dark:text-gray-100
-                prose-a:text-cosmic-600 prose-a:dark:text-cosmic-400 prose-a:underline prose-a:decoration-2
-                prose-a:hover:text-cosmic-700 prose-a:hover:dark:text-cosmic-300
-                prose-code:text-stellar-600 prose-code:dark:text-stellar-400 prose-code:bg-gray-100 prose-code:dark:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded
-                prose-pre:bg-gray-100 prose-pre:dark:bg-gray-800 prose-pre:p-6 prose-pre:rounded-lg prose-pre:my-8
-                prose-blockquote:border-l-4 prose-blockquote:border-cosmic-500 prose-blockquote:bg-cosmic-50/50 prose-blockquote:dark:bg-cosmic-900/20
+                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+                prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3
+                prose-p:text-lg prose-p:leading-relaxed prose-p:mb-6
+                prose-ul:text-lg prose-ul:my-6
+                prose-ol:text-lg prose-ol:my-6
+                prose-li:my-2
+                prose-strong:font-bold
+                prose-a:text-cosmic-600 dark:prose-a:text-cosmic-400 prose-a:underline prose-a:decoration-2
+                hover:prose-a:text-cosmic-700 dark:hover:prose-a:text-cosmic-300
+                prose-code:text-stellar-600 dark:prose-code:text-stellar-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded
+                prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-pre:p-6 prose-pre:rounded-lg prose-pre:my-8
+                prose-blockquote:border-l-4 prose-blockquote:border-cosmic-500 prose-blockquote:bg-cosmic-50/50 dark:prose-blockquote:bg-cosmic-900/20
                 prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-8 prose-blockquote:italic
-                prose-table:my-8 prose-table:text-gray-700 prose-table:dark:text-gray-100
-                prose-th:bg-gray-100 prose-th:dark:bg-gray-800 prose-th:font-bold prose-th:p-3
-                prose-td:p-3 prose-td:border prose-td:border-gray-300 prose-td:dark:border-gray-600
-                prose-hr:border-gray-300 prose-hr:dark:border-gray-600 prose-hr:my-12
+                prose-table:my-8
+                prose-th:bg-gray-100 dark:prose-th:bg-gray-800 prose-th:font-bold prose-th:p-3
+                prose-td:p-3 prose-td:border prose-td:border-gray-300 dark:prose-td:border-gray-600
+                prose-hr:border-gray-300 dark:prose-hr:border-gray-600 prose-hr:my-12
                 prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
