@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { BlogMetadata, CategoryInfo } from '@/types/blog';
 import BlogFilter from '@/components/BlogFilter';
+import BlogFilterMobile from '@/components/BlogFilterMobile';
 
 interface BlogPageClientProps {
   initialPosts: BlogMetadata[];
@@ -125,11 +126,18 @@ export default function BlogPageClient({ initialPosts, categories }: BlogPageCli
           </p>
         </div>
 
+        {/* モバイル用フィルター */}
+        <BlogFilterMobile 
+          posts={initialPosts}
+          categories={categories}
+          onFilteredPostsChange={handleFilteredPostsChange}
+        />
+
         {/* メインコンテンツ - サイドバー付きレイアウト */}
         <div className="grid lg:grid-cols-4 gap-8">
-          {/* サイドバー - デスクトップでは左側、モバイルでは上部 */}
-          <div className="lg:col-span-1 order-1 lg:order-1">
-            <div className="lg:sticky lg:top-8">
+          {/* サイドバー - デスクトップのみ表示 */}
+          <div className="hidden lg:block lg:col-span-1">
+            <div className="sticky top-8">
               <BlogFilter 
                 posts={initialPosts}
                 categories={categories}
@@ -139,7 +147,7 @@ export default function BlogPageClient({ initialPosts, categories }: BlogPageCli
           </div>
 
           {/* メインコンテンツ */}
-          <div className="lg:col-span-3 order-2 lg:order-2">
+          <div className="lg:col-span-3">
             {/* 記事一覧 */}
             {filteredPosts.length === 0 ? (
               <div className="text-center py-12">

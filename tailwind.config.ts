@@ -62,6 +62,8 @@ export default {
         'float-diagonal': 'float-diagonal 20s linear infinite',
         'spin-slow': 'spin 8s linear infinite',
         'spin-reverse': 'spin-reverse 12s linear infinite',
+        'in': 'in 0.2s ease-out',
+        'slide-in-from-top': 'slide-in-from-top 0.2s ease-out',
       },
       keyframes: {
         twinkle: {
@@ -99,6 +101,14 @@ export default {
         'spin-reverse': {
           from: { transform: 'rotate(360deg)' },
           to: { transform: 'rotate(0deg)' },
+        },
+        'in': {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'slide-in-from-top': {
+          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         }
       },
       fontFamily: {
