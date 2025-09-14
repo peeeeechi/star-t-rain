@@ -125,49 +125,59 @@ export default function BlogPageClient({ initialPosts, categories }: BlogPageCli
           </p>
         </div>
 
-        {/* フィルターコンポーネント */}
-        <BlogFilter 
-          posts={initialPosts}
-          categories={categories}
-          onFilteredPostsChange={handleFilteredPostsChange}
-        />
-
-        {/* 記事一覧 */}
-        {filteredPosts.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="max-w-md mx-auto">
-              <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                条件に一致する記事が見つかりません
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                別のキーワードやフィルターで検索してみてください。
-              </p>
+        {/* メインコンテンツ - サイドバー付きレイアウト */}
+        <div className="grid lg:grid-cols-4 gap-8">
+          {/* サイドバー - デスクトップでは左側、モバイルでは上部 */}
+          <div className="lg:col-span-1 order-1 lg:order-1">
+            <div className="lg:sticky lg:top-8">
+              <BlogFilter 
+                posts={initialPosts}
+                categories={categories}
+                onFilteredPostsChange={handleFilteredPostsChange}
+              />
             </div>
           </div>
-        ) : (
-          <>
-            {/* 結果カウント */}
-            <div className="mb-6 text-center">
-              <p className="text-gray-600 dark:text-gray-400">
-                {filteredPosts.length}件の記事が見つかりました
-                {filteredPosts.length !== initialPosts.length && (
-                  <span className="text-sm ml-2">({initialPosts.length}件中)</span>
-                )}
-              </p>
-            </div>
 
-            {/* 記事グリッド */}
-            <div className="grid lg:grid-cols-2 gap-8 mb-16">
-              {filteredPosts.map((post) => (
-                <BlogPostCard key={post.slug} post={post} categories={categories} />
-              ))}
-            </div>
-          </>
-        )}
+          {/* メインコンテンツ */}
+          <div className="lg:col-span-3 order-2 lg:order-2">
+            {/* 記事一覧 */}
+            {filteredPosts.length === 0 ? (
+              <div className="text-center py-12">
+                <div className="max-w-md mx-auto">
+                  <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    条件に一致する記事が見つかりません
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    別のキーワードやフィルターで検索してみてください。
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                {/* 結果カウント */}
+                <div className="mb-6">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    {filteredPosts.length}件の記事が見つかりました
+                    {filteredPosts.length !== initialPosts.length && (
+                      <span className="ml-2">({initialPosts.length}件中)</span>
+                    )}
+                  </p>
+                </div>
+
+                {/* 記事グリッド */}
+                <div className="grid xl:grid-cols-2 gap-6">
+                  {filteredPosts.map((post) => (
+                    <BlogPostCard key={post.slug} post={post} categories={categories} />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
 
         {/* 統計情報 */}
-        <div className="bg-gradient-to-r from-cosmic-500/10 to-stellar-500/10 rounded-2xl p-8 text-center">
+        <div className="mt-16 bg-gradient-to-r from-cosmic-500/10 to-stellar-500/10 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             ブログ統計
           </h2>

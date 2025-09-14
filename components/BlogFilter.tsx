@@ -14,7 +14,7 @@ export default function BlogFilter({ posts, categories, onFilteredPostsChange }:
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory | 'all'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState(true);
 
   // 全タグを取得
   const allTags = Array.from(new Set(posts.flatMap(post => post.tags)));
@@ -102,11 +102,15 @@ export default function BlogFilter({ posts, categories, onFilteredPostsChange }:
       <div className="flex items-center justify-between mb-4">
         <button
           onClick={() => setShowFilters(!showFilters)}
-          className="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+          className="lg:hidden inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         >
           <Filter className="w-4 h-4 mr-2" />
-          フィルター
+          フィルター {showFilters ? '閉じる' : '開く'}
         </button>
+        
+        <div className="hidden lg:block text-sm font-medium text-gray-900 dark:text-white">
+          フィルター
+        </div>
 
         {hasActiveFilters && (
           <button
@@ -120,15 +124,14 @@ export default function BlogFilter({ posts, categories, onFilteredPostsChange }:
       </div>
 
       {/* フィルターパネル */}
-      {showFilters && (
-        <div className="space-y-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+      <div className={`space-y-6 pt-4 border-t border-gray-200 dark:border-gray-700 lg:block ${showFilters ? 'block' : 'hidden'}`}>
           {/* カテゴリーフィルター */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">カテゴリー</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-col lg:flex-col gap-2">
               <button
                 onClick={() => handleCategoryChange('all')}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors w-full text-left ${
                   selectedCategory === 'all'
                     ? 'bg-cosmic-600 text-white'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -152,7 +155,7 @@ export default function BlogFilter({ posts, categories, onFilteredPostsChange }:
                   <button
                     key={category.id}
                     onClick={() => handleCategoryChange(category.id as BlogCategory)}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors w-full text-left ${
                       colorClasses[categoryInfo?.color as keyof typeof colorClasses] || colorClasses.gray
                     }`}
                   >
@@ -188,8 +191,7 @@ export default function BlogFilter({ posts, categories, onFilteredPostsChange }:
               </div>
             </div>
           )}
-        </div>
-      )}
+      </div>
 
       {/* アクティブなフィルター表示 */}
       {hasActiveFilters && (
