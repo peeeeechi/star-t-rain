@@ -12,22 +12,22 @@ import Link from 'next/link';
 const components: Components = {
   // 見出し
   h1: ({ children }) => (
-    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mt-8 mb-6 first:mt-0">
+    <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-4 sm:mb-6 first:mt-0">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-6 first:mt-0">
+    <h2 className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-8 sm:mt-12 mb-4 sm:mb-6 first:mt-0">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">
+    <h3 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-3 sm:mb-4">
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="text-xl font-bold text-gray-900 dark:text-white mt-6 mb-3">
+    <h4 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white mt-4 sm:mt-6 mb-2 sm:mb-3">
       {children}
     </h4>
   ),
@@ -44,7 +44,7 @@ const components: Components = {
     }
     
     return (
-      <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-100 mb-6">
+      <p className="text-sm sm:text-lg leading-relaxed text-gray-700 dark:text-gray-100 mb-4 sm:mb-6">
         {children}
       </p>
     );
@@ -52,12 +52,12 @@ const components: Components = {
   
   // リスト
   ul: ({ children }) => (
-    <ul className="text-lg text-gray-700 dark:text-gray-100 my-6 space-y-2 list-disc ml-6">
+    <ul className="text-sm sm:text-lg text-gray-700 dark:text-gray-100 my-4 sm:my-6 space-y-2 list-disc ml-4 sm:ml-6">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="text-lg text-gray-700 dark:text-gray-100 my-6 space-y-2 list-decimal ml-6">
+    <ol className="text-sm sm:text-lg text-gray-700 dark:text-gray-100 my-4 sm:my-6 space-y-2 list-decimal ml-4 sm:ml-6">
       {children}
     </ol>
   ),
@@ -113,7 +113,7 @@ const components: Components = {
     if (inline) {
       return (
         <code 
-          className="bg-gray-100 dark:bg-gray-800 text-stellar-600 dark:text-stellar-400 px-2 py-1 rounded text-sm font-mono"
+          className="bg-gray-100 dark:bg-gray-800 text-stellar-600 dark:text-stellar-400 px-1 sm:px-2 py-1 rounded text-xs sm:text-sm font-mono"
           {...props}
         >
           {children}
@@ -123,7 +123,7 @@ const components: Components = {
     
     return (
       <code 
-        className={`${className} block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-6 rounded-lg my-8 overflow-x-auto font-mono text-sm leading-relaxed`}
+        className={`${className} block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-3 sm:p-6 rounded-lg my-4 sm:my-8 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed`}
         {...props}
       >
         {children}
@@ -133,7 +133,7 @@ const components: Components = {
   
   // 引用
   blockquote: ({ children }) => (
-    <blockquote className="border-l-4 border-cosmic-500 bg-cosmic-50/50 dark:bg-cosmic-900/20 pl-6 py-4 my-8 italic text-gray-700 dark:text-gray-100">
+    <blockquote className="border-l-4 border-cosmic-500 bg-cosmic-50/50 dark:bg-cosmic-900/20 pl-4 sm:pl-6 py-3 sm:py-4 my-4 sm:my-8 italic text-sm sm:text-base text-gray-700 dark:text-gray-100">
       {children}
     </blockquote>
   ),
