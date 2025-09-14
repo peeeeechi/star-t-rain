@@ -102,40 +102,43 @@ export default function BlogSection({ publishedPosts, featuredPosts }: BlogSecti
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               {featuredPosts.map((post) => (
-                <article
+                <Link
                   key={post.slug}
-                  className="bg-gradient-to-br from-cosmic-50 to-stellar-50 dark:from-cosmic-900/20 dark:to-stellar-900/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all"
+                  href={`/blog/${post.slug}`}
+                  className="block"
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(post.category as BlogCategory)}`}>
-                      {categories.find(c => c.value === post.category)?.label}
-                    </span>
-                    <time className="text-sm text-gray-500 dark:text-gray-400">
-                      {formatDate(post.date)}
-                    </time>
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors">
-                    {post.title}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-wrap gap-2">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 bg-white/50 dark:bg-gray-800/50 rounded text-xs text-gray-700 dark:text-gray-300"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
+                  <article className="bg-gradient-to-br from-cosmic-50 to-stellar-50 dark:from-cosmic-900/20 dark:to-stellar-900/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer h-full">
+                    <div className="flex items-start justify-between mb-4">
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(post.category as BlogCategory)}`}>
+                        {categories.find(c => c.value === post.category)?.label}
+                      </span>
+                      <time className="text-sm text-gray-500 dark:text-gray-400">
+                        {formatDate(post.date)}
+                      </time>
                     </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                      {post.readTime}分で読めます
-                    </span>
-                  </div>
-                </article>
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors">
+                      {post.title}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        {post.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-1 bg-white/50 dark:bg-gray-800/50 rounded text-xs text-gray-700 dark:text-gray-300"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {post.readTime}分で読めます
+                      </span>
+                    </div>
+                  </article>
+                </Link>
               ))}
             </div>
           </div>

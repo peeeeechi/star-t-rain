@@ -7,7 +7,6 @@ import rehypeKatex from 'rehype-katex';
 import rehypeHighlight from 'rehype-highlight';
 import { Components } from 'react-markdown';
 import Link from 'next/link';
-import Image from 'next/image';
 
 // カスタムコンポーネント
 const components: Components = {
@@ -34,11 +33,22 @@ const components: Components = {
   ),
   
   // 段落
-  p: ({ children }) => (
-    <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-100 mb-6">
-      {children}
-    </p>
-  ),
+  p: ({ children }) => {
+    // 画像が含まれている場合は div として扱う
+    const hasImage = Array.isArray(children) && children.some(
+      child => child?.type === 'img' || child?.props?.src
+    );
+    
+    if (hasImage) {
+      return <div className="mb-6">{children}</div>;
+    }
+    
+    return (
+      <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-100 mb-6">
+        {children}
+      </p>
+    );
+  },
   
   // リスト
   ul: ({ children }) => (
@@ -157,16 +167,26 @@ const components: Components = {
   img: ({ src, alt }: any) => {
     if (!src || typeof src !== 'string') return null;
     
+    // 通常のimgタグを使用（Next.js Imageコンポーネントは設定が必要なため）
     return (
-      <div className="my-8 flex justify-center">
-        <Image
+      <span className="block my-8 text-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={src}
           alt={alt || ''}
-          width={800}
-          height={600}
-          className="rounded-lg shadow-lg max-w-full h-auto"
+          className="rounded-lg shadow-lg max-w-full h-auto mx-auto"
+          style={{ maxWidth: '100%', height: 'auto' }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+            // 画像が読み込めない場合のプレースホルダー
+            const placeholder = document.createElement('div');
+            placeholder.className = 'bg-gray-200 dark:bg-gray-700 rounded-lg p-8 text-gray-500 dark:text-gray-400 text-center';
+            placeholder.innerHTML = `📷 画像を読み込めません: ${src}`;
+            target.parentNode?.appendChild(placeholder);
+          }}
         />
-      </div>
+      </span>
     );
   },
   
@@ -198,7 +218,16 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
     <div className={`prose prose-xl max-w-none ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
-        rehypePlugins={[rehypeKatex, rehypeHighlight]}
+        rehypePlugins={[
+          [rehypeKatex, {
+            strict: false,
+            trust: true,
+            macros: {
+              "\\f": "#1f(#2)"
+            }
+          }],
+          rehypeHighlight
+        ]}
         components={components}
       >
         {content}
