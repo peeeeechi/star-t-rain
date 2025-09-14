@@ -3,7 +3,7 @@ title: "大質量星形成の謎に迫る - 電波観測が明かす星の誕生
 date: "2025-09-13"
 excerpt: "大質量星がどのように形成されるのか、その謎に電波天文学者たちが迫っています。VLBIやALMAによる最新研究と理論的進展を紹介します。"
 category: "astronomy"
-tags: ["大質量星形成", "電波天文学", "VLBI", "メタノールメーザー", "アウトフロー", "ジェット"]
+tags: ["大質量星形成", "電波天文学", "VLBI", "ALMA", "メタノールメーザー", "円盤", "アウトフロー", "ジェット"]
 author: "peeeeechi"
 published: true
 ---
@@ -72,31 +72,45 @@ published: true
 
 ![アルマ望遠鏡が撮影した巨大原始星G353.273+0.641](/images/blog/G353_ALMA.jpg)
 
-*図2: アルマ望遠鏡が撮影した、巨大原始星G353.273+0.641。原始星周囲のコンパクトな構造を赤、円盤を黄、その外側に広がるガス（エンベロープ）を青に着色して疑似カラー合成しています。 Credit: ALMA (ESO/NAOJ/NRAO), Motogi et al.*
+*図2: アルマ望遠鏡が撮影した巨大原始星 G353.273+0.641。原始星周囲のコンパクトな構造を赤、円盤を黄、その外側に広がるガス（エンベロープ）を青に着色して疑似カラー合成しています。 Credit: ALMA (ESO/NAOJ/NRAO), Motogi et al.*
 
-- **G353.273+0.641（Motogi et al. 2019, ApJ 876, L31）**  
+- **G353.273+0.641 の重力不安定円盤の「鳥瞰図（bird’s-eye view）」（Motogi et al. 2019, ApJ 876, L31）**  
   ALMAロングベースライン観測とVLBIを組み合わせた研究により、半径約 **250 au** の円盤がダスト連続放射で描き出されました。その外側には回転降着するエンベロープ (infalling rotating envelope) が CH₃OH 分子線でトレースされています。  
   - 円盤質量は 2〜7 $M_{\odot}$、エンベロープの質量下限は 5〜7 $M_{\odot}$。  
   - 降着率は少なくとも $3 \times 10^{-3}$ $M_{\odot}$/年と推定され、対象星は非常に若い段階にあると考えられています。  
-  - Toomre Q パラメータが 1〜2（最小 ≃0.4）と、円盤が**重力的不安定性**を示していることが確認されました。非対称な構造や断片化（fragmentation）の兆候が見られ、角運動量の約70％が円盤の重力トルクで輸送されている可能性が示されています。  
+  - Toomre Q パラメータが 1〜2（最小 ≃0.4）と、円盤が **重力的不安定性** を示していることが確認されました。非対称な構造や **断片化**（fragmentation）の兆候が見られ、角運動量の約70％が円盤の重力トルクで輸送されている可能性が示されています。  
   この観測は「大質量星形成における重力不安定な円盤の初めての鳥瞰図」として位置づけられ、低質量星形成との共通性も浮き彫りにしました。  
 
+![アルマ望遠鏡が撮影したSagittarius C の円盤](/images/blog/sgrC_ALMA.png)
+*図3: アルマ望遠鏡が撮影した Sagittarius C 内の大質量原始星円盤。左図のダスト放射には、半径約 1000 au の円盤とその中に伸びる2本のスパイラルが明瞭に描かれています。中央の速度場マップでは赤方偏移と青方偏移が対称的に配置され、ケプラー回転する円盤であることが確認できます。右図はシミュレーション結果で、外部天体の近接通過によって観測と同じ形のスパイラルが励起されることを示しています。これにより、Sagittarius C の円盤が「外乱によって形作られた」貴重な例であることが強く示唆されています。 Credit: Lu et al.*
 
+- **Sagittarius C のケプラー円盤＋別の天体の flyby による spiral 構造（Lu et al. 2022, Nature Astronomy vol 6, 837）**  
+  銀河中心領域（CMZ）の Sagittarius C 分子雲内にある質量約 32 $M_{\odot}$ の原始星を対象に、ALMA による長基線観測でケプラー回転円盤が描かれました。
+  - 円盤質量は数太陽質量で、重力的には安定とされており、大きな崩壊を起こしていない状態です。
+  - 特に興味深いのは、この円盤に **2本の渦巻き状スパイラル構造 (spirals)** が埋め込まれていること。
+  - 著者らはこれを、近くを通過したガス塊などの「**飛行体 (flyby)**」による外的擾乱が円盤に波紋のような構造を生じさせたとするシミュレーションと比較検討し、実際に擾乱を起こした可能性のある天体も観測範囲から候補として特定しています。
+  - この研究は、大質量原始星でも円盤を介した降着が低質量星形成と共通であるだけでなく、**円盤の進化が環境の影響（近接通過等）を受ける**ことを示す例として非常に重要です。
 
 ### 2. アウトフローとジェット
 
-![IRAS 20126+4104 における ALMA の Moment-8 マップ](/images/blog/alma-IRAS20126.png)
-
-*図3: IRAS 20126+4104 における ALMA の Moment-8 マップ (Cesaroni et al. 2024) 。東西方向に噴き出すジェットが観測されています。中心には回転する円盤の円状の放射が見えていますね。*
-
-- ALMAやVLBI観測により、**双極性アウトフロー**が多数の領域で検出。  
-- 円盤の回転運動と、中心から噴き出すコリメートされたジェットの共存が明らかになっています。  
-- スケールは0.1～数pc、速度は数十～数百 km/s に達し、質量放出率は $10^{-6} - 10^{-4} M_{\odot}$/年。  
+- 円盤と同様に ALMA や VLBI 観測により、双極性の**アウトフロー**や**ジェット**が多数の領域で検出されています。  
+- 一般的なスケールは 0.1 ～数 pc、速度は数十～数百 km/s に達し、質量放出率は $10^{-6} - 10^{-4} M_{\odot}$/年とされています。  
 - 最近のATOMSサーベイでは、複数の領域における統計的解析が進められています。  
 
+![IRAS 20126+4104 における ALMA の Moment-8 マップ](/images/blog/alma-IRAS20126.png)
+
+*図4: IRAS 20126+4104 における ALMA の Moment-8 マップ (Cesaroni et al. 2025) 。東西方向に噴き出すジェットが観測されています。中心には回転する円盤の円状の放射が見えていますね。*
+
+- **IRAS 20126+4104 の精密観測による円盤＋流入構造 (Cesaroni et al. 2025, A&A, 693, A76)**  
+最新の ALMA 観測データを使い、初期 B 型にあたる巨大原始星 IRAS 20126+4104（約 12 $M_{\odot}$）のディスクとジェット系が高解像度で解析されました。
+  - ケプラー回転が明確に確認されただけでなく、円盤には回転に加えて動径方向の流入成分（流入速度が回転速度の約 40% 程度）があることも見出されており、円盤内部で物質が中心星に降着していくダイナミクスが見えています。
+  - さらに、CH₃CN 分子線を用いた温度・コラム密度の半径分布から、中心近くでの温度・密度の上昇が定量的に測定されています。
+  - 円盤全体を通じて重力的不安定性は低く、「安定な円盤」と評価されていますが、南西部に非対称性があり、これは近くの伴星やジェットとの相互作用、またはエンベロープによる吸収の影響と考えられています。
+  - 降着率は約 0.001 $M_{\odot}$/年。この例は、円盤構造を分解することで「**回転＋流入＋非軸対称**」を一体として理解するモデルの好例です。
+
 ### 3. 磁場の役割
-- ALMA偏波観測 (Hull et al. 2017 など) から、磁場が円盤の安定化やジェットのコリメーションに関与することが判明。  
-- 「磁気ブレーキ問題」 (磁場が強すぎると円盤形成が阻害される現象) への理解が進展しています。  
+- ALMA偏波観測 (Hull et al. 2017 など) [[別記事参照](https://star-t-rain.vercel.app/blog/research-paper-memo-SMM1)] から、磁場が円盤の安定化やジェットのコリメーションに関与することが判明。 
+- 「**磁気ブレーキ問題**」(磁場が強すぎると円盤形成が阻害される現象) への理解が進展しています。  
 
 ---
 
@@ -119,9 +133,9 @@ published: true
 ## 今後の展望
 
 ### 次世代観測装置
-- **ngVLA**：サブAUスケールの円盤観測を目指す。  
+- **ngVLA**：サブauスケールの円盤観測を目指す。  
 - **SKA**：大規模な水メーザーサーベイにより銀河全体の星形成史を調査。  
-- **JWST**：赤外で塵を透視し、埋もれた原始星を観測。  
+- **JWST**：赤外線で塵を透視し、埋もれた原始星を観測。  
 
 ### 惑星形成との関連
 - 大質量星形成領域でも、円盤内に「惑星形成的」な構造が見え始めています。  
@@ -135,12 +149,12 @@ published: true
 - [Zuckerman, Kuiper & Rodriguez-Kuiper (1976), *High-velocity gas in the Orion infrared nebula*, ApJ, 209, L137](https://ui.adsabs.harvard.edu/abs/1976ApJ...209L.137Z/abstract) – 最初期の分子アウトフロー検出  
 - [Kwan & Scoville (1976), *High-velocity CO in Orion A*, ApJ, 210, L39](https://ui.adsabs.harvard.edu/abs/1976ApJ...210L..39K/abstract) – 最初期の分子アウトフロー検出  
 - [Menten (1991), *Discovery of 6.7 GHz Class II methanol maser*, ApJ Lett., 380, L75](https://ui.adsabs.harvard.edu/abs/1991Natur.221..626C/abstract) – メタノールメーザーの発見  
-- [Motogi et al. (2019), *The First Bird’s-eye View of a Gravitationally Unstable Accretion Disk in High-mass Star Formation*, ApJ Lett., 876, L31](https://ui.adsabs.harvard.edu/abs/2019ApJ...876L..31M/abstract) – G353における重力不安定な円盤の初観測  
+- [Motogi et al. (2019), *The First Bird’s-eye View of a Gravitationally Unstable Accretion Disk in High-mass Star Formation*, ApJ Lett., 876, L31](https://ui.adsabs.harvard.edu/abs/2019ApJ...877L..25M/abstract) – G353における重力不安定な円盤の初観測  
 - [McKee & Tan (2003), *The formation of massive stars from turbulent cores*, ApJ, 585, 850](https://ui.adsabs.harvard.edu/abs/2003ApJ...585..850M/abstract) – コア降着モデル  
 - [Bonnell et al. (2004), *Competitive accretion in star clusters*, MNRAS, 349, 735](https://ui.adsabs.harvard.edu/abs/2004MNRAS.349..735B/abstract) – 競合降着モデル  
 - [Hull et al. (2017), *ALMA polarization observations of magnetic fields in massive protostars*, ApJ, 847, 92](https://ui.adsabs.harvard.edu/abs/2017ApJ...847...92H/abstract) – 磁場観測の進展  
-- [Cesaroni et al. (2024), *ALMA observations of jets and outflows in massive protostars*, A&A, 683, A34](https://ui.adsabs.harvard.edu/abs/2024A%26A...683A..34C/abstract) – ALMAによる最新のアウトフロー観測  
-- [Gardiner et al. (2024), *Disk-Wind Feedback from High-Mass Protostars IV*, ApJ, 967, 145](https://ui.adsabs.harvard.edu/abs/2024ApJ...967..145G/abstract) – ディスク風とフィードバックの研究  
+- [Cesaroni et al. (2025), *Dissecting the disk and the jet of a massive (proto)star: An ALMA view of IRAS 20126+4104*, A&A, 693, A76](https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..76C/abstract) – ALMAによる最新のアウトフロー観測  
+- [Gardiner et al. (2024), *Disk-Wind Feedback from High-Mass Protostars IV*, ApJ, 967, 145](https://ui.adsabs.harvard.edu/abs/2024ApJ...967..145G/abstract) – 円盤風とフィードバックの研究  
 
 
 ---
