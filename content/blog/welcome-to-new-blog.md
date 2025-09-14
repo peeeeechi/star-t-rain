@@ -28,6 +28,8 @@ published: true
 | **開発体験** | PHP ベース | React/TypeScript で快適 |
 | **ホスティング** | サーバー必須 | Vercel で無料デプロイ |
 
+前のサイトはサーバなどの管理代含め、年間1万円くらいかけてました。。。そこまでするのはもったいないし、デザインも制約があるので、今回自由度の高い「Next.js」に移行しました！
+
 ### 📝 コンテンツ管理の観点
 
 1. **Markdown での執筆**
@@ -107,4 +109,4 @@ def analyze_maser_data(data):
 ---
 
 *このサイトは **Next.js 15** + **Tailwind CSS** で構築され、**Claude Code** を活用して開発されています。*  
-*ソースコードは [GitHub](https://github.com/peeeeechi/star-t-rain) で公開しています。*
+*ソースコードは [GitHub](https://github.com/peeeeechi/star-t-rain）で公開しています。*
