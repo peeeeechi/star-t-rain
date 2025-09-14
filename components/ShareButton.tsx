@@ -9,20 +9,37 @@ interface ShareButtonProps {
 }
 
 export default function ShareButton({ title, excerpt, url }: ShareButtonProps) {
-  const handleShare = () => {
+  const handleShare = async () => {
     const shareUrl = url || (typeof window !== 'undefined' ? window.location.href : '');
     
-    if (navigator.share) {
-      navigator.share({
-        title,
-        text: excerpt,
-        url: shareUrl,
-      });
-    } else {
-      // Fallback for browsers that don't support Web Share API
-      if (shareUrl) {
-        navigator.clipboard.writeText(shareUrl);
+    try {
+      if (typeof navigator !== 'undefined' && navigator.share) {
+        await navigator.share({
+          title,
+          text: excerpt,
+          url: shareUrl,
+        });
+      } else {
+        // Fallback for browsers that don't support Web Share API
+        if (typeof navigator !== 'undefined' && navigator.clipboard && shareUrl) {
+          await navigator.clipboard.writeText(shareUrl);
+          alert('URLをクリップボードにコピーしました！');
+        } else {
+          // Final fallback - create a temporary input element
+          const tempInput = document.createElement('input');
+          tempInput.value = shareUrl;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          tempInput.setSelectionRange(0, 99999);
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          alert('URLをクリップボードにコピーしました！');
+        }
       }
+    } catch (error) {
+      console.error('共有に失敗しました:', error);
+      // Error fallback - show URL in alert
+      alert(`URLを手動でコピーしてください: ${shareUrl}`);
     }
   };
 

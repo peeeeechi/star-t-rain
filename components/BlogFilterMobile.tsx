@@ -93,36 +93,38 @@ export default function BlogFilterMobile({ posts, categories, onFilteredPostsCha
         {/* アイコンバー */}
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center gap-2">
-            {/* 検索アイコン */}
+            {/* 検索ボタン */}
             <button
               onClick={() => {
                 setShowSearch(!showSearch);
                 setShowFilters(false);
               }}
-              className={`p-2.5 rounded-lg transition-colors ${
+              className={`inline-flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors text-sm font-medium ${
                 showSearch 
                   ? 'bg-cosmic-600 text-white' 
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
               aria-label="検索"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-4 h-4" />
+              検索
             </button>
 
-            {/* フィルターアイコン */}
+            {/* フィルターボタン */}
             <button
               onClick={() => {
                 setShowFilters(!showFilters);
                 setShowSearch(false);
               }}
-              className={`p-2.5 rounded-lg transition-colors ${
+              className={`inline-flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors text-sm font-medium ${
                 showFilters 
                   ? 'bg-cosmic-600 text-white' 
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
               aria-label="フィルター"
             >
-              <Filter className="w-5 h-5" />
+              <Filter className="w-4 h-4" />
+              フィルター
             </button>
           </div>
 

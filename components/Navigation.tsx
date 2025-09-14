@@ -83,13 +83,13 @@ export default function Navigation() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden group relative p-3 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 dark:from-gray-800/20 dark:to-gray-800/5 backdrop-blur-sm border border-white/30 dark:border-gray-600/30 hover:from-cosmic-500/20 hover:to-stellar-500/20 hover:border-cosmic-400/50 transition-all duration-300 hover:scale-110"
+            className="md:hidden group relative p-3 rounded-2xl bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-800/80 dark:to-gray-700/60 backdrop-blur-sm border border-white/40 dark:border-gray-500/40 hover:from-cosmic-500/30 hover:to-stellar-500/30 hover:border-cosmic-400/60 transition-all duration-300 hover:scale-110 shadow-lg dark:shadow-gray-900/50"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-cosmic-600/10 to-stellar-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cosmic-600/20 to-stellar-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 relative z-10 group-hover:rotate-90 transition-transform duration-300" />
+              <X className="w-6 h-6 relative z-10 text-gray-700 dark:text-gray-200 group-hover:text-white group-hover:rotate-90 transition-all duration-300" />
             ) : (
-              <Menu className="w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+              <Menu className="w-6 h-6 relative z-10 text-gray-700 dark:text-gray-200 group-hover:text-white group-hover:scale-110 transition-all duration-300" />
             )}
           </button>
         </div>

@@ -12,9 +12,11 @@ published: true
 
 夜空に輝く明るい星々には、太陽よりもはるかに大きな質量を持つ **大質量星** (High-mass star) と呼ばれる天体があります。これらの星は銀河の進化に大きな影響を与え、恒星風や超新星爆発を通じて元素を宇宙へ還元し、やがて中性子星やブラックホールへ進化します。しかし、**[その形成過程はいまだ完全には解明されていません]()**。
 
+* 1 $M_{\odot}$ = 1 個分の太陽の質量 ($2.0 \times 10^{30}$ kg) を表す.  
+
 ![太陽型星と大質量星のライフサイクル](/images/blog/star-life-cycle.png)
 
-*図1: 太陽型星と大質量星のライフサイクル (Credit: [NASA and the Night Sky Network](https://imagine.gsfc.nasa.gov/science/objects/stars1.html)) 。*
+*図1: 太陽型星と大質量星のライフサイクル (Credit: [NASA and the Night Sky Network](https://imagine.gsfc.nasa.gov/science/objects/stars1.html))*
 
 
 ---
@@ -67,16 +69,29 @@ published: true
 ## 最新の観測成果
 
 ### 1. 円盤構造の解明
-- IRAS 20126+4104 では ALMA での観測により円盤とジェットの構造が同時に確認されました。  
-- 円盤の回転運動と、中心から噴き出すコリメートされたジェットの共存が明らかになっています。  
+
+![アルマ望遠鏡が撮影した巨大原始星G353.273+0.641](/images/blog/G353_ALMA.jpg)
+
+*図2: アルマ望遠鏡が撮影した、巨大原始星G353.273+0.641。原始星周囲のコンパクトな構造を赤、円盤を黄、その外側に広がるガス（エンベロープ）を青に着色して疑似カラー合成しています。 Credit: ALMA (ESO/NAOJ/NRAO), Motogi et al.*
+
+- **G353.273+0.641（Motogi et al. 2019, ApJ 876, L31）**  
+  ALMAロングベースライン観測とVLBIを組み合わせた研究により、半径約 **250 au** の円盤がダスト連続放射で描き出されました。その外側には回転降着するエンベロープ (infalling rotating envelope) が CH₃OH 分子線でトレースされています。  
+  - 円盤質量は 2〜7 $M_{\odot}$、エンベロープの質量下限は 5〜7 $M_{\odot}$。  
+  - 降着率は少なくとも $3 \times 10^{-3}$ $M_{\odot}$/年と推定され、対象星は非常に若い段階にあると考えられています。  
+  - Toomre Q パラメータが 1〜2（最小 ≃0.4）と、円盤が**重力的不安定性**を示していることが確認されました。非対称な構造や断片化（fragmentation）の兆候が見られ、角運動量の約70％が円盤の重力トルクで輸送されている可能性が示されています。  
+  この観測は「大質量星形成における重力不安定な円盤の初めての鳥瞰図」として位置づけられ、低質量星形成との共通性も浮き彫りにしました。  
+
+
+
+### 2. アウトフローとジェット
 
 ![IRAS 20126+4104 における ALMA の Moment-8 マップ](/images/blog/alma-IRAS20126.png)
 
-*図2: IRAS 20126+4104 における ALMA の Moment-8 マップ (Cesaroni et al. 2024) 。東西方向に噴き出すジェットが観測されています。中心には回転する円盤の円状の放射が見えていますね。*
+*図3: IRAS 20126+4104 における ALMA の Moment-8 マップ (Cesaroni et al. 2024) 。東西方向に噴き出すジェットが観測されています。中心には回転する円盤の円状の放射が見えていますね。*
 
-### 2. アウトフローとジェット
 - ALMAやVLBI観測により、**双極性アウトフロー**が多数の領域で検出。  
-- スケールは0.1～数pc、速度は数十～数百 km/s に達し、質量放出率は $10^{-6} - 10^{-4} M_{odot}$/年。  
+- 円盤の回転運動と、中心から噴き出すコリメートされたジェットの共存が明らかになっています。  
+- スケールは0.1～数pc、速度は数十～数百 km/s に達し、質量放出率は $10^{-6} - 10^{-4} M_{\odot}$/年。  
 - 最近のATOMSサーベイでは、複数の領域における統計的解析が進められています。  
 
 ### 3. 磁場の役割
@@ -116,15 +131,17 @@ published: true
 
 ## 参考文献と関連研究
 
-- [Zuckerman et al. (1976), *High-velocity gas in the Orion infrared nebula*, ApJ, 209, L137](https://ui.adsabs.harvard.edu/abs/1976ApJ...209L.137Z/abstract)  
-- [Kwan & Scoville (1976), *High-velocity CO in Orion A*, ApJ, 210, L39](https://ui.adsabs.harvard.edu/abs/1976ApJ...210L..39K/abstract)  
-- [Cheung et al. (1969), *Detection of H₂O 22 GHz maser emission in Orion KL*, Nature, 221, 626](https://ui.adsabs.harvard.edu/abs/1969Natur.221..626C/abstract)  
-- [Menten (1991), *Discovery of 6.7 GHz Class II methanol maser*, ApJ Lett., 380, L75](https://ui.adsabs.harvard.edu/abs/1991ApJ...380L..75M/abstract)  
-- [McKee & Tan (2003), *The formation of massive stars from turbulent cores*, ApJ, 585, 850](https://ui.adsabs.harvard.edu/abs/2003ApJ...585..850M/abstract)  
-- [Bonnell et al. (2004), *Competitive accretion in star clusters*, MNRAS, 349, 735](https://ui.adsabs.harvard.edu/abs/2004MNRAS.349..735B/abstract)  
-- [Hull et al. (2017), *ALMA polarization observations of magnetic fields in massive protostars*, ApJ, 847, 92](https://ui.adsabs.harvard.edu/abs/2017ApJ...847...92H/abstract)  
-- [Cesaroni et al. (2024), *ALMA observations of jets and outflows in massive protostars*, A&A, 683, A34](https://ui.adsabs.harvard.edu/abs/2024A%26A...683A..34C/abstract)  
-- [Gardiner et al. (2024), *Disk-Wind Feedback from High-Mass Protostars IV*, ApJ, 967, 145](https://ui.adsabs.harvard.edu/abs/2024ApJ...967..145G/abstract)  
+- [Cheung et al. (1969), *Detection of H₂O 22 GHz maser emission in Orion KL*, Nature, 221, 626](https://ui.adsabs.harvard.edu/abs/1969Natur.221..626C/abstract) – 水メーザーの発見  
+- [Zuckerman, Kuiper & Rodriguez-Kuiper (1976), *High-velocity gas in the Orion infrared nebula*, ApJ, 209, L137](https://ui.adsabs.harvard.edu/abs/1976ApJ...209L.137Z/abstract) – 最初期の分子アウトフロー検出  
+- [Kwan & Scoville (1976), *High-velocity CO in Orion A*, ApJ, 210, L39](https://ui.adsabs.harvard.edu/abs/1976ApJ...210L..39K/abstract) – 最初期の分子アウトフロー検出  
+- [Menten (1991), *Discovery of 6.7 GHz Class II methanol maser*, ApJ Lett., 380, L75](https://ui.adsabs.harvard.edu/abs/1991Natur.221..626C/abstract) – メタノールメーザーの発見  
+- [Motogi et al. (2019), *The First Bird’s-eye View of a Gravitationally Unstable Accretion Disk in High-mass Star Formation*, ApJ Lett., 876, L31](https://ui.adsabs.harvard.edu/abs/2019ApJ...876L..31M/abstract) – G353における重力不安定な円盤の初観測  
+- [McKee & Tan (2003), *The formation of massive stars from turbulent cores*, ApJ, 585, 850](https://ui.adsabs.harvard.edu/abs/2003ApJ...585..850M/abstract) – コア降着モデル  
+- [Bonnell et al. (2004), *Competitive accretion in star clusters*, MNRAS, 349, 735](https://ui.adsabs.harvard.edu/abs/2004MNRAS.349..735B/abstract) – 競合降着モデル  
+- [Hull et al. (2017), *ALMA polarization observations of magnetic fields in massive protostars*, ApJ, 847, 92](https://ui.adsabs.harvard.edu/abs/2017ApJ...847...92H/abstract) – 磁場観測の進展  
+- [Cesaroni et al. (2024), *ALMA observations of jets and outflows in massive protostars*, A&A, 683, A34](https://ui.adsabs.harvard.edu/abs/2024A%26A...683A..34C/abstract) – ALMAによる最新のアウトフロー観測  
+- [Gardiner et al. (2024), *Disk-Wind Feedback from High-Mass Protostars IV*, ApJ, 967, 145](https://ui.adsabs.harvard.edu/abs/2024ApJ...967..145G/abstract) – ディスク風とフィードバックの研究  
+
 
 ---
 
