@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllPostsMetadata } from '@/lib/blog';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://star-t-rain.vercel.app';
 
   // ブログ記事を取得
