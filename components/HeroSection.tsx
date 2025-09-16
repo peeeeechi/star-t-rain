@@ -226,7 +226,7 @@ export default function HeroSection() {
                       >
                         <Image
                           src={src}
-                          alt="中村桃太朗 - 天文学研究者・技術教育者"
+                          alt={`中村桃太朗のプロフィール写真 ${index + 1}枚目 - 電波天文学研究者・AI活用教育者 - 大島商船高等専門学校 助教`}
                           fill
                           className="object-cover object-center hover:scale-110 transition-transform duration-700"
                           priority={index === 0}

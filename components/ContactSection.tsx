@@ -320,9 +320,9 @@ export default function ContactSection() {
             className="text-gray-600 dark:text-gray-400 hover:text-cosmic-600 dark:hover:text-cosmic-400 transition-colors"
             aria-label="researchmap"
           >
-            <Image 
-              src="/researchmap-banner.png" 
-              alt="researchmap" 
+            <Image
+              src="/researchmap-banner.png"
+              alt="researchmapバナー - 中村桃太朗の研究者情報と業績一覧" 
               width={120}
               height={24}
               className="h-6 w-auto hover:opacity-80 transition-opacity"
