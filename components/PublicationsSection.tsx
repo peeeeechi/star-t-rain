@@ -9,13 +9,13 @@ interface Publication {
   journal: string;
   year: number;
   doi?: string;
-  type: 'journal' | 'conference' | 'book';
+  type: 'journal' | 'conference' | 'book' | 'media';
   category: 'astronomy' | 'ai-education' | 'interdisciplinary';
   citations?: number;
 }
 
 export default function PublicationsSection() {
-  const [selectedType, setSelectedType] = useState<'all' | 'journal' | 'conference' | 'book'>('all');
+  const [selectedType, setSelectedType] = useState<'all' | 'journal' | 'conference' | 'book' | 'media'>('all');
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'astronomy' | 'ai-education' | 'interdisciplinary'>('all');
   const [selectedYear, setSelectedYear] = useState<'all' | number>('all');
 
@@ -66,18 +66,18 @@ export default function PublicationsSection() {
     // },
 
     // === 学際研究 ===
-    // {
-    //   id: '5',
-    //   title: 'Python による天文観測データ解析システムの開発と教育応用',
-    //   authors: '中村 桃太朗, 情報工学科学生',
-    //   journal: '高専教育フォーラム',
-    //   year: 2024,
-    //   type: 'conference',
-    //   category: 'interdisciplinary',
-    //   citations: 0,
-    // },
     {
       id: '4',
+      title: 'New insights on the high-mass star formation using methanol and water masers in G59.783+0.065',
+      authors: ' ',
+      journal: 'News from e-MERLIN & VLBI',
+      year: 2024,
+      type: 'media',
+      category: 'astronomy',
+      citations: 0,
+    },
+    {
+      id: '5',
       title: 'メーザーから辿る大質量星形成領域 G59.783+0.065 の円盤 - アウトフロー構造',
       authors: '中村桃太朗',
       journal: '大質量星形成ワークショップ2024',
@@ -87,7 +87,7 @@ export default function PublicationsSection() {
       citations: 0,
     },
     {
-      id: '5',
+      id: '6',
       title: 'メーザーで捉える大質量原始星円盤周囲の回転＋降着/膨張流',
       authors: '中村 桃太朗',
       journal: 'VLBI懇談会シンポジウム2023',
@@ -97,7 +97,7 @@ export default function PublicationsSection() {
       citations: 0,
     },
     {
-      id: '6',
+      id: '7',
       title: 'A kinematic study of the disk-outflow system around a high-mass protostar G59 probing methanol and water masers',
       authors: 'Momotaro Nakamura, Kazuhito Motogi, Kenta Fujisawa',
       journal: '13th East Asian VLBI Workshop 2021',
@@ -107,7 +107,7 @@ export default function PublicationsSection() {
       citations: 0,
     },
     {
-      id: '7',
+      id: '8',
       title: '6.7 GHz メタノールメーザーは大質量原始星からの「円盤風」に付随する？',
       authors: '中村桃太朗, 元木業人, 藤沢健太',
       journal: 'VLBI懇談会シンポジウム2020',
@@ -117,7 +117,7 @@ export default function PublicationsSection() {
       citations: 0,
     },
     {
-      id: '8',
+      id: '9',
       title: 'Are 6.7-GHz methanol masers associated with protostellar outflow? 〜 A study of internal proper motion in HMSFR G 59.783+0.065 〜',
       authors: '中村桃太朗, 元木業人, 藤沢健太',
       journal: '第18回 水沢VLBI観測所ユーザーズミーティング',
@@ -142,6 +142,7 @@ export default function PublicationsSection() {
     journals: publications.filter(pub => pub.type === 'journal').length,
     conferences: publications.filter(pub => pub.type === 'conference').length,
     citations: publications.reduce((sum, pub) => sum + (pub.citations || 0), 0),
+    media: publications.filter(pub => pub.type === 'media').length,
   };
 
   return (
@@ -158,7 +159,7 @@ export default function PublicationsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12 max-w-2xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg">
             <div className="text-3xl font-bold text-cosmic-600 dark:text-cosmic-400">{stats.journals}</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">論文数</div>
@@ -170,6 +171,10 @@ export default function PublicationsSection() {
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg">
             <div className="text-3xl font-bold text-nebula-600 dark:text-nebula-400">{stats.citations}</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">総引用数</div>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-lg">
+            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">{stats.media}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">メディア掲載</div>
           </div>
         </div>
 
@@ -261,6 +266,16 @@ export default function PublicationsSection() {
             >
               書籍
             </button>
+            <button
+              onClick={() => setSelectedType('media')}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                selectedType === 'media'
+                  ? 'bg-cosmic-600 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              メディア
+            </button>
           </div>
 
           <select
@@ -327,9 +342,11 @@ export default function PublicationsSection() {
                       ? 'bg-cosmic-100 text-cosmic-700 dark:bg-cosmic-900 dark:text-cosmic-300'
                       : pub.type === 'conference'
                       ? 'bg-stellar-100 text-stellar-700 dark:bg-stellar-900 dark:text-stellar-300'
-                      : 'bg-nebula-100 text-nebula-700 dark:bg-nebula-900 dark:text-nebula-300'
+                      : pub.type === 'book'
+                      ? 'bg-nebula-100 text-nebula-700 dark:bg-nebula-900 dark:text-nebula-300'
+                      : 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
                   }`}>
-                    {pub.type === 'journal' ? '論文' : pub.type === 'conference' ? '会議' : '書籍'}
+                    {pub.type === 'journal' ? '論文' : pub.type === 'conference' ? '会議' : pub.type === 'book' ? '書籍' : 'メディア'}
                   </span>
                 </div>
               </div>
