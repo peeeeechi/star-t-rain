@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     images: ["/profile.png"],
   },
   verification: {
-    google: "your-google-verification-code", // 後で実際のコードに変更
+    google: "xTrD5m29Qfk9PKwK_Kl2VDF-RUlyRtBASlh_RRh6rFU", // 後で実際のコードに変更
   },
   alternates: {
     canonical: "https://star-t-rain.vercel.app",
