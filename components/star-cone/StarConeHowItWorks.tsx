@@ -31,17 +31,17 @@ export default function StarConeHowItWorks() {
     <section className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2 md:mb-4">
             使い方はシンプル
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-sm md:text-xl text-gray-600 dark:text-gray-300">
             3ステップで始められる簡単プレイ
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {steps.map((step, index) => (
             <div
               key={index}
@@ -53,28 +53,28 @@ export default function StarConeHowItWorks() {
               )}
 
               {/* Card */}
-              <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+              <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
                 {/* Step Number Badge */}
-                <div className="absolute -top-6 -left-6">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center shadow-lg`}>
-                    <span className="text-2xl font-bold text-white">
+                <div className="absolute -top-4 md:-top-6 -left-4 md:-left-6">
+                  <div className={`w-12 md:w-16 h-12 md:h-16 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center shadow-lg`}>
+                    <span className="text-lg md:text-2xl font-bold text-white">
                       {step.number}
                     </span>
                   </div>
                 </div>
 
                 {/* Icon */}
-                <div className="mb-6 mt-6">
-                  <div className={`w-20 h-20 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <step.icon className="w-10 h-10 text-white" />
+                <div className="mb-4 md:mb-6 mt-4 md:mt-6">
+                  <div className={`w-14 md:w-20 h-14 md:h-20 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <step.icon className="w-7 md:w-10 h-7 md:h-10 text-white" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-base md:text-2xl font-bold text-gray-900 dark:text-white mb-2 md:mb-4">
                   {step.title}
                 </h3>
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-xs md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -83,12 +83,12 @@ export default function StarConeHowItWorks() {
         </div>
 
         {/* Bottom Info */}
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-gradient-to-r from-[#004e92]/10 to-[#FFD700]/10 dark:from-[#004e92]/20 dark:to-[#FFD700]/20 rounded-2xl p-8 border border-[#004e92]/20">
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-2">
+        <div className="mt-12 md:mt-16 text-center">
+          <div className="inline-block bg-gradient-to-r from-[#004e92]/10 to-[#FFD700]/10 dark:from-[#004e92]/20 dark:to-[#FFD700]/20 rounded-2xl p-4 md:p-8 border border-[#004e92]/20">
+            <p className="text-sm md:text-lg text-gray-700 dark:text-gray-300 mb-1 md:mb-2">
               <span className="font-bold text-[#004e92] dark:text-[#FFD700]">1回のプレイ時間は約3分</span>
             </p>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-xs md:text-base text-gray-600 dark:text-gray-400">
               通学・通勤時間やスキマ時間に最適
             </p>
           </div>

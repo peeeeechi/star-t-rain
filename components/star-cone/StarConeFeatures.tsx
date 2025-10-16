@@ -17,7 +17,7 @@ const features = [
   {
     icon: BookOpen,
     title: '📚 充実した学習コンテンツ',
-    description: 'IAU準拠の88星座完全収録',
+    description: 'IAU準拠の88星座を収録',
     details: [
       '初級から段階的にステップアップ',
       '図鑑機能で星座の詳細説明と神話',
@@ -65,48 +65,45 @@ export default function StarConeFeatures() {
     <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2 md:mb-4">
             「star⭐︎cone」(星コネ) の特徴
           </h2>
-          {/* <p className="text-xl text-gray-600 dark:text-gray-300">
-            star⭐︎coneの魅力
-          </p> */}
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
+              className="group relative bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
             >
               {/* Icon */}
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#004e92] to-[#000428] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 text-white" />
+              <div className="mb-4 md:mb-6">
+                <div className="w-12 md:w-16 h-12 md:h-16 bg-gradient-to-br from-[#004e92] to-[#000428] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <feature.icon className="w-6 md:w-8 h-6 md:h-8 text-white" />
                 </div>
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white mb-2 md:mb-3">
                 {feature.title}
               </h3>
 
               {/* Description */}
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-sm md:text-lg text-gray-600 dark:text-gray-300 mb-4 md:mb-6">
                 {feature.description}
               </p>
 
               {/* Details List */}
-              <ul className="space-y-3">
+              <ul className="space-y-2 md:space-y-3">
                 {feature.details.map((detail, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-3 text-gray-700 dark:text-gray-400"
+                    className="flex items-start gap-2 md:gap-3 text-gray-700 dark:text-gray-400"
                   >
-                    <span className="text-[#FFD700] text-xl mt-0.5">✦</span>
-                    <span className="text-sm leading-relaxed">{detail}</span>
+                    <span className="text-[#FFD700] text-base md:text-xl mt-0.5">✦</span>
+                    <span className="text-xs md:text-sm leading-relaxed">{detail}</span>
                   </li>
                 ))}
               </ul>
@@ -118,13 +115,13 @@ export default function StarConeFeatures() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <div className="mt-12 md:mt-16 text-center">
+          <p className="text-sm md:text-lg text-gray-600 dark:text-gray-300 mb-4 md:mb-6">
             これらすべての機能を今すぐ体験
           </p>
           <a
             href="#download"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#004e92] to-[#000428] text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#004e92] to-[#000428] text-white rounded-xl font-bold text-sm md:text-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
           >
             無料で始める
           </a>

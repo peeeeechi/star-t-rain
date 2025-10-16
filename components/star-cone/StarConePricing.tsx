@@ -127,10 +127,10 @@ export default function StarConePricing() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             料金プラン
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-base md:text-xl text-gray-600 dark:text-gray-300">
             初級は完全無料。自分のペースでステップアップ
           </p>
         </div>
@@ -156,7 +156,7 @@ export default function StarConePricing() {
                     <subscriptionPlan.icon className="w-10 h-10 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-xl md:text-3xl font-bold text-gray-900 dark:text-white">
                       {subscriptionPlan.name}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">{subscriptionPlan.description}</p>
@@ -216,7 +216,7 @@ export default function StarConePricing() {
                     <bundlePlan.icon className="w-10 h-10 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-xl md:text-3xl font-bold text-gray-900 dark:text-white">
                       {bundlePlan.name}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">{bundlePlan.description}</p>
@@ -264,7 +264,7 @@ export default function StarConePricing() {
 
         {/* Pricing Cards */}
         <div className="mb-8">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
+          <h3 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
             買い切りプラン
           </h3>
         </div>
@@ -291,7 +291,7 @@ export default function StarConePricing() {
               </div>
 
               {/* Plan Name */}
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">
+              <h3 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">
                 {plan.name}
               </h3>
 

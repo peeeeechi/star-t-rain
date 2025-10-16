@@ -14,96 +14,96 @@ export default function StarConeHero() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
         {/* Logo/Title */}
-        <div className="mb-8 animate-fade-in">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Star className="w-12 h-12 text-[#FFD700] fill-[#FFD700] animate-pulse" />
-            <h1 className="text-6xl md:text-7xl font-bold text-white">
+        <div className="mb-6 animate-fade-in">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Star className="w-8 md:w-12 h-8 md:h-12 text-[#FFD700] fill-[#FFD700] animate-pulse" />
+            <h1 className="text-4xl md:text-7xl font-bold text-white">
               star<span className="text-[#FFD700]">⭐︎</span>cone
             </h1>
           </div>
-          <p className="text-2xl md:text-3xl text-gray-200 font-light">
+          <p className="text-lg md:text-3xl text-gray-200 font-light">
             星コネ - 星をつないで、星座を完成させよう
           </p>
         </div>
 
         {/* Main Description */}
-        <div className="mb-12 space-y-4">
-          <p className="text-xl md:text-2xl text-gray-100 leading-relaxed">
+        <div className="mb-8 space-y-2">
+          <p className="text-base md:text-2xl text-gray-100 leading-relaxed">
             88の星座を収録した本格派星座クイズゲーム
           </p>
-          <p className="text-lg md:text-xl text-gray-300">
+          <p className="text-sm md:text-xl text-gray-300">
             IAU準拠の正確なデータで、楽しく学べる
           </p>
         </div>
 
         {/* Key Features Pills */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <div className="px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-            <span className="text-white font-medium">🎮 タイマー制ゲーム</span>
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+          <div className="px-4 md:px-6 py-2 md:py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+            <span className="text-white font-medium text-sm md:text-base">🎮 タイマー制ゲーム</span>
           </div>
-          <div className="px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-            <span className="text-white font-medium">📚 88星座完全収録</span>
+          <div className="px-4 md:px-6 py-2 md:py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+            <span className="text-white font-medium text-sm md:text-base">📚 88星座完全収録</span>
           </div>
-          <div className="px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-            <span className="text-white font-medium">💰 初級は完全無料</span>
+          <div className="px-4 md:px-6 py-2 md:py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+            <span className="text-white font-medium text-sm md:text-base">💰 初級は完全無料</span>
           </div>
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
           <a
             href="#"
-            className="group relative px-8 py-4 bg-white text-[#004e92] rounded-xl font-bold text-lg shadow-2xl hover:shadow-[#FFD700]/50 transition-all duration-300 hover:scale-105 flex items-center gap-3 min-w-[240px] justify-center"
+            className="group relative px-6 md:px-8 py-3 md:py-4 bg-white text-[#004e92] rounded-xl font-bold text-sm md:text-lg shadow-2xl hover:shadow-[#FFD700]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 md:gap-3 min-w-[200px] md:min-w-[240px] justify-center"
           >
-            <Download className="w-6 h-6" />
-            App Storeからダウンロード
+            <Download className="w-5 md:w-6 h-5 md:h-6" />
+            <span className="whitespace-nowrap">App Storeからダウンロード</span>
           </a>
           <a
             href="#"
-            className="group relative px-8 py-4 bg-[#FFD700] text-[#000428] rounded-xl font-bold text-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105 flex items-center gap-3 min-w-[240px] justify-center"
+            className="group relative px-6 md:px-8 py-3 md:py-4 bg-[#FFD700] text-[#000428] rounded-xl font-bold text-sm md:text-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 md:gap-3 min-w-[200px] md:min-w-[240px] justify-center"
           >
-            <Download className="w-6 h-6" />
-            Google Playで入手
+            <Download className="w-5 md:w-6 h-5 md:h-6" />
+            <span className="whitespace-nowrap">Google Playで入手</span>
           </a>
         </div>
 
         {/* Free Badge */}
-        <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFD700] text-[#000428] rounded-full font-bold shadow-lg mb-8">
-          <Sparkles className="w-5 h-5" />
+        <div className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-[#FFD700] text-[#000428] rounded-full font-bold shadow-lg mb-6 text-sm md:text-base">
+          <Sparkles className="w-4 md:w-5 h-4 md:h-5" />
           初級は完全無料で何度でもプレイ可能
         </div>
 
         {/* Update Info */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-left">
-            <div className="flex items-start gap-3 mb-4">
-              <span className="text-2xl">🆕</span>
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 md:p-6 text-left">
+            <div className="flex items-start gap-2 md:gap-3 mb-3 md:mb-4">
+              <span className="text-xl md:text-2xl">🆕</span>
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">最新アップデート情報</h3>
-                <div className="space-y-3 text-gray-200">
+                <h3 className="text-base md:text-xl font-bold text-white mb-2">最新アップデート情報</h3>
+                <div className="space-y-2 md:space-y-3 text-gray-200">
                   <div className="flex items-start gap-2">
-                    <span className="text-[#FFD700] mt-1">●</span>
+                    <span className="text-[#FFD700] mt-1 text-xs">●</span>
                     <div>
-                      <p className="font-semibold">バージョン 1.0.0</p>
-                      <p className="text-sm text-gray-300">初回リリース - 48星座実装済み</p>
+                      <p className="font-semibold text-sm md:text-base">バージョン 1.0.0</p>
+                      <p className="text-xs md:text-sm text-gray-300">初回リリース - 48星座実装済み</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-[#FFD700] mt-1">●</span>
+                    <span className="text-[#FFD700] mt-1 text-xs">●</span>
                     <div>
-                      <p className="text-sm text-gray-300">図鑑機能・スコア管理機能を搭載</p>
+                      <p className="text-xs md:text-sm text-gray-300">図鑑機能・スコア管理機能を搭載</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-[#FFD700] mt-1">●</span>
+                    <span className="text-[#FFD700] mt-1 text-xs">●</span>
                     <div>
-                      <p className="text-sm text-gray-300">プレミアムサブスクリプション提供開始（3日間無料トライアル）</p>
+                      <p className="text-xs md:text-sm text-gray-300">プレミアムサブスクリプション提供開始（3日間無料トライアル）</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-blue-400 mt-1">🔜</span>
                     <div>
-                      <p className="text-sm text-gray-400 italic">今後のアップデート：残り40星座を順次追加予定</p>
+                      <p className="text-xs md:text-sm text-gray-400 italic">今後のアップデート：残り40星座を順次追加予定</p>
                     </div>
                   </div>
                 </div>

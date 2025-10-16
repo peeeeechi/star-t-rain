@@ -83,10 +83,10 @@ export default function StarConeScreenshots() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold text-white mb-4">
             アプリの画面
           </h2>
-          <p className="text-xl text-gray-200">
+          <p className="text-base md:text-xl text-sm md:text-base text-gray-200">
             美しいビジュアルと直感的なUIをご覧ください
           </p>
         </div>
@@ -122,10 +122,10 @@ export default function StarConeScreenshots() {
 
           {/* Image Info */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-            <h3 className="text-2xl font-bold text-white mb-2">
+            <h3 className="text-lg md:text-2xl font-bold text-white mb-2">
               {screenshots[currentIndex].title}
             </h3>
-            <p className="text-gray-200">
+            <p className="text-sm md:text-base text-gray-200">
               {screenshots[currentIndex].description}
             </p>
           </div>
@@ -179,22 +179,22 @@ export default function StarConeScreenshots() {
         <div className="mt-16 grid md:grid-cols-3 gap-8">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
             <div className="text-4xl mb-3">🎨</div>
-            <h3 className="text-xl font-bold text-white mb-2">美しいUI</h3>
-            <p className="text-gray-300 text-sm">
+            <h3 className="text-base md:text-xl font-bold text-white mb-2">美しいUI</h3>
+            <p className="text-gray-300 text-xs md:text-sm">
               宇宙空間の臨場感あふれるグラデーションデザイン
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
             <div className="text-4xl mb-3">📱</div>
-            <h3 className="text-xl font-bold text-white mb-2">直感的な操作</h3>
-            <p className="text-gray-300 text-sm">
+            <h3 className="text-base md:text-xl font-bold text-white mb-2">直感的な操作</h3>
+            <p className="text-gray-300 text-xs md:text-sm">
               タッチ操作で簡単に星をつなぐシンプルなインターフェース
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
             <div className="text-4xl mb-3">✨</div>
-            <h3 className="text-xl font-bold text-white mb-2">アニメーション</h3>
-            <p className="text-gray-300 text-sm">
+            <h3 className="text-base md:text-xl font-bold text-white mb-2">アニメーション</h3>
+            <p className="text-gray-300 text-xs md:text-sm">
               スムーズなアニメーションで星の輝きと線のつながりを表現
             </p>
           </div>
