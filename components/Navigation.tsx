@@ -2,17 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  Telescope, 
-  BookOpen, 
-  GraduationCap, 
-  FileText, 
-  Newspaper, 
+import {
+  Telescope,
+  BookOpen,
+  GraduationCap,
+  FileText,
+  Newspaper,
   Mail,
   Sparkles,
   Menu,
   X,
-  Zap
+  Zap,
+  Star
 } from 'lucide-react';
 
 export default function Navigation() {
@@ -33,6 +34,7 @@ export default function Navigation() {
     { label: '教育', href: '/#education', Icon: GraduationCap },
     { label: 'ブログ', href: '/blog', Icon: FileText },
     { label: 'ニュース', href: '/#news', Icon: Newspaper },
+    { label: 'star⭐︎cone', href: '/star-cone', Icon: Star },
     { label: 'お問い合わせ', href: '/#contact', Icon: Mail },
   ];
 
