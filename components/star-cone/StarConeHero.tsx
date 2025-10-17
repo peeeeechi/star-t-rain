@@ -22,7 +22,7 @@ export default function StarConeHero() {
             </h1>
           </div>
           <p className="text-lg md:text-3xl text-gray-200 font-light">
-            星コネ - 星をつないで、星座を完成させよう
+            星をつないで、星座を完成させよう
           </p>
         </div>
 
@@ -49,66 +49,65 @@ export default function StarConeHero() {
           </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-          <a
-            href="#"
-            className="group relative px-6 md:px-8 py-3 md:py-4 bg-white text-[#004e92] rounded-xl font-bold text-sm md:text-lg shadow-2xl hover:shadow-[#FFD700]/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 md:gap-3 min-w-[200px] md:min-w-[240px] justify-center"
-          >
-            <Download className="w-5 md:w-6 h-5 md:h-6" />
-            <span className="whitespace-nowrap">App Storeからダウンロード</span>
-          </a>
-          <a
-            href="#"
-            className="group relative px-6 md:px-8 py-3 md:py-4 bg-[#FFD700] text-[#000428] rounded-xl font-bold text-sm md:text-lg shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 md:gap-3 min-w-[200px] md:min-w-[240px] justify-center"
-          >
-            <Download className="w-5 md:w-6 h-5 md:h-6" />
-            <span className="whitespace-nowrap">Google Playで入手</span>
-          </a>
+        {/* Coming Soon Badge */}
+        <div className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-[#000428] rounded-full font-bold shadow-2xl mb-6 text-base md:text-xl animate-pulse">
+          <Sparkles className="w-5 md:w-6 h-5 md:h-6" />
+          2025年秋 リリース予定
         </div>
 
-        {/* Free Badge */}
-        <div className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-[#FFD700] text-[#000428] rounded-full font-bold shadow-lg mb-6 text-sm md:text-base">
-          <Sparkles className="w-4 md:w-5 h-4 md:h-5" />
-          初級は完全無料で何度でもプレイ可能
-        </div>
-
-        {/* Update Info */}
+        {/* Pre-Release Info */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 md:p-6 text-left">
+          <div className="bg-white/10 backdrop-blur-sm border border-[#FFD700]/30 rounded-2xl p-4 md:p-6 text-left">
             <div className="flex items-start gap-2 md:gap-3 mb-3 md:mb-4">
-              <span className="text-xl md:text-2xl">🆕</span>
+              <span className="text-xl md:text-2xl">🚀</span>
               <div>
-                <h3 className="text-base md:text-xl font-bold text-white mb-2">最新アップデート情報</h3>
+                <h3 className="text-base md:text-xl font-bold text-white mb-2">リリース予定の内容</h3>
                 <div className="space-y-2 md:space-y-3 text-gray-200">
                   <div className="flex items-start gap-2">
-                    <span className="text-[#FFD700] mt-1 text-xs">●</span>
+                    <span className="text-[#FFD700] mt-1 text-xs">✓</span>
                     <div>
-                      <p className="font-semibold text-sm md:text-base">バージョン 1.0.0</p>
-                      <p className="text-xs md:text-sm text-gray-300">初回リリース - 48星座実装済み</p>
+                      <p className="text-xs md:text-sm text-gray-300">88星座のうち48星座を初回実装</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-[#FFD700] mt-1 text-xs">●</span>
+                    <span className="text-[#FFD700] mt-1 text-xs">✓</span>
                     <div>
                       <p className="text-xs md:text-sm text-gray-300">図鑑機能・スコア管理機能を搭載</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-[#FFD700] mt-1 text-xs">●</span>
+                    <span className="text-[#FFD700] mt-1 text-xs">✓</span>
                     <div>
-                      <p className="text-xs md:text-sm text-gray-300">プレミアムサブスクリプション提供開始（3日間無料トライアル）</p>
+                      <p className="text-xs md:text-sm text-gray-300">初級モードは完全無料で何度でもプレイ可能</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-[#FFD700] mt-1 text-xs">✓</span>
+                    <div>
+                      <p className="text-xs md:text-sm text-gray-300">プレミアムサブスクリプション（3日間無料トライアル）</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-blue-400 mt-1">🔜</span>
                     <div>
-                      <p className="text-xs md:text-sm text-gray-400 italic">今後のアップデート：残り40星座を順次追加予定</p>
+                      <p className="text-xs md:text-sm text-gray-400 italic">リリース後、残り40星座を順次追加予定</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* CTA Buttons - Coming Soon */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 mb-6">
+          <div className="px-6 md:px-8 py-3 md:py-4 bg-white/20 text-white border-2 border-white/40 rounded-xl font-bold text-sm md:text-lg flex items-center gap-2 md:gap-3 min-w-[200px] md:min-w-[240px] justify-center cursor-not-allowed">
+            <Download className="w-5 md:w-6 h-5 md:h-6 opacity-60" />
+            <span className="whitespace-nowrap">App Store（準備中）</span>
+          </div>
+          <div className="px-6 md:px-8 py-3 md:py-4 bg-[#FFD700]/20 text-white border-2 border-[#FFD700]/40 rounded-xl font-bold text-sm md:text-lg flex items-center gap-2 md:gap-3 min-w-[200px] md:min-w-[240px] justify-center cursor-not-allowed">
+            <Download className="w-5 md:w-6 h-5 md:h-6 opacity-60" />
+            <span className="whitespace-nowrap">Google Play（準備中）</span>
           </div>
         </div>
 

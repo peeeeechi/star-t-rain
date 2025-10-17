@@ -106,13 +106,13 @@ export default function StarConeDownload() {
           >
             star0cone.dev@gmail.com
           </a>
-          {/* <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">プライバシーポリシー</a>
+          <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-400">
+            <a href="/star-cone/privacy" className="hover:text-white transition-colors">プライバシーポリシー</a>
             <span>•</span>
-            <a href="#" className="hover:text-white transition-colors">利用規約</a>
+            <a href="/star-cone/terms" className="hover:text-white transition-colors">利用規約</a>
             <span>•</span>
-            <a href="#" className="hover:text-white transition-colors">特定商取引法</a>
-          </div> */}
+            <a href="/star-cone/commercial-transaction" className="hover:text-white transition-colors">特定商取引法</a>
+          </div>
         </div>
 
         {/* Developer Info */}
