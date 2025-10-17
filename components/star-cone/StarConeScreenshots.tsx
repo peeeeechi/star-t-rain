@@ -92,7 +92,7 @@ export default function StarConeScreenshots() {
         </div>
 
         {/* Main Screenshot Carousel */}
-        <div className="relative max-w-4xl mx-auto mb-12">
+        <div className="relative max-w-sm md:max-w-md lg:max-w-lg mx-auto mb-12">
           {/* Main Image */}
           <div className="relative aspect-[9/19.5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-black">
             <Image
