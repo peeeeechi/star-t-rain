@@ -8,12 +8,13 @@ export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [stars, setStars] = useState<Array<{ left: string; top: string; delay: string; size: number; type: 'star' | 'sparkle' | 'comet' }>>([]);
   const [particles, setParticles] = useState<Array<{ left: string; top: string; delay: string; direction: string }>>([]);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const images = [
-    '/profile.png',
-    '/profile2.jpg'
-  ];
+  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // スライドショーを復活させる場合は、この配列のコメントアウトを外してください
+  // const images = [
+  //   '/profile.png',
+  //   '/profile2.jpg'
+  // ];
 
   useEffect(() => {
     setIsVisible(true);
@@ -37,16 +38,17 @@ export default function HeroSection() {
     setParticles(generatedParticles);
   }, []);
 
-  // 画像スライドショーの設定
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000); // 5秒ごとに切り替え
+  // スライドショーを復活させる場合は、このuseEffectのコメントアウトを外してください
+  // // 画像スライドショーの設定
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentImageIndex((prevIndex) =>
+  //       prevIndex === images.length - 1 ? 0 : prevIndex + 1
+  //     );
+  //   }, 5000); // 5秒ごとに切り替え
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+  //   return () => clearInterval(interval);
+  // }, [images.length]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
@@ -216,8 +218,16 @@ export default function HeroSection() {
               <div className="relative bg-gradient-to-br from-white/10 to-gray-200/5 dark:from-gray-800/30 dark:to-gray-900/50 rounded-full p-8 shadow-2xl backdrop-blur-sm border border-white/20 dark:border-gray-700/30 hover:scale-105 transition-transform duration-700 hover:rotate-1">
                 <div className="aspect-square rounded-full bg-gradient-to-br from-cosmic-100/80 to-stellar-100/80 dark:from-cosmic-900/50 dark:to-stellar-900/50 flex items-center justify-center shadow-inner hover:shadow-2xl transition-shadow duration-500 backdrop-blur-sm overflow-hidden">
                   <div className="relative w-full h-full rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-500">
-                    {/* スライドショー画像 */}
-                    {images.map((src, index) => (
+                    {/* 固定プロフィール画像 */}
+                    <Image
+                      src="/profile.png"
+                      alt="中村桃太朗のプロフィール写真 - 電波天文学研究者・AI活用教育者 - 大島商船高等専門学校 助教"
+                      fill
+                      className="object-cover object-center hover:scale-110 transition-transform duration-700"
+                      priority
+                    />
+                    {/* スライドショーを復活させる場合は、上記の固定画像をコメントアウトして、以下のコードのコメントを外してください */}
+                    {/* {images.map((src, index) => (
                       <div
                         key={src}
                         className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -232,29 +242,29 @@ export default function HeroSection() {
                           priority={index === 0}
                         />
                       </div>
-                    ))}
+                    ))} */}
                     {/* 画像上のオーバーレイ効果 */}
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-cosmic-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="absolute inset-0 ring-2 ring-cosmic-400/30 ring-inset rounded-full opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    {/* スライドインジケーター */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+
+                    {/* スライドインジケーター（スライドショー復活時に使用） */}
+                    {/* <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                       {images.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => setCurrentImageIndex(index)}
                           className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            index === currentImageIndex 
-                              ? 'bg-white w-8' 
+                            index === currentImageIndex
+                              ? 'bg-white w-8'
                               : 'bg-white/50 hover:bg-white/70'
                           }`}
                           aria-label={`画像${index + 1}を表示`}
                         />
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
-                
+
                 {/* 回転する装飾リング */}
                 <div className="absolute inset-2 border-2 border-gradient-to-r border-cosmic-300/30 dark:border-cosmic-600/30 rounded-full animate-spin-slow"></div>
                 <div className="absolute inset-4 border border-stellar-300/20 dark:border-stellar-600/20 rounded-full animate-spin-reverse"></div>
