@@ -34,7 +34,7 @@ export default function Navigation() {
     { label: '教育', href: '/#education', Icon: GraduationCap },
     { label: 'ブログ', href: '/blog', Icon: FileText },
     { label: 'ニュース', href: '/#news', Icon: Newspaper },
-    { label: 'star⭐︎cone', href: '/star-cone', Icon: Star },
+    { label: '星プラっと', href: '/star-cone', Icon: Star },
     { label: 'お問い合わせ', href: '/#contact', Icon: Mail },
   ];
 

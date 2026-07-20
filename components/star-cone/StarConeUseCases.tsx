@@ -1,6 +1,6 @@
 'use client';
 
-import { Train, Moon, Users, Tent, BookOpen } from 'lucide-react';
+import { Train, Moon, Tent } from 'lucide-react';
 
 const useCases = [
   {

@@ -1,6 +1,6 @@
 'use client';
 
-import { Download, Smartphone, Star, Mail } from 'lucide-react';
+import { Download, Star, Mail } from 'lucide-react';
 
 export default function StarConeDownload() {
   return (
