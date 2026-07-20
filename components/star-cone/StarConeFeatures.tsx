@@ -1,6 +1,6 @@
 'use client';
 
-import { Gamepad2, BookOpen, Palette, Music, Coins } from 'lucide-react';
+import { Gamepad2, BookOpen, Palette } from 'lucide-react';
 
 const features = [
   {

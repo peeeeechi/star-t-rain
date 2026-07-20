@@ -21,6 +21,111 @@ body {
   font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
+.star-pla-hero {
+  background: #050917;
+}
+
+.star-pla-stars {
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle at 11% 22%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 73% 18%, rgba(142, 183, 255, 0.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 61%, rgba(255, 216, 137, 0.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 85% 72%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.5px);
+  background-size: 190px 190px, 260px 260px, 320px 320px, 410px 410px;
+}
+
+.star-pla-screen-scroll {
+  scrollbar-color: rgba(255, 216, 137, 0.5) rgba(255, 255, 255, 0.06);
+  scrollbar-width: thin;
+}
+
+.star-pla-screen-scroll::-webkit-scrollbar {
+  height: 7px;
+}
+
+.star-pla-screen-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.star-pla-screen-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 216, 137, 0.5);
+  border-radius: 999px;
+}
+
+.star-pla-legal {
+  color: #445067;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.star-pla-legal > section + section {
+  margin-top: 3.5rem;
+}
+
+.star-pla-legal h2 {
+  color: #172035;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.star-pla-legal p {
+  margin-top: 1rem;
+}
+
+.star-pla-legal ul {
+  list-style: disc;
+  margin: 1rem 0 0 1.35rem;
+}
+
+.star-pla-legal li + li {
+  margin-top: 0.35rem;
+}
+
+.star-pla-legal a {
+  color: #315f9d;
+  font-weight: 600;
+  margin: 0 0.2rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.star-pla-legal .section-label {
+  color: #8b650d;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 0.4rem;
+}
+
+.star-pla-legal dt {
+  color: #778196;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.star-pla-legal dd {
+  color: #172035;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.star-pla-legal .document-date {
+  border-top: 1px solid #dce2ed;
+  color: #778196;
+  font-size: 0.8rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-pla-screen-scroll {
+    scroll-behavior: auto;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

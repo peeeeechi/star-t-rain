@@ -1,34 +1,36 @@
-import StarConeHero from '@/components/star-cone/StarConeHero';
-import StarConeFeatures from '@/components/star-cone/StarConeFeatures';
-import StarConeScreenshots from '@/components/star-cone/StarConeScreenshots';
-import StarConeHowItWorks from '@/components/star-cone/StarConeHowItWorks';
-import StarConePricing from '@/components/star-cone/StarConePricing';
-import StarConeUseCases from '@/components/star-cone/StarConeUseCases';
-import StarConeDownload from '@/components/star-cone/StarConeDownload';
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import StarPlaLanding from '@/components/star-cone/StarPlaLanding';
 
-export const metadata = {
-  title: 'star⭐︎cone（星コネ）| 星座クイズゲームアプリ',
-  description: '星をつないで星座を完成させよう！88の星座を収録した本格派星座クイズゲーム。IAU準拠の正確なデータで、楽しく学べる教育アプリ。初級は完全無料。',
-  keywords: ['星座ゲーム', '星座アプリ', '星座クイズ', '天文学アプリ', '教育アプリ', '子ども学習', '理科'],
+export const metadata: Metadata = {
+  title: '星プラっと | 星座をスマホでパッと学ぶ',
+  description:
+    '星をつなぐミッション、星探し、4択クイズ、視覚学習ラボで星座と天文学の基礎を学ぶiPhoneアプリ「星プラっと」の公式ページです。',
+  keywords: ['星座', '天文', '星', '宇宙', '理科', '学習', 'クイズ', '図鑑', '光年', '等級'],
+  alternates: {
+    canonical: '/star-cone',
+  },
   openGraph: {
-    title: 'star⭐︎cone（星コネ）| 星座クイズゲームアプリ',
-    description: '星をつないで星座を完成させよう！88の星座を収録した本格派星座クイズゲーム。',
+    title: '星プラっと | 星座をスマホでパッと学ぶ',
+    description: '星をつなぎ、見つけ、確かめる。星座と天文学の基礎を体験から学ぶiPhoneアプリ。',
+    url: '/star-cone',
     type: 'website',
+    images: [
+      {
+        url: '/star-pla/app-icon.png',
+        width: 1024,
+        height: 1024,
+        alt: '星プラっと',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: '星プラっと | 星座をスマホでパッと学ぶ',
+    description: '星をつなぎ、見つけ、確かめる。星座と天文学の基礎を体験から学ぶiPhoneアプリ。',
+    images: ['/star-pla/app-icon.png'],
   },
 };
 
-export default function StarConePage() {
-  return (
-    <>
-      <StarConeHero />
-      <StarConeFeatures />
-      <StarConeScreenshots />
-      <StarConeHowItWorks />
-      {/* <StarConePricing /> */}
-      <StarConeUseCases />
-      <StarConeDownload />
-      <Footer />
-    </>
-  );
+export default function StarPlaPage() {
+  return <StarPlaLanding />;
 }
