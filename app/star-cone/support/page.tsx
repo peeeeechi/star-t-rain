@@ -106,20 +106,20 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="mt-14 rounded-lg bg-[#081026] p-6 text-white sm:p-8">
+      <section id="contact" className="mt-14 scroll-mt-24 rounded-lg bg-[#081026] p-6 text-white sm:p-8">
         <Mail className="h-6 w-6 text-[#ffd889]" />
-        <h2 className="mt-5 text-white">解決しない場合</h2>
+        <h2 className="mt-5 !text-white">解決しない場合</h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">
           ご質問、ご要望、不具合報告はメールで受け付けています。通常は内容を確認後、必要に応じて返信します。
         </p>
         <a
           href="mailto:star0cone.dev@gmail.com?subject=%E6%98%9F%E3%83%97%E3%83%A9%E3%81%A3%E3%81%A8%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88"
-          className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#ffd889] px-5 py-3 text-sm font-bold text-[#17120b] hover:bg-white"
+          className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#ffd889] px-5 py-3 text-sm font-bold !text-[#17120b] !no-underline hover:bg-white"
         >
           <Mail className="h-4 w-4" />
           star0cone.dev@gmail.com
         </a>
-        <p className="mt-4 text-xs leading-6 text-slate-500">
+        <p className="mt-4 text-xs leading-6 text-slate-300">
           返信を保証するものではありません。迷惑メール設定により返信を受信できない場合があります。
         </p>
       </section>
