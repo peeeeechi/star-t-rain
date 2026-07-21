@@ -7,6 +7,7 @@ import {
   GraduationCap,
   HelpCircle,
   Mail,
+  Orbit,
   Route,
   ShieldCheck,
   Sparkles,
@@ -52,6 +53,30 @@ const screens = [
   { src: '/star-pla/screenshots/kentei.png', title: '10問のタイムに挑戦', tag: '検定' },
 ];
 
+const roadmap = [
+  {
+    version: 'v1.0',
+    status: '現在',
+    count: '25星座',
+    title: '基本コース',
+    copy: '季節の代表星座と黄道十二星座を中心に、星の形・名前・基礎知識を学べます。',
+  },
+  {
+    version: 'v1.x',
+    status: '順次追加',
+    count: '追加パック',
+    title: '星空を広げる',
+    copy: '季節や空での位置関係をたどりやすいまとまりごとに、新しい星座と問題を追加します。',
+  },
+  {
+    version: 'v2.0',
+    status: '目標',
+    count: '全88星座',
+    title: '全天を学べる図鑑へ',
+    copy: '北天から南天まで、国際天文学連合が定める88星座すべてへの対応を予定しています。',
+  },
+];
+
 export default function StarPlaLanding() {
   return (
     <div className="min-h-screen bg-[#050917] text-white">
@@ -94,6 +119,7 @@ export default function StarPlaLanding() {
           <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-400">
             <span>iOS 15.0以降</span>
             <span>無料</span>
+            <span>25星座収録</span>
             <span>ログイン不要</span>
             <span>広告なし</span>
           </div>
@@ -202,6 +228,61 @@ export default function StarPlaLanding() {
             />
           </div>
         </div>
+      </section>
+
+      <section id="roadmap" className="border-b border-white/10 bg-[#071323] px-4 py-20 sm:px-6 md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+          <div>
+            <div className="flex items-center gap-3 text-[#73d4c3]">
+              <Orbit className="h-5 w-5" />
+              <p className="text-sm font-bold">アップデート計画</p>
+            </div>
+            <h2 className="mt-4 text-3xl font-semibold tracking-normal sm:text-4xl">
+              星空は、<span className="block sm:inline">これからも広がる</span>
+            </h2>
+            <p className="mt-5 text-base leading-8 text-slate-300">
+              v1.0を学びきれる基本コースとして届けたうえで、星座と学習内容をアップデートで段階的に拡充します。
+            </p>
+
+            <div className="mt-9" aria-label="現在25星座、目標88星座">
+              <div className="flex items-end justify-between gap-5">
+                <span>
+                  <em className="block text-xs not-italic text-slate-400">現在</em>
+                  <strong className="mt-1 block text-3xl font-semibold text-white">25星座</strong>
+                </span>
+                <span className="text-right">
+                  <em className="block text-xs not-italic text-slate-400">目標</em>
+                  <strong className="mt-1 block text-3xl font-semibold text-[#ffd889]">88星座</strong>
+                </span>
+              </div>
+              <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/10">
+                <span className="block h-full w-[28.4%] rounded-full bg-[#73d4c3]" />
+              </div>
+            </div>
+          </div>
+
+          <ol className="border-y border-white/10">
+            {roadmap.map((item, index) => (
+              <li
+                key={item.version}
+                className={`grid gap-4 py-7 sm:grid-cols-[92px_1fr_auto] sm:items-center sm:gap-6 ${index < roadmap.length - 1 ? 'border-b border-white/10' : ''}`}
+              >
+                <span className="text-sm font-bold text-[#8eb7ff]">{item.version}</span>
+                <span>
+                  <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <strong className="text-lg font-semibold text-white">{item.title}</strong>
+                    <em className="text-xs not-italic text-slate-500">{item.status}</em>
+                  </span>
+                  <span className="mt-2 block text-sm leading-7 text-slate-300">{item.copy}</span>
+                </span>
+                <strong className="text-sm font-semibold text-[#ffd889] sm:text-right">{item.count}</strong>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p className="mx-auto mt-8 max-w-7xl text-xs leading-6 text-slate-500">
+          追加内容や提供時期は、学習内容と天文データの確認状況により変更になる場合があります。
+        </p>
       </section>
 
       <section id="screens" className="overflow-hidden border-b border-white/10 bg-[#0a1124] py-20 md:py-28">
