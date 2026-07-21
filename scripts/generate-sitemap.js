@@ -30,6 +30,11 @@ function generateSitemap() {
     { url: `${baseUrl}/#education`, priority: '0.8', changefreq: 'monthly' },
     { url: `${baseUrl}/#news`, priority: '0.8', changefreq: 'weekly' },
     { url: `${baseUrl}/#contact`, priority: '0.6', changefreq: 'yearly' },
+    { url: `${baseUrl}/star-cone`, priority: '0.9', changefreq: 'monthly' },
+    { url: `${baseUrl}/star-cone/data-sources`, priority: '0.7', changefreq: 'monthly' },
+    { url: `${baseUrl}/star-cone/support`, priority: '0.7', changefreq: 'monthly' },
+    { url: `${baseUrl}/star-cone/privacy`, priority: '0.5', changefreq: 'yearly' },
+    { url: `${baseUrl}/star-cone/terms`, priority: '0.5', changefreq: 'yearly' },
   ];
 
   // ブログ記事

@@ -55,6 +55,7 @@ export default function StarPlaLegalShell({
           </Link>
           <nav className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#59647a]" aria-label="法的情報">
             <Link href="/star-cone/support" className="hover:text-[#172035]">サポート</Link>
+            <Link href="/star-cone/data-sources" className="hover:text-[#172035]">天文データと出典</Link>
             <Link href="/star-cone/privacy" className="hover:text-[#172035]">プライバシー</Link>
             <Link href="/star-cone/terms" className="hover:text-[#172035]">利用規約</Link>
           </nav>

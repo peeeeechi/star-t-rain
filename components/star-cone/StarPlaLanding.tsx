@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {
   ChevronRight,
   CircleCheck,
+  Database,
   FlaskConical,
   GraduationCap,
   HelpCircle,
@@ -100,7 +101,7 @@ export default function StarPlaLanding() {
           <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
             星をつなぎ、見つけ、確かめる。
             <br className="hidden sm:block" />
-            実際の天文データをもとに、星座と天文学の基礎を体験から学ぶiPhoneアプリです。
+            標準天文資料の公表値を教育用に編纂し、星座と天文学の基礎を体験から学ぶiPhoneアプリです。
           </p>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -227,6 +228,47 @@ export default function StarPlaLanding() {
               className="h-auto w-full rounded-[20px] border border-white/10"
             />
           </div>
+        </div>
+      </section>
+
+      <section id="data-sources" className="border-b border-white/10 bg-[#07101f] px-4 py-20 sm:px-6 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-20">
+          <div>
+            <div className="flex items-center gap-3 text-[#8eb7ff]">
+              <Database className="h-5 w-5" />
+              <p className="text-sm font-bold">天文データと出典</p>
+            </div>
+            <h2 className="mt-4 text-3xl font-semibold tracking-normal sm:text-4xl">
+              数値の根拠を公開
+            </h2>
+            <p className="mt-5 text-base leading-8 text-slate-300">
+              恒星の位置、明るさ、スペクトル型、距離は、SIMBAD、Hipparcos Catalogue、Bright Star Catalogueなどの公表値を参照し、学習用に丸めて表示しています。
+            </p>
+            <Link
+              href="/star-cone/data-sources"
+              className="mt-7 inline-flex items-center gap-2 rounded-md border border-[#8eb7ff]/40 px-5 py-3 text-sm font-bold text-[#b8ceff] transition-colors hover:bg-[#8eb7ff]/10"
+            >
+              表示方針と参照資料を見る
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <dl className="grid border-y border-white/10 sm:grid-cols-2">
+            {[
+              ['星の位置', 'J2000.0 / ICRSの赤経・赤緯を星図表示用に投影'],
+              ['明るさ', '主にJohnson V等級。変光星は学習用の代表値'],
+              ['色と分類', 'MKスペクトル分類を教材表示に合わせて簡略化'],
+              ['距離', '年周視差に基づく距離を光年へ換算して丸め'],
+            ].map(([term, description], index) => (
+              <div
+                key={term}
+                className={`py-6 sm:px-6 ${index > 0 ? 'border-t border-white/10 sm:border-t-0' : ''} ${index >= 2 ? 'sm:border-t' : ''} ${index % 2 === 1 ? 'sm:border-l sm:border-white/10' : ''}`}
+              >
+                <dt className="text-sm font-bold text-white">{term}</dt>
+                <dd className="mt-2 text-sm leading-7 text-slate-400">{description}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -387,6 +429,7 @@ export default function StarPlaLanding() {
           </div>
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
             <Link href="/star-cone/support" className="hover:text-white">サポート</Link>
+            <Link href="/star-cone/data-sources" className="hover:text-white">天文データと出典</Link>
             <Link href="/star-cone/privacy" className="hover:text-white">プライバシー</Link>
             <Link href="/star-cone/terms" className="hover:text-white">利用規約</Link>
             <Link href="/" className="inline-flex items-center gap-1 hover:text-white">

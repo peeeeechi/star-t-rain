@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 const navigation = [
   { label: 'できること', href: '/star-cone#features' },
+  { label: '天文データ', href: '/star-cone/data-sources' },
   { label: 'これから', href: '/star-cone#roadmap' },
   { label: 'アプリ画面', href: '/star-cone#screens' },
   { label: 'よくある質問', href: '/star-cone/support#faq' },
@@ -30,7 +31,7 @@ export default function StarPlaNavigation() {
           <span className="truncate text-lg font-semibold tracking-normal">星プラっと</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="星プラっと">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="星プラっと">
           {navigation.map((item) => (
             <Link
               key={item.href}
@@ -58,7 +59,7 @@ export default function StarPlaNavigation() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-slate-200 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-slate-200 lg:hidden"
           aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
           aria-expanded={open}
           onClick={() => setOpen((current) => !current)}
@@ -68,7 +69,7 @@ export default function StarPlaNavigation() {
       </div>
 
       {open && (
-        <nav className="border-t border-white/10 bg-[#070c1d] px-4 py-4 md:hidden" aria-label="モバイルメニュー">
+        <nav className="border-t border-white/10 bg-[#070c1d] px-4 py-4 lg:hidden" aria-label="モバイルメニュー">
           <div className="mx-auto grid max-w-7xl gap-1">
             {navigation.map((item) => (
               <Link
