@@ -4,7 +4,7 @@ import StarPlaLegalShell from '@/components/star-cone/StarPlaLegalShell';
 export const metadata: Metadata = {
   title: '天文データと出典 | 星プラっと',
   description:
-    '星プラっとで表示する恒星の座標、明るさ、スペクトル型、距離、星座線の表示方針と参照資料を公開します。',
+    '星プラっとで表示する恒星、星座、月齢・月相、天文カレンダーの表示方針と参照資料を公開します。',
   alternates: {
     canonical: '/star-cone/data-sources',
   },
@@ -47,6 +47,24 @@ const references = [
     use: '星座の日本語名、学名、略符、見頃の目安の確認',
     href: 'https://www.nao.ac.jp/new-info/constellation.html',
   },
+  {
+    name: 'ほしぞら情報2026年',
+    owner: '国立天文台',
+    use: '天文カレンダーの現象日、日本での見頃、観察条件の確認',
+    href: 'https://www.nao.ac.jp/astro/sky/2026/',
+  },
+  {
+    name: '令和8年（2026）暦要項 朔弦望',
+    owner: '国立天文台 暦計算室',
+    use: '朔、上弦、望、下弦の時刻による月相計算の照合',
+    href: 'https://eco.mtk.nao.ac.jp/koyomi/yoko/2026/rekiyou263.html',
+  },
+  {
+    name: 'Astronomy Engine',
+    owner: 'CosineKitty',
+    use: '端末現地正午の月齢、月相角、月の明るい割合の天文計算',
+    href: 'https://github.com/cosinekitty/astronomy',
+  },
 ];
 
 export default function DataSourcesPage() {
@@ -54,13 +72,13 @@ export default function DataSourcesPage() {
     <StarPlaLegalShell
       eyebrow="ASTRONOMY DATA"
       title="天文データと出典"
-      lead="星プラっとで表示している恒星データの意味、丸め方、参照資料を公開します。"
-      updated="2026年7月21日"
+      lead="星プラっとで表示している恒星・星座・月相・天文行事の意味、編纂方法、参照資料を公開します。"
+      updated="2026年7月22日"
     >
       <section>
         <h2>表示データの考え方</h2>
         <p>
-          本アプリの恒星データは、単一の外部APIからリアルタイムに取得したものではありません。複数の標準的な天文カタログと公開資料の値を参照し、モバイル画面での学習に適した桁数へ丸めて収録しています。
+          本アプリの恒星データと天文行事は、単一の外部APIからリアルタイムに取得したものではありません。複数の標準的な天文カタログと公開資料の値を参照し、モバイル画面での学習に適した内容へ編纂して収録しています。月齢と月相のみ、端末内で日ごとに計算します。
         </p>
         <p>
           表示内容は教育用です。観測計画、望遠鏡の自動導入、航法、研究など、高い精度や最新の観測値が必要な用途には使用せず、各カタログの原典を確認してください。
@@ -86,6 +104,14 @@ export default function DataSourcesPage() {
             <dt>距離</dt>
             <dd>主に年周視差から求めた距離を光年へ換算し、学習用の概数として表示</dd>
           </div>
+          <div>
+            <dt>月齢・月相</dt>
+            <dd>端末現地正午から直前の朔までの経過日数と、太陽・月の黄経差から計算</dd>
+          </div>
+          <div>
+            <dt>天文カレンダー</dt>
+            <dd>国立天文台の年度別公開情報から、日本での見頃と観察条件を日本標準時で編纂</dd>
+          </div>
         </dl>
       </section>
 
@@ -108,6 +134,16 @@ export default function DataSourcesPage() {
       </section>
 
       <section>
+        <h2>月齢・月相と天文カレンダー</h2>
+        <p>
+          タイトル画面の月齢は、端末現地正午から直前の朔までの経過日数です。月の明るい割合と欠け方は、Astronomy Engineで求めた太陽と月の黄経差から描画し、国立天文台「暦要項」の朔弦望と照合しています。
+        </p>
+        <p>
+          天文カレンダーは国立天文台「ほしぞら情報」などの年度別公開情報をもとに、日本で見やすい主な天文現象を日本標準時で編纂しています。年度更新時に内容を手動で確認し、アプリの更新で差し替えます。
+        </p>
+      </section>
+
+      <section>
         <h2>星座線と星座の範囲</h2>
         <p>
           国際天文学連合（IAU）が公式に定めているのは、全天を88星座に分ける名称と境界です。星同士を結ぶ「星座線」には世界共通の公式形状がありません。本アプリでは、西洋星座の代表的な学習図を参考に、スマートフォンで形を覚えやすい線を採用しています。
@@ -117,7 +153,7 @@ export default function DataSourcesPage() {
       <section>
         <h2>照合と更新</h2>
         <p>
-          誤差や転記ミスを減らすため、収録星座の追加とアプリ更新に合わせて、恒星のカタログIDと採用値の照合を継続します。表示値に疑問がある場合は、対象の星座名・恒星名・画面を添えてサポート窓口までお知らせください。
+          誤差や転記ミスを減らすため、収録星座の追加とアプリ更新に合わせて、恒星のカタログIDと採用値、月相、年度別の天文行事を継続して照合します。表示値に疑問がある場合は、対象の日付・星座名・恒星名・画面を添えてサポート窓口までお知らせください。
         </p>
       </section>
     </StarPlaLegalShell>
