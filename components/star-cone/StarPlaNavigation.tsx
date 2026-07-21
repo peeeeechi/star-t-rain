@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 const navigation = [
   { label: 'できること', href: '/star-cone#features' },
+  { label: 'これから', href: '/star-cone#roadmap' },
   { label: 'アプリ画面', href: '/star-cone#screens' },
   { label: 'よくある質問', href: '/star-cone/support#faq' },
 ];
