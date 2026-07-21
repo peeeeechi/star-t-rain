@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import StarPlaLegalShell from '@/components/star-cone/StarPlaLegalShell';
 
 export const metadata: Metadata = {
@@ -35,6 +36,11 @@ export default function TermsPage() {
         <h2>3. 学習内容</h2>
         <p>
           クイズ、検定チャレンジ、ラボ、星座図鑑の内容は、理解を助けるために一部を簡略化しています。実際の観測、進学、資格試験、専門的判断には、公式資料や最新の専門資料も確認してください。
+        </p>
+        <p>
+          恒星の位置、明るさ、スペクトル型、距離の表示方針と参照資料は、
+          <Link href="/star-cone/data-sources">天文データと出典</Link>
+          に掲載しています。
         </p>
       </section>
 
