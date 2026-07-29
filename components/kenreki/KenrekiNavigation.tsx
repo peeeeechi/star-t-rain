@@ -1,0 +1,104 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { ExternalLink, HelpCircle, Menu, ShieldCheck, X } from 'lucide-react';
+import { useState } from 'react';
+
+const navigation = [
+  { label: 'できること', href: '/kenreki#features' },
+  { label: '計画の流れ', href: '/kenreki#workflow' },
+  { label: 'アプリ画面', href: '/kenreki#screens' },
+  { label: 'よくある質問', href: '/kenreki/support#faq' },
+];
+
+export default function KenrekiNavigation() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#cce5e9] bg-white/95 text-[#102f38] backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <Link href="/kenreki" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+          <Image
+            src="/kenreki/app-icon.png"
+            alt=""
+            width={38}
+            height={38}
+            className="h-9 w-9 rounded-[8px] object-cover"
+            priority
+          />
+          <span className="truncate text-lg font-semibold tracking-normal">研暦</span>
+        </Link>
+
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="研暦">
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="px-3 py-2 text-sm font-medium text-[#4e6a72] transition-colors hover:text-[#007d8c]"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href="/kenreki/privacy"
+            className="ml-1 inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-[#4e6a72] transition-colors hover:text-[#007d8c]"
+          >
+            <ShieldCheck className="h-4 w-4" />
+            プライバシー
+          </Link>
+          <Link
+            href="/kenreki/support"
+            className="ml-2 inline-flex items-center gap-2 rounded-md bg-[#008fa1] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#006f7d]"
+          >
+            <HelpCircle className="h-4 w-4" />
+            サポート
+          </Link>
+        </nav>
+
+        <button
+          type="button"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#bddde2] text-[#315860] lg:hidden"
+          aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
+          aria-expanded={open}
+          onClick={() => setOpen((current) => !current)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {open && (
+        <nav className="border-t border-[#d8eaed] bg-white px-4 py-4 lg:hidden" aria-label="モバイルメニュー">
+          <div className="mx-auto grid max-w-7xl gap-1">
+            {navigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-md px-3 py-3 text-sm font-medium text-[#315860] hover:bg-[#eef9fa]"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/kenreki/privacy"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 rounded-md px-3 py-3 text-sm font-medium text-[#315860] hover:bg-[#eef9fa]"
+            >
+              <ShieldCheck className="h-4 w-4" />
+              プライバシーポリシー
+            </Link>
+            <Link
+              href="/kenreki/support"
+              onClick={() => setOpen(false)}
+              className="mt-2 flex items-center justify-between rounded-md bg-[#008fa1] px-4 py-3 text-sm font-bold text-white"
+            >
+              サポートを見る
+              <ExternalLink className="h-4 w-4" />
+            </Link>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+}

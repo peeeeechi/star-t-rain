@@ -8,17 +8,17 @@ import { usePathname } from "next/navigation";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isStarPlaPage = pathname.startsWith('/star-cone');
+  const isAppPage = pathname.startsWith('/star-cone') || pathname.startsWith('/kenreki');
 
   return (
     <>
       <SkipNavigation />
-      {!isStarPlaPage && <Navigation />}
+      {!isAppPage && <Navigation />}
       <main id="main-content" role="main" tabIndex={-1}>
         {children}
       </main>
-      {!isStarPlaPage && <ThemeToggle />}
-      {!isStarPlaPage && <BackToTop />}
+      {!isAppPage && <ThemeToggle />}
+      {!isAppPage && <BackToTop />}
     </>
   );
 }

@@ -120,8 +120,94 @@ body {
   padding-top: 1.5rem;
 }
 
+.kenreki-screen-scroll {
+  scrollbar-color: rgba(0, 143, 161, 0.55) rgba(8, 42, 51, 0.08);
+  scrollbar-width: thin;
+}
+
+.kenreki-screen-scroll::-webkit-scrollbar {
+  height: 7px;
+}
+
+.kenreki-screen-scroll::-webkit-scrollbar-track {
+  background: rgba(8, 42, 51, 0.08);
+}
+
+.kenreki-screen-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 143, 161, 0.55);
+  border-radius: 999px;
+}
+
+.kenreki-legal {
+  color: #4f6c73;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.kenreki-legal > section + section {
+  margin-top: 3.5rem;
+}
+
+.kenreki-legal h2 {
+  color: #14343c;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.kenreki-legal p {
+  margin-top: 1rem;
+}
+
+.kenreki-legal ul {
+  list-style: disc;
+  margin: 1rem 0 0 1.35rem;
+}
+
+.kenreki-legal li + li {
+  margin-top: 0.35rem;
+}
+
+.kenreki-legal a {
+  color: #007d8c;
+  font-weight: 600;
+  margin: 0 0.2rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.kenreki-legal .section-label {
+  color: #007d8c;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 0.4rem;
+}
+
+.kenreki-legal dt {
+  color: #6d888e;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.kenreki-legal dd {
+  color: #14343c;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.kenreki-legal .document-date {
+  border-top: 1px solid #d2e5e8;
+  color: #789097;
+  font-size: 0.8rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .star-pla-screen-scroll {
+  .star-pla-screen-scroll,
+  .kenreki-screen-scroll {
     scroll-behavior: auto;
   }
 }

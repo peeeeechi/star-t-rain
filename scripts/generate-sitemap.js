@@ -35,6 +35,10 @@ function generateSitemap() {
     { url: `${baseUrl}/star-cone/support`, priority: '0.7', changefreq: 'monthly' },
     { url: `${baseUrl}/star-cone/privacy`, priority: '0.5', changefreq: 'yearly' },
     { url: `${baseUrl}/star-cone/terms`, priority: '0.5', changefreq: 'yearly' },
+    { url: `${baseUrl}/kenreki`, priority: '0.9', changefreq: 'monthly' },
+    { url: `${baseUrl}/kenreki/support`, priority: '0.7', changefreq: 'monthly' },
+    { url: `${baseUrl}/kenreki/privacy`, priority: '0.5', changefreq: 'yearly' },
+    { url: `${baseUrl}/kenreki/terms`, priority: '0.5', changefreq: 'yearly' },
   ];
 
   // ブログ記事
