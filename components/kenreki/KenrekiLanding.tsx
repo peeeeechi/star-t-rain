@@ -43,11 +43,10 @@ const pillars = [
 
 const screens = [
   { src: '/kenreki/screenshots/01-home.png', title: '今日やる研究と迫る締切を見る', tag: '今日' },
-  { src: '/kenreki/screenshots/02-week-erosion.png', title: '保護した時間と侵食を比べる', tag: '週次' },
+  { src: '/kenreki/screenshots/02-week.png', title: '保護した時間と侵食を比べる', tag: '週次' },
   { src: '/kenreki/screenshots/03-month.png', title: '月の計画と実績を俯瞰する', tag: '月次' },
-  { src: '/kenreki/screenshots/04-year-gantt.png', title: '研究工程を年度でつなぐ', tag: '年次' },
-  { src: '/kenreki/screenshots/06-log.png', title: '成果と判断を短く残す', tag: '振り返り' },
-  { src: '/kenreki/screenshots/07-lapis-week.png', title: 'テーマに合う表示色を選ぶ', tag: 'テーマ' },
+  { src: '/kenreki/screenshots/04-year.png', title: '研究工程を年度でつなぐ', tag: '年次' },
+  { src: '/kenreki/screenshots/05-log.png', title: '成果と判断を短く残す', tag: '振り返り' },
 ];
 
 const flow = [
@@ -106,31 +105,31 @@ export default function KenrekiLanding() {
           <div className="relative mt-8 h-[360px] w-full max-w-5xl sm:h-[460px] md:mt-10 md:h-[570px]">
             <div className="absolute left-1/2 top-12 w-[178px] -translate-x-[118%] -rotate-3 opacity-75 sm:w-[225px] md:top-16 md:w-[270px]">
               <Image
-                src="/kenreki/screenshots/02-week-erosion.png"
+                src="/kenreki/screenshots/02-week.png"
                 alt="週次のCore Timeと侵食表示"
-                width={804}
-                height={1748}
+                width={1206}
+                height={2622}
                 className="h-auto w-full rounded-[22px] border border-[#0a6874]/20 shadow-xl"
                 priority
               />
             </div>
             <div className="absolute left-1/2 top-0 z-20 w-[195px] -translate-x-1/2 sm:w-[248px] md:w-[300px]">
               <Image
-                src="/kenreki/screenshots/08-lapis-home.png"
+                src="/kenreki/screenshots/01-home.png"
                 alt="研暦の今日画面"
-                width={804}
-                height={1748}
-                className="h-auto w-full rounded-[24px] border border-[#3692ff]/35 shadow-[0_28px_80px_rgba(0,96,115,0.28)]"
+                width={1206}
+                height={2622}
+                className="h-auto w-full rounded-[24px] border border-[#008fa1]/35 shadow-[0_28px_80px_rgba(0,96,115,0.28)]"
                 priority
               />
             </div>
             <div className="absolute left-1/2 top-12 w-[178px] translate-x-[18%] rotate-3 opacity-75 sm:w-[225px] md:top-16 md:w-[270px]">
               <Image
-                src="/kenreki/screenshots/06-log.png"
+                src="/kenreki/screenshots/05-log.png"
                 alt="研究の振り返り画面"
-                width={804}
-                height={1748}
-                className="h-auto w-full rounded-[22px] border border-[#7867bd]/25 shadow-xl"
+                width={1206}
+                height={2622}
+                className="h-auto w-full rounded-[22px] border border-[#0a6874]/20 shadow-xl"
                 priority
               />
             </div>
@@ -202,11 +201,11 @@ export default function KenrekiLanding() {
           <div className="relative mx-auto w-full max-w-[620px]">
             <div className="absolute inset-x-8 bottom-0 top-10 bg-[#0b3a45]" aria-hidden="true" />
             <Image
-              src="/kenreki/screenshots/07-lapis-week.png"
+              src="/kenreki/screenshots/02-week.png"
               alt="週次カレンダーでCore Timeと侵食を確認する画面"
-              width={804}
-              height={1748}
-              className="relative mx-auto h-auto w-[260px] rounded-[24px] border border-[#4d8dff]/35 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:w-[320px]"
+              width={1206}
+              height={2622}
+              className="relative mx-auto h-auto w-[260px] rounded-[24px] border border-[#56d6df]/35 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:w-[320px]"
             />
           </div>
         </div>
@@ -243,11 +242,11 @@ export default function KenrekiLanding() {
 
         <div className="mx-auto mt-16 grid max-w-7xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <Image
-            src="/kenreki/screenshots/04-year-gantt.png"
+            src="/kenreki/screenshots/04-year.png"
             alt="研究工程を年度で表示する画面"
-            width={804}
-            height={1748}
-            className="mx-auto h-auto w-full max-w-[360px] rounded-[24px] border border-[#735fb2]/25 shadow-xl"
+            width={1206}
+            height={2622}
+            className="mx-auto h-auto w-full max-w-[360px] rounded-[24px] border border-[#008fa1]/25 shadow-xl"
           />
           <div>
             <p className="text-sm font-bold text-[#765eb8]">日・週・月・年を往復</p>
@@ -287,12 +286,12 @@ export default function KenrekiLanding() {
         <div className="kenreki-screen-scroll mt-12 flex snap-x gap-5 overflow-x-auto px-[max(1rem,calc((100vw-80rem)/2))] pb-8">
           {screens.map((screen) => (
             <figure key={screen.src} className="w-[245px] shrink-0 snap-start sm:w-[280px]">
-              <div className="overflow-hidden rounded-[22px] border border-[#aacfd4] bg-[#081120] shadow-lg">
+              <div className="overflow-hidden rounded-[22px] border border-[#aacfd4] bg-white shadow-lg">
                 <Image
                   src={screen.src}
                   alt={screen.title}
-                  width={804}
-                  height={1748}
+                  width={1206}
+                  height={2622}
                   className="h-auto w-full"
                 />
               </div>
