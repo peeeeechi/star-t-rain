@@ -9,12 +9,16 @@ import {
   Focus,
   HelpCircle,
   History,
+  LockKeyhole,
   Mail,
   MessageSquareText,
   MoveRight,
+  Pause,
+  Radio,
   RefreshCw,
   ShieldCheck,
   Sparkles,
+  Timer,
   TimerReset,
   Workflow,
 } from 'lucide-react';
@@ -55,6 +59,142 @@ const flow = [
   ['研究を実行する', '予定・実行中・完了と成果メモを記録'],
   ['ずれを組み直す', '未完了と侵食を翌日以降へ再配置'],
 ];
+
+function PreviewRing({ compact = false }: { compact?: boolean }) {
+  const size = compact ? 'h-14 w-14' : 'h-20 w-20';
+
+  return (
+    <div
+      className={`relative grid shrink-0 place-items-center rounded-full ${size}`}
+      style={{ background: 'conic-gradient(#008a9a 0deg 56deg, rgba(0,138,154,0.26) 56deg 297deg, #dce5e7 297deg)' }}
+    >
+      <div className={`grid place-items-center rounded-full bg-white ${compact ? 'h-[44px] w-[44px]' : 'h-[62px] w-[62px]'}`}>
+        <div className="text-center leading-none text-[#102a35]">
+          <strong className={compact ? 'text-sm' : 'text-lg'}>3.1</strong>
+          <span className={`block text-[#405861] ${compact ? 'mt-0.5 text-[8px]' : 'mt-1 text-[9px]'}`}>/ 20h</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HomeWidgetPreview() {
+  return (
+    <div className="relative flex h-full min-h-[360px] flex-col bg-[#dff1f3] p-5 text-[#102a35]" aria-hidden="true">
+      <div className="flex items-center justify-between text-[11px] font-semibold">
+        <span>9:41</span>
+        <span>5G&nbsp;&nbsp;100%</span>
+      </div>
+      <div className="mt-10 rounded-[22px] bg-white p-4 shadow-[0_18px_50px_rgba(16,42,53,0.15)]">
+        <div className="flex gap-4">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-start gap-3">
+              <PreviewRing />
+              <div className="pt-2">
+                <p className="text-[9px] font-bold tracking-wider text-[#405861]">侵食</p>
+                <p className="mt-1 text-base font-semibold text-[#9a4a00]">5h</p>
+              </div>
+            </div>
+            <div className="mt-4 flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#08715d]" />
+              <span className="text-xs font-semibold text-[#08715d]">0:42:18</span>
+              <span className="truncate text-[9px] text-[#405861]">執筆・保護帯フル</span>
+            </div>
+            <p className="mt-3 truncate text-[9px] text-[#405861]">Paper II 査読対応</p>
+            <p className="mt-0.5 text-[9px] text-[#9a4a00]">週 7h 必要</p>
+          </div>
+          <div className="w-[43%] min-w-0 border-l border-[#dce5e7] pl-4">
+            <p className="text-[9px] font-bold tracking-widest text-[#405861]">このあと</p>
+            {[
+              ['Paper II 執筆', '13:00–15:00', true],
+              ['共同研究 zoom', '16:00–17:00', false],
+              ['解析メモ整理', '18:00–19:00', true],
+            ].map(([title, time, core]) => (
+              <div key={title as string} className="mt-3 flex gap-2">
+                <span className={`h-6 w-[3px] rounded-full ${core ? 'bg-[#008a9a]' : 'bg-[#84949a]'}`} />
+                <div className="min-w-0">
+                  <p className="truncate text-[9px] font-semibold">{title as string}</p>
+                  <p className="mt-0.5 text-[8px] text-[#405861]">{time as string}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="mt-auto grid grid-cols-4 gap-5 px-3 pb-2">
+        {[Timer, CalendarClock, MessageSquareText, Focus].map((Icon, index) => (
+          <div key={index} className="grid aspect-square place-items-center rounded-[14px] bg-white/70 text-[#008a9a]">
+            <Icon className="h-5 w-5" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LockScreenPreview() {
+  return (
+    <div className="relative flex h-full min-h-[360px] flex-col items-center bg-[#b8d9dd] px-5 py-6 text-[#102a35]" aria-hidden="true">
+      <LockKeyhole className="h-4 w-4" />
+      <p className="mt-5 text-xs font-medium">7月30日 木曜日</p>
+      <p className="mt-1 text-6xl font-light">9:41</p>
+      <div className="mt-12 flex w-full max-w-[280px] items-center justify-center gap-3">
+        <div className="grid h-[66px] w-[66px] place-items-center rounded-full bg-white/30 backdrop-blur-sm">
+          <PreviewRing compact />
+        </div>
+        <div className="h-[66px] min-w-0 flex-1 rounded-[18px] bg-white/30 px-4 py-3 backdrop-blur-sm">
+          <div className="flex items-center justify-between gap-2">
+            <p className="truncate text-xs font-semibold">研暦 3.1/20h</p>
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#102a35]" />
+          </div>
+          <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#102a35]/20">
+            <div className="h-full w-[16%] rounded-full bg-[#102a35]" />
+          </div>
+          <p className="mt-1.5 truncate text-[10px]">執筆・保護帯フル</p>
+        </div>
+      </div>
+      <div className="mt-auto flex items-center gap-1.5 rounded-full bg-white/25 px-4 py-2 text-[11px] backdrop-blur-sm">
+        <Timer className="h-3.5 w-3.5" />
+        <span>研暦 3.1/20h</span>
+      </div>
+    </div>
+  );
+}
+
+function DynamicIslandPreview() {
+  return (
+    <div className="relative flex h-full min-h-[360px] flex-col bg-[#f3f7f8] px-5 py-6 text-[#102a35]" aria-hidden="true">
+      <div className="mx-auto flex h-10 w-[235px] items-center justify-between rounded-full bg-black px-4 text-white shadow-lg">
+        <div className="flex min-w-0 items-center gap-2 text-[#57c8ae]">
+          <Timer className="h-3.5 w-3.5 shrink-0" />
+          <span className="truncate text-[11px] font-medium">執筆・保護帯フル</span>
+        </div>
+        <span className="ml-2 shrink-0 text-[11px] font-medium text-[#56d6df]">0:42:18</span>
+      </div>
+
+      <div className="mx-auto mt-16 w-full max-w-[285px] rounded-[28px] bg-black px-5 py-4 text-white shadow-[0_18px_45px_rgba(0,0,0,0.2)]">
+        <div className="flex items-center justify-between text-[10px]">
+          <span className="flex items-center gap-1.5 text-[#56d6df]"><Timer className="h-3 w-3" /> CORE TIME</span>
+          <span className="text-[#56d6df]">0:42:18</span>
+        </div>
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="truncate text-sm font-medium">執筆・保護帯フル</p>
+            <p className="mt-1 text-[10px] text-white/55">予定 4h</p>
+          </div>
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/15 text-white">
+            <Pause className="h-4 w-4 fill-current" />
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-auto flex items-center justify-center gap-2 text-xs text-[#405861]">
+        <Radio className="h-4 w-4 text-[#08715d]" />
+        <span>実行状態と経過時間をリアルタイム表示</span>
+      </div>
+    </div>
+  );
+}
 
 export default function KenrekiLanding() {
   return (
@@ -301,6 +441,60 @@ export default function KenrekiLanding() {
               </figcaption>
             </figure>
           ))}
+        </div>
+      </section>
+
+      <section id="surfaces" className="scroll-mt-20 border-b border-[#16414b] bg-[#082a33] px-4 py-20 text-white sm:px-6 md:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+            <div>
+              <p className="text-sm font-bold text-[#56d6df]">Widget・ロック画面・Dynamic Island</p>
+              <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-normal sm:text-4xl">
+                アプリを開かなくても、研究時間は動いている
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-7 text-[#bdd5d9] lg:justify-self-end">
+              今週の進捗と次の予定をひと目で確認。Core Timeの実行中は、ロック画面とDynamic Islandから経過時間を見て、一時停止・再開できます。
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            {[
+              {
+                label: 'ホーム画面',
+                title: '週の進捗と次の予定',
+                copy: '小・中サイズのWidgetで、実績、目標、侵食、直近のCore Timeを確認できます。',
+                preview: <HomeWidgetPreview />,
+              },
+              {
+                label: 'ロック画面',
+                title: '解除せずにペースを確認',
+                copy: '円形・横長・インラインの各スペースに、週の実績と実行中の作業を表示します。',
+                preview: <LockScreenPreview />,
+              },
+              {
+                label: 'Dynamic Island',
+                title: 'Core Timeを常に手元へ',
+                copy: 'コンパクト表示では作業名と経過時間、長押し時には一時停止・再開操作を表示します。',
+                preview: <DynamicIslandPreview />,
+              },
+            ].map((item) => (
+              <figure key={item.label} className="min-w-0">
+                <div className="overflow-hidden rounded-lg border border-white/15 bg-white shadow-[0_24px_60px_rgba(0,0,0,0.24)]">
+                  {item.preview}
+                </div>
+                <figcaption className="pt-5">
+                  <span className="text-xs font-bold text-[#56d6df]">{item.label}</span>
+                  <h3 className="mt-1 text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-[#bdd5d9]">{item.copy}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <p className="mt-10 border-t border-white/15 pt-5 text-xs leading-6 text-[#8fb3b8]">
+            WidgetとLive ActivityはiOS 17以降に対応。Dynamic Island表示には対応するiPhoneが必要です。表示内容は端末やiOSの設定により異なる場合があります。
+          </p>
         </div>
       </section>
 

@@ -9,6 +9,7 @@ const navigation = [
   { label: 'できること', href: '/kenreki#features' },
   { label: '計画の流れ', href: '/kenreki#workflow' },
   { label: 'アプリ画面', href: '/kenreki#screens' },
+  { label: 'Widget', href: '/kenreki#surfaces' },
   { label: 'よくある質問', href: '/kenreki/support#faq' },
 ];
 
