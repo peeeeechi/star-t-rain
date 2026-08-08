@@ -6,23 +6,25 @@ import {
   ChevronRight,
   CircleCheck,
   Clock3,
+  ExternalLink,
   Focus,
   HelpCircle,
   History,
   LockKeyhole,
   Mail,
   MessageSquareText,
-  MoveRight,
   Pause,
   Radio,
   RefreshCw,
   ShieldCheck,
-  Sparkles,
   Timer,
   TimerReset,
   Workflow,
 } from 'lucide-react';
 import KenrekiNavigation from './KenrekiNavigation';
+
+const appStoreUrl =
+  'https://apps.apple.com/jp/app/%E7%A0%94%E6%9A%A6/id6796025630?itscg=30200&itsct=apps_box_link&mttnsubad=6796025630';
 
 const pillars = [
   {
@@ -222,13 +224,24 @@ export default function KenrekiLanding() {
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-md bg-[#008fa1] px-5 py-3 text-sm font-bold text-white">
-              <Sparkles className="h-4 w-4" />
-              App Store 公開準備中
-            </span>
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="研暦をApp Storeで表示（新しいタブで開きます）"
+              className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008fa1] focus-visible:ring-offset-4"
+            >
+              <Image
+                src="/kenreki/app-store-badge-ja.svg"
+                alt="App Storeからダウンロード"
+                width={136}
+                height={50}
+                className="h-[50px] w-auto"
+              />
+            </a>
             <Link
               href="/kenreki/support"
-              className="inline-flex items-center gap-2 rounded-md border border-[#9fcdd3] bg-white px-5 py-3 text-sm font-bold text-[#18505a] transition-colors hover:border-[#008fa1]"
+              className="inline-flex h-[50px] items-center gap-2 rounded-md border border-[#9fcdd3] bg-white px-5 text-sm font-bold text-[#18505a] transition-colors hover:border-[#008fa1]"
             >
               <HelpCircle className="h-4 w-4" />
               サポート
@@ -540,15 +553,18 @@ export default function KenrekiLanding() {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm font-bold text-[#56d6df]">研究時間を、成果につながる形で残す</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-normal">研暦はApp Store公開準備中です</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-normal">研暦をApp Storeで配信中</h2>
           </div>
-          <Link
-            href="/kenreki/support"
-            className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-bold text-[#12333b] transition-colors hover:bg-[#dff5f7]"
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="研暦をApp Storeで表示（新しいタブで開きます）"
+            className="inline-flex h-[50px] w-fit items-center gap-2 rounded-md bg-white px-5 text-sm font-bold text-[#12333b] transition-colors hover:bg-[#dff5f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#56d6df] focus-visible:ring-offset-4 focus-visible:ring-offset-[#082a33]"
           >
-            公開情報を確認する
-            <MoveRight className="h-4 w-4" />
-          </Link>
+            App Storeで研暦を見る
+            <ExternalLink className="h-4 w-4" />
+          </a>
         </div>
       </section>
 
@@ -584,6 +600,9 @@ export default function KenrekiLanding() {
             </Link>
           </div>
         </div>
+        <p className="mx-auto mt-7 max-w-7xl border-t border-white/10 pt-5 text-[11px] leading-5 text-[#668d94]">
+          App StoreおよびAppleロゴは、米国およびその他の国で登録されたApple Inc.の商標です。
+        </p>
       </footer>
     </div>
   );
