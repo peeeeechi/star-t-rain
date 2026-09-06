@@ -11,14 +11,19 @@ import {
 import KenrekiLegalShell from '@/components/kenreki/KenrekiLegalShell';
 
 export const metadata: Metadata = {
-  title: 'サポート | 研暦',
-  description: '研究計画・進捗カレンダー「研暦」の動作環境、よくある質問、不具合報告・お問い合わせ窓口です。',
+  title: 'サポート | Telra',
+  description: '研究計画・進捗カレンダー「Telra」の動作環境、よくある質問、不具合報告・お問い合わせ窓口です。',
   alternates: {
     canonical: '/kenreki/support',
   },
 };
 
 const faqs = [
+  {
+    icon: Smartphone,
+    question: '「研暦」と「Telra」は同じアプリですか？',
+    answer: 'はい。研暦の名称と画面を刷新したアプリがTelra（テルラ）です。現在アップデートを準備しています。同じApp Storeページから更新できるようにし、既存の研究計画や記録を引き継ぐ構成を維持しています。更新のためにアプリを削除する必要はありません。',
+  },
   {
     icon: Database,
     question: '機種変更後も研究計画を引き継げますか？',
@@ -29,13 +34,13 @@ const faqs = [
     icon: CalendarDays,
     question: '端末カレンダーの予定はすべて取り込まれますか？',
     answer:
-      'いいえ。同期するカレンダー、対象期間、予定名のキーワードやタグを利用者が選び、条件に一致した予定だけを端末内へ取り込みます。研暦から端末カレンダーの予定を作成、変更、削除することはありません。',
+      'いいえ。同期するカレンダー、対象期間、予定名のキーワードやタグを利用者が選び、条件に一致した予定だけを端末内へ取り込みます。Telraから端末カレンダーの予定を作成、変更、削除することはありません。',
   },
   {
     icon: Bell,
     question: '通知やLive Activityが表示されません。',
     answer:
-      'iPhoneの「設定」→「通知」→「研暦」で通知が許可されているか確認してください。Live ActivityはCore Timeを開始したときに表示されます。Widgetと対話型Live Activityの一部機能にはiOS 17.0以降が必要です。',
+      'iPhoneの「設定」→「通知」→「Telra」で通知が許可されているか確認してください。Live ActivityはCore Timeを開始したときに表示されます。WidgetとLive ActivityにはiOS 17.0以降が必要です。Live ActivityはiPhoneの「設定」→「アプリ」→「Telra（旧・研暦）」でも許可を確認してください。',
   },
   {
     icon: RotateCcw,
@@ -47,7 +52,7 @@ const faqs = [
     icon: Smartphone,
     question: '画面が見切れる、Widgetが更新されない場合は？',
     answer:
-      'アプリを一度終了して再起動し、iOSと研暦が最新の状態か確認してください。Widgetはホーム画面から一度削除して追加し直すと改善する場合があります。',
+      'アプリを一度終了して再起動し、iOSとTelraが最新の状態か確認してください。Widgetはホーム画面から一度削除して追加し直すと改善する場合があります。',
   },
   {
     icon: Wrench,
@@ -62,8 +67,8 @@ export default function KenrekiSupportPage() {
     <KenrekiLegalShell
       eyebrow="SUPPORT"
       title="サポート"
-      lead="研暦の動作環境、データの保存、カレンダー連携、通知に関する案内をまとめています。"
-      updated="2026年7月29日"
+      lead="Telraの動作環境、データの保存、カレンダー連携、通知に関する案内をまとめています。"
+      updated="2026年9月6日"
     >
       <section className="rounded-lg border border-[#d2e5e8] bg-white p-6 sm:p-8">
         <h2>動作環境</h2>
@@ -78,7 +83,7 @@ export default function KenrekiSupportPage() {
           </div>
           <div>
             <dt>Widget・Live Activity</dt>
-            <dd>一部の対話機能はiOS 17.0以降</dd>
+            <dd>iOS 17.0以降（Dynamic Islandは対応機種）</dd>
           </div>
           <div>
             <dt>アカウント</dt>
@@ -113,7 +118,7 @@ export default function KenrekiSupportPage() {
           ご質問、ご要望、不具合報告はメールで受け付けています。研究内容や個人情報を本文へ記載する必要はありません。
         </p>
         <a
-          href="mailto:star0cone.dev@gmail.com?subject=%E7%A0%94%E6%9A%A6%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88"
+          href="mailto:star0cone.dev@gmail.com?subject=Telra%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88"
           className="mt-6 inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-bold !text-[#14343c] !no-underline hover:bg-[#dff5f7]"
         >
           <Mail className="h-4 w-4" />

@@ -28,7 +28,7 @@ export default function KenrekiLegalShell({
             className="inline-flex items-center gap-1 text-sm font-medium text-[#b9d9dd] hover:text-white"
           >
             <ChevronLeft className="h-4 w-4" />
-            研暦公式ページ
+            Telra公式ページ
           </Link>
           <p className="mt-10 text-sm font-bold text-[#51d0d9]">{eyebrow}</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-normal sm:text-5xl">{title}</h1>
@@ -45,13 +45,13 @@ export default function KenrekiLegalShell({
         <div className="mx-auto flex max-w-4xl flex-col justify-between gap-5 sm:flex-row sm:items-center">
           <Link href="/kenreki" className="flex items-center gap-3">
             <Image
-              src="/kenreki/app-icon.png"
+              src="/kenreki/app-icon-telra.png"
               alt=""
               width={34}
               height={34}
               className="h-8 w-8 rounded-[7px]"
             />
-            <span className="text-sm font-semibold text-[#14343c]">研暦</span>
+            <span className="text-sm font-semibold text-[#14343c]">Telra</span>
           </Link>
           <nav className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#59737a]" aria-label="法的情報">
             <Link href="/kenreki/support" className="hover:text-[#007d8c]">サポート</Link>

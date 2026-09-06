@@ -21,17 +21,17 @@ export default function KenrekiNavigation() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/kenreki" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
           <Image
-            src="/kenreki/app-icon.png"
+            src="/kenreki/app-icon-telra.png"
             alt=""
             width={38}
             height={38}
             className="h-9 w-9 rounded-[8px] object-cover"
             priority
           />
-          <span className="truncate text-lg font-semibold tracking-normal">研暦</span>
+          <span className="truncate text-lg font-semibold tracking-normal">Telra</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="研暦">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Telra">
           {navigation.map((item) => (
             <Link
               key={item.href}

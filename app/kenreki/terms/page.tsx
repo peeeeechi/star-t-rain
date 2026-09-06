@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import KenrekiLegalShell from '@/components/kenreki/KenrekiLegalShell';
 
 export const metadata: Metadata = {
-  title: '利用規約 | 研暦',
-  description: '研究計画・進捗カレンダー「研暦」の利用条件を定めます。',
+  title: '利用規約 | Telra',
+  description: '研究計画・進捗カレンダー「Telra」の利用条件を定めます。',
   alternates: {
     canonical: '/kenreki/terms',
   },
@@ -14,11 +14,12 @@ export default function KenrekiTermsPage() {
     <KenrekiLegalShell
       eyebrow="TERMS OF USE"
       title="利用規約"
-      lead="本利用規約は、研暦の利用条件を定めるものです。アプリを利用する前にご確認ください。"
-      updated="2026年7月29日"
+      lead="本利用規約は、Telraの利用条件を定めるものです。アプリを利用する前にご確認ください。"
+      updated="2026年9月6日"
     >
       <section>
         <h2>1. 目的</h2>
+        <p>Telra（テルラ）は「研暦」の新しい名称です。本規約は名称変更前後の同じアプリに適用し、名称変更によって利用条件を変更するものではありません。</p>
         <p>
           本アプリは、研究計画、時間管理、進捗の振り返りを支援するためのアプリです。表示する締切予測や再配置候補は、利用者が入力した予定と実績に基づく計画上の参考情報です。
         </p>
@@ -32,7 +33,7 @@ export default function KenrekiTermsPage() {
       <section>
         <h2>3. 計画と締切予測</h2>
         <p>
-          研暦は、論文投稿、学会、申請、教育その他の期限内完了を保証しません。重要な締切、提出条件、所要時間は、必ず公式情報や関係者との確認を併用してください。
+          Telraは、論文投稿、学会、申請、教育その他の期限内完了を保証しません。重要な締切、提出条件、所要時間は、必ず公式情報や関係者との確認を併用してください。
         </p>
       </section>
 
@@ -93,7 +94,7 @@ export default function KenrekiTermsPage() {
         <h2>11. お問い合わせ</h2>
         <p>
           本規約に関するお問い合わせは、
-          <a href="mailto:star0cone.dev@gmail.com?subject=%E7%A0%94%E6%9A%A6%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84">
+          <a href="mailto:star0cone.dev@gmail.com?subject=Telra%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84">
             star0cone.dev@gmail.com
           </a>
           までお願いします。

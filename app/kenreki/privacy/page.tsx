@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import KenrekiLegalShell from '@/components/kenreki/KenrekiLegalShell';
 
 export const metadata: Metadata = {
-  title: 'プライバシーポリシー | 研暦',
-  description: '研暦における研究計画、カレンダー予定、通知、Widgetなどのデータの取り扱いを説明します。',
+  title: 'プライバシーポリシー | Telra',
+  description: 'Telraにおける研究計画、カレンダー予定、通知、Widgetなどのデータの取り扱いを説明します。',
   alternates: {
     canonical: '/kenreki/privacy',
   },
@@ -14,20 +14,21 @@ export default function KenrekiPrivacyPage() {
     <KenrekiLegalShell
       eyebrow="PRIVACY POLICY"
       title="プライバシーポリシー"
-      lead="研暦は、研究計画やカレンダー予定などの内容を開発者のサーバーへ送信しません。"
-      updated="2026年7月29日"
+      lead="Telraは、研究計画やカレンダー予定などの内容を開発者のサーバーへ送信しません。"
+      updated="2026年9月6日"
     >
       <section>
         <h2>1. 取り扱うデータ</h2>
+        <p>本ポリシーは、名称変更前の「研暦」と名称変更後の「Telra（テルラ）」に共通して適用します。名称変更に伴うデータの取り扱いの変更はありません。</p>
         <p>
-          研暦は、利用者が入力した研究計画、予定、締切、Core Timeの実績、成果メモ、振り返り、アプリ設定を端末内に保存します。アカウント登録はなく、氏名やメールアドレスの入力を求めません。
+          Telraは、利用者が入力した研究計画、予定、締切、Core Timeの実績、成果メモ、振り返り、アプリ設定を端末内に保存します。アカウント登録はなく、氏名やメールアドレスの入力を求めません。
         </p>
       </section>
 
       <section>
         <h2>2. 端末カレンダー</h2>
         <p>
-          カレンダー同期は任意です。利用者が選んだカレンダーと期間の予定を読み取り、絞り込み条件に一致した予定だけを端末内の計画へ取り込みます。研暦から端末カレンダーへ予定を書き込んだり、変更・削除したりすることはありません。
+          カレンダー同期は任意です。利用者が選んだカレンダーと期間の予定を読み取り、絞り込み条件に一致した予定だけを端末内の計画へ取り込みます。Telraから端末カレンダーへ予定を書き込んだり、変更・削除したりすることはありません。
         </p>
       </section>
 
@@ -41,7 +42,7 @@ export default function KenrekiPrivacyPage() {
       <section>
         <h2>4. 外部送信と追跡</h2>
         <p>
-          研暦には広告、行動解析、トラッキングSDK、開発者が運用するデータ収集サーバーはありません。入力内容やカレンダー由来の予定を、開発者または第三者へ送信、販売、共有しません。
+          Telraには広告、行動解析、トラッキングSDK、開発者が運用するデータ収集サーバーはありません。入力内容やカレンダー由来の予定を、開発者または第三者へ送信、販売、共有しません。
         </p>
       </section>
 
@@ -71,7 +72,7 @@ export default function KenrekiPrivacyPage() {
         <p>本ポリシーに関するお問い合わせは、以下の窓口までお願いします。</p>
         <p>
           メールアドレス:{' '}
-          <a href="mailto:star0cone.dev@gmail.com?subject=%E7%A0%94%E6%9A%A6%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC">
+          <a href="mailto:star0cone.dev@gmail.com?subject=Telra%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC">
             star0cone.dev@gmail.com
           </a>
         </p>
@@ -80,7 +81,7 @@ export default function KenrekiPrivacyPage() {
       <p className="document-date">
         制定日: 2026年7月29日
         <br />
-        最終更新日: 2026年7月29日
+        最終更新日: 2026年9月6日
       </p>
     </KenrekiLegalShell>
   );

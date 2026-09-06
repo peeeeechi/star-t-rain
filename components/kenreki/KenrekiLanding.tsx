@@ -24,7 +24,7 @@ import {
 import KenrekiNavigation from './KenrekiNavigation';
 
 const appStoreUrl =
-  'https://apps.apple.com/jp/app/%E7%A0%94%E6%9A%A6/id6796025630?itscg=30200&itsct=apps_box_link&mttnsubad=6796025630';
+  'https://apps.apple.com/jp/app/id6796025630';
 
 const pillars = [
   {
@@ -48,11 +48,11 @@ const pillars = [
 ];
 
 const screens = [
-  { src: '/kenreki/screenshots/01-home.png', title: '今日やる研究と迫る締切を見る', tag: '今日' },
-  { src: '/kenreki/screenshots/02-week.png', title: '保護した時間と侵食を比べる', tag: '週次' },
-  { src: '/kenreki/screenshots/03-month.png', title: '月の計画と実績を俯瞰する', tag: '月次' },
-  { src: '/kenreki/screenshots/04-year.png', title: '研究工程を年度でつなぐ', tag: '年次' },
-  { src: '/kenreki/screenshots/05-log.png', title: '成果と判断を短く残す', tag: '振り返り' },
+  { src: '/kenreki/screenshots/telra/01-home.png', title: '今日の集中と、進めている研究を見渡す', tag: '今日' },
+  { src: '/kenreki/screenshots/telra/02-week.png', title: '保護した時間と侵食を比べる', tag: '週次' },
+  { src: '/kenreki/screenshots/telra/03-month.png', title: '月の計画と実績を俯瞰する', tag: '月次' },
+  { src: '/kenreki/screenshots/telra/04-year.png', title: '研究工程を年度でつなぐ', tag: '年次' },
+  { src: '/kenreki/screenshots/telra/05-log.png', title: '成果と判断を短く残す', tag: '振り返り' },
 ];
 
 const flow = [
@@ -83,51 +83,32 @@ function PreviewRing({ compact = false }: { compact?: boolean }) {
 function HomeWidgetPreview() {
   return (
     <div className="relative flex h-full min-h-[360px] flex-col bg-[#dff1f3] p-5 text-[#102a35]" aria-hidden="true">
-      <div className="flex items-center justify-between text-[11px] font-semibold">
-        <span>9:41</span>
-        <span>5G&nbsp;&nbsp;100%</span>
-      </div>
-      <div className="mt-10 rounded-[22px] bg-white p-4 shadow-[0_18px_50px_rgba(16,42,53,0.15)]">
-        <div className="flex gap-4">
-          <div className="min-w-0 flex-1">
-            <div className="flex items-start gap-3">
-              <PreviewRing />
-              <div className="pt-2">
-                <p className="text-[9px] font-bold tracking-wider text-[#405861]">侵食</p>
-                <p className="mt-1 text-base font-semibold text-[#9a4a00]">5h</p>
-              </div>
-            </div>
-            <div className="mt-4 flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#08715d]" />
-              <span className="text-xs font-semibold text-[#08715d]">0:42:18</span>
-              <span className="truncate text-[9px] text-[#405861]">執筆・保護帯フル</span>
-            </div>
-            <p className="mt-3 truncate text-[9px] text-[#405861]">Paper II 査読対応</p>
-            <p className="mt-0.5 text-[9px] text-[#9a4a00]">週 7h 必要</p>
-          </div>
-          <div className="w-[43%] min-w-0 border-l border-[#dce5e7] pl-4">
-            <p className="text-[9px] font-bold tracking-widest text-[#405861]">このあと</p>
-            {[
-              ['Paper II 執筆', '13:00–15:00', true],
-              ['共同研究 zoom', '16:00–17:00', false],
-              ['解析メモ整理', '18:00–19:00', true],
-            ].map(([title, time, core]) => (
-              <div key={title as string} className="mt-3 flex gap-2">
-                <span className={`h-6 w-[3px] rounded-full ${core ? 'bg-[#008a9a]' : 'bg-[#84949a]'}`} />
-                <div className="min-w-0">
-                  <p className="truncate text-[9px] font-semibold">{title as string}</p>
-                  <p className="mt-0.5 text-[8px] text-[#405861]">{time as string}</p>
-                </div>
+      <div className="flex items-center justify-between text-xs font-semibold"><span>9:41</span><span>5G · 100%</span></div>
+      <div className="mt-9 rounded-[22px] bg-white p-4 shadow-[0_18px_50px_rgba(16,42,53,0.15)]">
+        <div className="mb-4 flex items-center justify-between">
+          <span className="text-xs font-bold tracking-[0.18em] text-[#008a9a]">✧ TELRA</span>
+          <span className="text-[10px] font-medium text-[#405861]">THIS WEEK</span>
+        </div>
+        <div className="flex items-center gap-5">
+          <PreviewRing />
+          <div className="min-w-0 flex-1 space-y-3">
+            <p className="text-[10px] font-semibold text-[#405861]">このあと</p>
+            {['論文の考察をまとめる', '解析メモを整理する'].map((title, index) => (
+              <div key={title} className="border-l-2 border-[#008a9a] pl-2">
+                <p className="truncate text-xs font-semibold">{title}</p>
+                <p className="mt-1 text-[10px] text-[#405861]">{index === 0 ? '13:00–15:00' : '16:00–17:00'}</p>
               </div>
             ))}
           </div>
         </div>
+        <div className="mt-4 flex items-center gap-2 border-t border-[#dce5e7] pt-3 text-[10px] text-[#405861]">
+          <CalendarClock className="h-3 w-3 text-[#008a9a]" />
+          <span>次の締切 · 論文投稿</span>
+        </div>
       </div>
       <div className="mt-auto grid grid-cols-4 gap-5 px-3 pb-2">
         {[Timer, CalendarClock, MessageSquareText, Focus].map((Icon, index) => (
-          <div key={index} className="grid aspect-square place-items-center rounded-[14px] bg-white/70 text-[#008a9a]">
-            <Icon className="h-5 w-5" />
-          </div>
+          <div key={index} className="grid aspect-square place-items-center rounded-[14px] bg-white/70 text-[#008a9a]"><Icon className="h-5 w-5" /></div>
         ))}
       </div>
     </div>
@@ -146,7 +127,7 @@ function LockScreenPreview() {
         </div>
         <div className="h-[66px] min-w-0 flex-1 rounded-[18px] bg-white/30 px-4 py-3 backdrop-blur-sm">
           <div className="flex items-center justify-between gap-2">
-            <p className="truncate text-xs font-semibold">研暦 3.1/20h</p>
+            <p className="truncate text-xs font-semibold">Telra 3.1/20h</p>
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#102a35]" />
           </div>
           <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#102a35]/20">
@@ -157,7 +138,7 @@ function LockScreenPreview() {
       </div>
       <div className="mt-auto flex items-center gap-1.5 rounded-full bg-white/25 px-4 py-2 text-[11px] backdrop-blur-sm">
         <Timer className="h-3.5 w-3.5" />
-        <span>研暦 3.1/20h</span>
+        <span>Telra 3.1/20h</span>
       </div>
     </div>
   );
@@ -167,7 +148,7 @@ function DynamicIslandPreview() {
   return (
     <div className="relative flex h-full min-h-[360px] flex-col bg-[#f3f7f8] px-5 py-6 text-[#102a35]" aria-hidden="true">
       <div className="mx-auto flex h-10 w-[235px] items-center justify-between rounded-full bg-black px-4 text-white shadow-lg">
-        <div className="flex min-w-0 items-center gap-2 text-[#57c8ae]">
+        <div className="flex min-w-0 items-center gap-2 text-[#62cad6]">
           <Timer className="h-3.5 w-3.5 shrink-0" />
           <span className="truncate text-[11px] font-medium">執筆・保護帯フル</span>
         </div>
@@ -176,7 +157,7 @@ function DynamicIslandPreview() {
 
       <div className="mx-auto mt-16 w-full max-w-[285px] rounded-[28px] bg-black px-5 py-4 text-white shadow-[0_18px_45px_rgba(0,0,0,0.2)]">
         <div className="flex items-center justify-between text-[10px]">
-          <span className="flex items-center gap-1.5 text-[#56d6df]"><Timer className="h-3 w-3" /> CORE TIME</span>
+          <span className="flex items-center gap-1.5 text-[#56d6df]"><Timer className="h-3 w-3" /> TELRA</span>
           <span className="text-[#56d6df]">0:42:18</span>
         </div>
         <div className="mt-4 flex items-center justify-between gap-3">
@@ -184,7 +165,7 @@ function DynamicIslandPreview() {
             <p className="truncate text-sm font-medium">執筆・保護帯フル</p>
             <p className="mt-1 text-[10px] text-white/55">予定 4h</p>
           </div>
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/15 text-white">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#62cad6] text-[#102a35]">
             <Pause className="h-4 w-4 fill-current" />
           </div>
         </div>
@@ -206,21 +187,22 @@ export default function KenrekiLanding() {
       <section className="relative h-[calc(100svh-24px)] min-h-[700px] max-h-[940px] overflow-hidden border-b border-[#cde5e9] bg-[#f2fbfc] px-4 pt-24 sm:px-6 md:min-h-[760px] md:pt-28">
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center text-center">
           <Image
-            src="/kenreki/app-icon.png"
-            alt="研暦 アプリアイコン"
+            src="/kenreki/app-icon-telra.png"
+            alt="Telra アプリアイコン"
             width={88}
             height={88}
             className="mb-4 h-16 w-16 rounded-[14px] object-cover shadow-[0_18px_45px_rgba(0,143,161,0.22)] sm:h-20 sm:w-20"
             priority
           />
-          <p className="text-sm font-bold text-[#007d8c]">研究時間を守る計画・進捗カレンダー</p>
+          <p className="text-sm font-bold text-[#007d8c]">研究計画・集中時間・成果をつなぐ</p>
           <h1 className="mt-2 text-5xl font-semibold tracking-normal text-[#0c3038] sm:text-6xl md:text-7xl">
-            研暦
+            Telra
           </h1>
+          <p className="mt-3 text-sm font-medium text-[#007d8c]">テルラ · 研暦から、新しい研究の暦へ。</p>
           <p className="mt-4 max-w-2xl text-base leading-7 text-[#496a72] sm:text-lg sm:leading-8">
-            締切から逆算し、研究の時間を先に守る。
+            研究を、一歩先へ。締切から今日の作業まで見渡す。
             <br className="hidden sm:block" />
-            予定・実績・成果を、ひとつの暦につなげるiPhoneアプリです。
+            予定をつくり、集中し、成果を残す。研究の毎日を支えるiPhoneアプリです。
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -228,7 +210,7 @@ export default function KenrekiLanding() {
               href={appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="研暦をApp Storeで表示（新しいタブで開きます）"
+              aria-label="TelraをApp Storeで表示（新しいタブで開きます）"
               className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#008fa1] focus-visible:ring-offset-4"
             >
               <Image
@@ -247,7 +229,8 @@ export default function KenrekiLanding() {
               サポート
             </Link>
           </div>
-          <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-1 text-xs text-[#69848a]">
+          <p className="mt-4 max-w-xl text-xs leading-6 text-[#496a72]">Telraへのアップデートを準備中です。現在配信中の「研暦」も、同じApp Storeページから利用できます。</p>
+          <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-1 text-xs text-[#69848a]">
             <span>iOS 16.4以降</span>
             <span>無料</span>
             <span>ログイン不要</span>
@@ -258,30 +241,30 @@ export default function KenrekiLanding() {
           <div className="relative mt-8 h-[360px] w-full max-w-5xl sm:h-[460px] md:mt-10 md:h-[570px]">
             <div className="absolute left-1/2 top-12 w-[178px] -translate-x-[118%] -rotate-3 opacity-75 sm:w-[225px] md:top-16 md:w-[270px]">
               <Image
-                src="/kenreki/screenshots/02-week.png"
+                src="/kenreki/screenshots/telra/02-week.png"
                 alt="週次のCore Timeと侵食表示"
-                width={1206}
-                height={2622}
+                width={1320}
+                height={2868}
                 className="h-auto w-full rounded-[22px] border border-[#0a6874]/20 shadow-xl"
                 priority
               />
             </div>
             <div className="absolute left-1/2 top-0 z-20 w-[195px] -translate-x-1/2 sm:w-[248px] md:w-[300px]">
               <Image
-                src="/kenreki/screenshots/01-home.png"
-                alt="研暦の今日画面"
-                width={1206}
-                height={2622}
+                src="/kenreki/screenshots/telra/01-home.png"
+                alt="Telraの今日画面"
+                width={1320}
+                height={2868}
                 className="h-auto w-full rounded-[24px] border border-[#008fa1]/35 shadow-[0_28px_80px_rgba(0,96,115,0.28)]"
                 priority
               />
             </div>
             <div className="absolute left-1/2 top-12 w-[178px] translate-x-[18%] rotate-3 opacity-75 sm:w-[225px] md:top-16 md:w-[270px]">
               <Image
-                src="/kenreki/screenshots/05-log.png"
+                src="/kenreki/screenshots/telra/05-log.png"
                 alt="研究の振り返り画面"
-                width={1206}
-                height={2622}
+                width={1320}
+                height={2868}
                 className="h-auto w-full rounded-[22px] border border-[#0a6874]/20 shadow-xl"
                 priority
               />
@@ -298,7 +281,7 @@ export default function KenrekiLanding() {
               予定を並べるだけで、終わらせない
             </h2>
             <p className="mt-5 text-base leading-8 text-[#58737a]">
-              研暦は一般的な予定表に、締切からの逆算、研究時間の保護、実績からの再計画を重ねます。
+              今日進める作業、研究ごとの締切と次の工程、今週の実績。Telraは、次に取り組むことが分かる研究計画アプリです。
             </p>
           </div>
 
@@ -354,10 +337,10 @@ export default function KenrekiLanding() {
           <div className="relative mx-auto w-full max-w-[620px]">
             <div className="absolute inset-x-8 bottom-0 top-10 bg-[#0b3a45]" aria-hidden="true" />
             <Image
-              src="/kenreki/screenshots/02-week.png"
+              src="/kenreki/screenshots/telra/02-week.png"
               alt="週次カレンダーでCore Timeと侵食を確認する画面"
-              width={1206}
-              height={2622}
+              width={1320}
+              height={2868}
               className="relative mx-auto h-auto w-[260px] rounded-[24px] border border-[#56d6df]/35 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:w-[320px]"
             />
           </div>
@@ -395,10 +378,10 @@ export default function KenrekiLanding() {
 
         <div className="mx-auto mt-16 grid max-w-7xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <Image
-            src="/kenreki/screenshots/04-year.png"
+            src="/kenreki/screenshots/telra/04-year.png"
             alt="研究工程を年度で表示する画面"
-            width={1206}
-            height={2622}
+            width={1320}
+            height={2868}
             className="mx-auto h-auto w-full max-w-[360px] rounded-[24px] border border-[#008fa1]/25 shadow-xl"
           />
           <div>
@@ -443,8 +426,8 @@ export default function KenrekiLanding() {
                 <Image
                   src={screen.src}
                   alt={screen.title}
-                  width={1206}
-                  height={2622}
+                  width={1320}
+                  height={2868}
                   className="h-auto w-full"
                 />
               </div>
@@ -476,7 +459,7 @@ export default function KenrekiLanding() {
               {
                 label: 'ホーム画面',
                 title: '週の進捗と次の予定',
-                copy: '小・中サイズのWidgetで、実績、目標、侵食、直近のCore Timeを確認できます。',
+                copy: '小・中サイズのWidgetで、週の実績と目標、次の予定、直近の締切を確認できます。',
                 preview: <HomeWidgetPreview />,
               },
               {
@@ -506,7 +489,7 @@ export default function KenrekiLanding() {
           </div>
 
           <p className="mt-10 border-t border-white/15 pt-5 text-xs leading-6 text-[#8fb3b8]">
-            WidgetとLive ActivityはiOS 17以降に対応。Dynamic Island表示には対応するiPhoneが必要です。表示内容は端末やiOSの設定により異なる場合があります。
+            表示は機能紹介のイメージです。WidgetとLive ActivityはiOS 17以降に対応。Dynamic Island表示には対応するiPhoneが必要です。表示内容は端末やiOSの設定により異なる場合があります。
           </p>
         </div>
       </section>
@@ -553,16 +536,16 @@ export default function KenrekiLanding() {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm font-bold text-[#56d6df]">研究時間を、成果につながる形で残す</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-normal">研暦をApp Storeで配信中</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-normal">研究の計画を、ここから始める</h2>
           </div>
           <a
             href={appStoreUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="研暦をApp Storeで表示（新しいタブで開きます）"
+            aria-label="TelraをApp Storeで表示（新しいタブで開きます）"
             className="inline-flex h-[50px] w-fit items-center gap-2 rounded-md bg-white px-5 text-sm font-bold text-[#12333b] transition-colors hover:bg-[#dff5f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#56d6df] focus-visible:ring-offset-4 focus-visible:ring-offset-[#082a33]"
           >
-            App Storeで研暦を見る
+            App Storeで見る
             <ExternalLink className="h-4 w-4" />
           </a>
         </div>
@@ -572,14 +555,14 @@ export default function KenrekiLanding() {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
             <Image
-              src="/kenreki/app-icon.png"
+              src="/kenreki/app-icon-telra.png"
               alt=""
               width={34}
               height={34}
               className="h-8 w-8 rounded-[7px]"
             />
             <div>
-              <p className="text-sm font-semibold text-white">研暦</p>
+              <p className="text-sm font-semibold text-white">Telra</p>
               <p className="mt-1 text-xs">© 2026 Momotaro Nakamura</p>
             </div>
           </div>
@@ -588,7 +571,7 @@ export default function KenrekiLanding() {
             <Link href="/kenreki/privacy" className="hover:text-white">プライバシー</Link>
             <Link href="/kenreki/terms" className="hover:text-white">利用規約</Link>
             <a
-              href="mailto:star0cone.dev@gmail.com?subject=%E7%A0%94%E6%9A%A6%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B"
+              href="mailto:star0cone.dev@gmail.com?subject=Telra%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B"
               className="inline-flex items-center gap-1 hover:text-white"
             >
               <Mail className="h-3 w-3" />
