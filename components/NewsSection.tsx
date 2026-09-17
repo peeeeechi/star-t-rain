@@ -14,6 +14,13 @@ interface NewsItem {
 export default function NewsSection() {
   const newsItems: NewsItem[] = [
     {
+      id: '7',
+      date: '2026.09.08',
+      title: '日本天文学会2026年秋季年会に参加',
+      description: '岡山理科大学で開催された日本天文学会2026年秋季年会に参加し、最新の天文学研究の動向をキャッチアップしました。',
+      category: 'event',
+    },
+    {
       id: '1',
       date: '2025.09.09',
       title: '日本天文学会2025年秋季年会で講演',

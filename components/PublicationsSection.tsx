@@ -30,7 +30,7 @@ export default function PublicationsSection() {
       doi: '10.1093/mnras/stad2725',
       type: 'journal',
       category: 'astronomy',
-      citations: 1,
+      citations: 2,
     },
     {
       id: '2',

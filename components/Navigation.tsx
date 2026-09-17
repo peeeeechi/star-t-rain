@@ -29,11 +29,11 @@ export default function Navigation() {
   }, []);
 
   const navItems = [
+    { label: 'ニュース', href: '/#news', Icon: Newspaper },
     { label: '研究', href: '/#research', Icon: Telescope },
     { label: '業績', href: '/#publications', Icon: BookOpen },
     { label: '教育', href: '/#education', Icon: GraduationCap },
     { label: 'ブログ', href: '/blog', Icon: FileText },
-    { label: 'ニュース', href: '/#news', Icon: Newspaper },
     { label: '星プラっと', href: '/star-cone', Icon: Star },
     { label: 'お問い合わせ', href: '/#contact', Icon: Mail },
   ];
