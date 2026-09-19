@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="'Hiragino Sans', 'Noto Sans JP', sans-serif">
+  <rect x="0" y="0" width="900" height="380" fill="#ffffff"/>
+
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2937">誘導放出による光の増幅（コヒーレントな連鎖反応）</text>
+
+  <!-- gas cloud -->
+  <rect x="220" y="90" width="460" height="200" rx="16" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="450" y="80" text-anchor="middle" font-size="15" fill="#6d28d9" font-weight="700">反転分布したガス雲（星形成領域のメーザー源）</text>
+
+  <!-- excited atoms inside cloud -->
+  <g fill="#7c3aed">
+    <circle cx="300" cy="150" r="8"/>
+    <circle cx="380" cy="200" r="8"/>
+    <circle cx="450" cy="140" r="8"/>
+    <circle cx="520" cy="230" r="8"/>
+    <circle cx="580" cy="160" r="8"/>
+    <circle cx="630" cy="220" r="8"/>
+  </g>
+  <text x="450" y="275" text-anchor="middle" font-size="13" fill="#6d28d9">● = 励起状態にある分子（準位2にいる分子）</text>
+
+  <!-- single incoming photon (straight arrow, manual arrowhead) -->
+  <line x1="40" y1="190" x2="205" y2="190" stroke="#0891b2" stroke-width="4"/>
+  <polygon points="205,180 225,190 205,200" fill="#0891b2"/>
+  <text x="100" y="225" text-anchor="middle" font-size="14" fill="#0891b2" font-weight="700">光子が1個入射</text>
+
+  <!-- multiple identical coherent photons exiting (straight parallel arrows) -->
+  <g stroke="#dc2626" stroke-width="4">
+    <line x1="695" y1="140" x2="850" y2="140"/>
+    <line x1="695" y1="190" x2="850" y2="190"/>
+    <line x1="695" y1="240" x2="850" y2="240"/>
+  </g>
+  <g fill="#dc2626">
+    <polygon points="850,130 870,140 850,150"/>
+    <polygon points="850,180 870,190 850,200"/>
+    <polygon points="850,230 870,240 850,250"/>
+  </g>
+  <text x="775" y="270" text-anchor="middle" font-size="14" fill="#dc2626" font-weight="700">同位相の光子が多数出射</text>
+  <text x="775" y="290" text-anchor="middle" font-size="13" fill="#dc2626">（強め合って増幅＝メーザー光）</text>
+
+  <!-- caption -->
+  <line x1="230" y1="335" x2="670" y2="335" stroke="#9ca3af" stroke-width="2"/>
+  <polygon points="660,328 680,335 660,342" fill="#9ca3af"/>
+  <text x="450" y="360" text-anchor="middle" font-size="13" fill="#6b7280">経路が長い（ガス雲が大きい）ほど、増幅は指数関数的に大きくなる</text>
+</svg>

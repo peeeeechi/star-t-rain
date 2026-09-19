@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" font-family="'Hiragino Sans', 'Noto Sans JP', sans-serif">
+  <rect x="0" y="0" width="900" height="460" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="450" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2937">通常の熱平衡 と 反転分布（メーザー発生条件）</text>
+
+  <!-- Energy axis (shared visual cue, drawn twice) -->
+  <!-- Panel 1: Thermal equilibrium -->
+  <g>
+    <text x="220" y="70" text-anchor="middle" font-size="18" font-weight="700" fill="#374151">熱平衡状態（通常）</text>
+
+    <!-- energy arrow -->
+    <line x1="70" y1="380" x2="70" y2="110" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="46" y="245" text-anchor="middle" font-size="14" fill="#6b7280" transform="rotate(-90 46 245)">エネルギー</text>
+
+    <!-- level 2 (upper) -->
+    <line x1="90" y1="140" x2="360" y2="140" stroke="#7c3aed" stroke-width="4"/>
+    <text x="370" y="145" font-size="16" fill="#7c3aed" font-weight="700">準位2 (E2)</text>
+
+    <!-- level 1 (lower) -->
+    <line x1="90" y1="340" x2="360" y2="340" stroke="#0891b2" stroke-width="4"/>
+    <text x="370" y="345" font-size="16" fill="#0891b2" font-weight="700">準位1 (E1)</text>
+
+    <!-- population dots: few on level2, many on level1 -->
+    <g fill="#7c3aed">
+      <circle cx="130" cy="125" r="7"/>
+      <circle cx="160" cy="125" r="7"/>
+    </g>
+    <g fill="#0891b2">
+      <circle cx="110" cy="325" r="7"/><circle cx="140" cy="325" r="7"/><circle cx="170" cy="325" r="7"/>
+      <circle cx="200" cy="325" r="7"/><circle cx="230" cy="325" r="7"/><circle cx="260" cy="325" r="7"/>
+      <circle cx="290" cy="325" r="7"/><circle cx="320" cy="325" r="7"/>
+    </g>
+
+    <text x="220" y="410" text-anchor="middle" font-size="17" fill="#111827" font-weight="700">N1 &gt; N2（下の準位ほど多い＝ボルツマン分布）</text>
+  </g>
+
+  <!-- divider -->
+  <line x1="450" y1="60" x2="450" y2="430" stroke="#e5e7eb" stroke-width="2"/>
+
+  <!-- Panel 2: Population inversion -->
+  <g>
+    <text x="680" y="70" text-anchor="middle" font-size="18" font-weight="700" fill="#dc2626">反転分布状態（メーザー発生条件）</text>
+
+    <line x1="500" y1="380" x2="500" y2="110" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="476" y="245" text-anchor="middle" font-size="14" fill="#6b7280" transform="rotate(-90 476 245)">エネルギー</text>
+
+    <!-- level 2 (upper) -->
+    <line x1="520" y1="140" x2="790" y2="140" stroke="#7c3aed" stroke-width="4"/>
+    <text x="800" y="145" font-size="16" fill="#7c3aed" font-weight="700">準位2 (E2)</text>
+
+    <!-- level 1 (lower) -->
+    <line x1="520" y1="340" x2="790" y2="340" stroke="#0891b2" stroke-width="4"/>
+    <text x="800" y="345" font-size="16" fill="#0891b2" font-weight="700">準位1 (E1)</text>
+
+    <!-- population dots: many on level2, few on level1 -->
+    <g fill="#7c3aed">
+      <circle cx="540" cy="125" r="7"/><circle cx="570" cy="125" r="7"/><circle cx="600" cy="125" r="7"/>
+      <circle cx="630" cy="125" r="7"/><circle cx="660" cy="125" r="7"/><circle cx="690" cy="125" r="7"/>
+      <circle cx="720" cy="125" r="7"/><circle cx="750" cy="125" r="7"/>
+    </g>
+    <g fill="#0891b2">
+      <circle cx="560" cy="325" r="7"/><circle cx="590" cy="325" r="7"/>
+    </g>
+
+    <text x="655" y="410" text-anchor="middle" font-size="17" fill="#dc2626" font-weight="700">N2 &gt; N1（上の準位の方が多い＝異常な状態）</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+</svg>
