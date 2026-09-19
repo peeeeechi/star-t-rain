@@ -7,9 +7,12 @@ import rehypeKatex from 'rehype-katex';
 import rehypeHighlight from 'rehype-highlight';
 import { Components } from 'react-markdown';
 import Link from 'next/link';
+import Image from 'next/image';
+import { ImageDimensions } from '@/lib/image-dimensions';
 
-// カスタムコンポーネント
-const components: Components = {
+// カスタムコンポーネント（画像は createComponents 内で imageDimensions を束縛して生成）
+function createComponents(imageDimensions: Record<string, ImageDimensions>): Components {
+  return {
   // 見出し
   h1: ({ children }) => (
     <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-6 sm:mt-8 mb-4 sm:mb-6 first:mt-0">
@@ -166,8 +169,26 @@ const components: Components = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   img: ({ src, alt }: any) => {
     if (!src || typeof src !== 'string') return null;
-    
-    // 通常のimgタグを使用（Next.js Imageコンポーネントは設定が必要なため）
+
+    const dims = imageDimensions[src];
+
+    // ローカル画像で寸法が判明している場合は next/image で最適化配信
+    if (dims) {
+      return (
+        <span className="block my-8 text-center">
+          <Image
+            src={src}
+            alt={alt || ''}
+            width={dims.width}
+            height={dims.height}
+            sizes="(max-width: 768px) 100vw, 800px"
+            className="rounded-lg shadow-lg max-w-full h-auto mx-auto"
+          />
+        </span>
+      );
+    }
+
+    // 外部URLなど寸法が取得できない画像は通常のimgタグにフォールバック
     return (
       <span className="block my-8 text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -206,14 +227,19 @@ const components: Components = {
     }
     return null;
   }
-};
+  };
+}
 
 interface MarkdownRendererProps {
   content: string;
   className?: string;
+  // 記事内のローカル画像の実寸（next/image に渡すアスペクト比の元データ）
+  imageDimensions?: Record<string, ImageDimensions>;
 }
 
-export default function MarkdownRenderer({ content, className = '' }: MarkdownRendererProps) {
+export default function MarkdownRenderer({ content, className = '', imageDimensions = {} }: MarkdownRendererProps) {
+  const components = createComponents(imageDimensions);
+
   return (
     <div className={`prose prose-xl max-w-none ${className}`}>
       <ReactMarkdown

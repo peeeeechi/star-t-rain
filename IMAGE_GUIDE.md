@@ -2,58 +2,52 @@
 
 ## 📸 画像の配置場所
 
-画像ファイルは以下のディレクトリに配置してください：
+画像ファイルは `public/images/blog/` 直下にフラットに配置してください（既存の公開記事も全てこの形式です。カテゴリ別サブフォルダは使っていません）：
 
 ```
 public/
 └── images/
     └── blog/
-        ├── astronomy/      # 天文学カテゴリの画像
-        ├── technology/     # 技術カテゴリの画像
-        ├── research/       # 研究カテゴリの画像
-        └── general/        # 一般記事の画像
+        ├── star-life-cycle.png
+        ├── kaken_2025_submit.jpg
+        └── ...
 ```
 
 ## 🖼️ Markdownでの画像挿入方法
 
+> ⚠️ このブログのレンダラー（`MarkdownRenderer.tsx`）は`rehype-raw`を読み込んでいないため、本文中に`<div>`や`<img style="...">`のような生のHTMLタグを書いても**解釈されず、そのまま文字として表示されます**。装飾は以下のMarkdown記法の範囲で行ってください。
+
 ### 1. 基本的な画像挿入
 
 ```markdown
-![VLBIアンテナ](/images/blog/astronomy/vlbi-antenna.jpg)
+![VLBIアンテナ](/images/blog/vlbi-antenna.jpg)
 ```
 
-### 2. キャプション付き画像
+画像は自動的に角丸・影付きで**中央寄せ**表示されます（`img`のカスタムレンダラーが全画像に適用するため、特別な記法は不要です）。
+
+### 2. キャプションを付ける
+
+`![alt](path "title")`のタイトル属性は現在のレンダラーでは表示されません。キャプションを付けたい場合は、画像の直後に斜体のMarkdown行を置いてください（実際に公開記事でも使われている書き方です）。
 
 ```markdown
-![野辺山45m電波望遠鏡](/images/blog/astronomy/nobeyama-45m.jpg "野辺山宇宙電波観測所の45m電波望遠鏡")
+![VERA観測網](/images/blog/vera-network.jpg)
+*図1: VERA観測網の配置図*
 ```
 
-### 3. 中央寄せの画像
+### 3. 並列画像（2枚並べて比較する）
+
+生HTMLのflex/gridは使えないため、Markdownの表（table）で代用します。
 
 ```markdown
-<div align="center">
-
-![ALMAアンテナ群](/images/blog/astronomy/alma-array.jpg)
-
-*図1: アタカマ大型ミリ波サブミリ波干渉計（ALMA）のアンテナ群*
-
-</div>
+| 観測前 | 観測後 |
+|:---:|:---:|
+| ![観測前](/images/blog/before.jpg) | ![観測後](/images/blog/after.jpg) |
+| Epoch 1 (2024年1月) | Epoch 2 (2024年4月) |
 ```
 
-### 4. 並列画像（2枚並べる）
+### 4. サイズの指定について
 
-```markdown
-<div style="display: flex; gap: 10px; margin: 20px 0;">
-  <img src="/images/blog/research/before.jpg" alt="観測前" style="width: 50%;" />
-  <img src="/images/blog/research/after.jpg" alt="観測後" style="width: 50%;" />
-</div>
-```
-
-### 5. サイズを指定した画像
-
-```markdown
-<img src="/images/blog/technology/diagram.png" alt="システム構成図" style="width: 100%; max-width: 600px; height: auto;" />
-```
+現状、個別の画像に幅を指定する記法はサポートされていません。すべての画像はコンテンツ幅いっぱいまでレスポンシブに表示されます（高さは自動でアスペクト比を維持）。
 
 ## 📝 実際の記事での使用例
 
@@ -69,35 +63,23 @@ category: "astronomy"
 
 今回使用したVERA（VLBI Exploration of Radio Astrometry）は、日本国内に4局の電波望遠鏡を配置した観測網です。
 
-![VERA観測網](/images/blog/astronomy/vera-network.jpg)
+![VERA観測網](/images/blog/vera-network.jpg)
 *図1: VERA観測網の配置図*
 
 ## 観測結果
 
 メタノールメーザーの空間分布を以下に示します：
 
-<div align="center">
-
-![メーザー分布図](/images/blog/research/maser-distribution.png)
-
+![メーザー分布図](/images/blog/maser-distribution.png)
 *図2: 6.7 GHz メタノールメーザーの空間分布（観測日：2024年10月）*
-
-</div>
 
 ### 時系列変化
 
 3ヶ月ごとの観測結果を比較すると、明確な変動が確認できました。
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-  <div>
-    <img src="/images/blog/research/epoch1.jpg" alt="Epoch 1" style="width: 100%;" />
-    <p style="text-align: center; font-size: 0.9em; color: #666;">Epoch 1 (2024年1月)</p>
-  </div>
-  <div>
-    <img src="/images/blog/research/epoch2.jpg" alt="Epoch 2" style="width: 100%;" />
-    <p style="text-align: center; font-size: 0.9em; color: #666;">Epoch 2 (2024年4月)</p>
-  </div>
-</div>
+| Epoch 1 (2024年1月) | Epoch 2 (2024年4月) |
+|:---:|:---:|
+| ![Epoch 1](/images/blog/epoch1.jpg) | ![Epoch 2](/images/blog/epoch2.jpg) |
 ```
 
 ## 🎨 画像の最適化
@@ -128,30 +110,14 @@ category: "astronomy"
 
 ## 🔧 Next.js Image コンポーネントの活用
 
-MarkdownRendererでは、画像は自動的にNext.jsのImageコンポーネントで処理されます：
+`public/images/blog/`配下のローカル画像は、記事ページ描画時（`lib/image-dimensions.ts`）に実ファイルを読んで実際の width/height を自動取得し、その値を使って`next/image`で配信されます（`components/MarkdownRenderer.tsx`）。これにより：
 
-```jsx
-// components/MarkdownRenderer.tsx での処理
-img: ({ src, alt }) => {
-  return (
-    <div className="my-8 flex justify-center">
-      <Image
-        src={src}
-        alt={alt || ''}
-        width={800}
-        height={600}
-        className="rounded-lg shadow-lg max-w-full h-auto"
-      />
-    </div>
-  );
-}
-```
-
-これにより：
-- 自動的な画像最適化
+- 自動的な画像最適化・圧縮
 - 遅延読み込み（Lazy Loading）
-- レスポンシブ対応
-- WebP変換（対応ブラウザ）
+- レスポンシブなsrcSet生成
+- 対応ブラウザ向けのフォーマット変換
+
+寸法が取得できない画像（ファイルが存在しない・外部URLなど）は、通常の`<img>`タグに自動フォールバックし、読み込みエラー時は代替表示（📷 画像を読み込めません）が出ます。特別な設定は不要で、`public/images/blog/`に画像を置いてMarkdownで参照するだけで最適化が効きます。
 
 ## 📌 注意事項
 
@@ -170,7 +136,7 @@ img: ({ src, alt }) => {
 ```markdown
 ## 研究成果
 
-![研究成果のグラフ](/images/blog/research/results-graph.png)
+![研究成果のグラフ](/images/blog/results-graph.png)
 
 上図に示すように、観測により新たな知見が得られました。
 ```
@@ -178,11 +144,11 @@ img: ({ src, alt }) => {
 3. コミット時に画像ファイルも含める：
 
 ```bash
-git add public/images/blog/research/results-graph.png
+git add public/images/blog/results-graph.png
 git add content/blog/your-article.md
 git commit -m "Add article with research results graph"
 ```
 
 ---
 
-*最終更新: 2025年1月14日*
+*最終更新: 2026年9月19日*

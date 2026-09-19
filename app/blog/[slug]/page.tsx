@@ -10,6 +10,7 @@ import {
   BookOpen
 } from 'lucide-react';
 import { getPostBySlug, getAllPostsMetadata, getCategoryInfo, getRecentPosts } from '@/lib/blog';
+import { getLocalImageDimensions } from '@/lib/image-dimensions';
 import { BlogCategory } from '@/types/blog';
 import ShareButton from '@/components/ShareButton';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
@@ -79,6 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const recentPosts = getRecentPosts(5).filter(p => p.slug !== slug);
+  const imageDimensions = getLocalImageDimensions(post.content);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-cosmic-50/30 dark:from-gray-900 dark:to-cosmic-900/20">
@@ -145,7 +147,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
 
             {/* 記事本文 */}
-            <MarkdownRenderer content={post.content} />
+            <MarkdownRenderer content={post.content} imageDimensions={imageDimensions} />
           </div>
 
           {/* シェアボタン */}
