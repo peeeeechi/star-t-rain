@@ -1,5 +1,6 @@
 'use client';
 
+import { isValidElement, type ReactNode } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -8,7 +9,21 @@ import rehypeHighlight from 'rehype-highlight';
 import { Components } from 'react-markdown';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Lightbulb } from 'lucide-react';
 import { ImageDimensions } from '@/lib/image-dimensions';
+
+// blockquoteの子要素からプレーンテキストを再帰的に抽出する
+// （太字などの装飾を無視して「コラム」マーカーを判定するために使う）
+function extractText(node: ReactNode): string {
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(extractText).join('');
+  if (isValidElement<{ children?: ReactNode }>(node)) {
+    return extractText(node.props.children);
+  }
+  return '';
+}
+
+const COLUMN_MARKER_RE = /^コラム[:：]?\s*(.*)$/;
 
 // カスタムコンポーネント（画像は createComponents 内で imageDimensions を束縛して生成）
 function createComponents(imageDimensions: Record<string, ImageDimensions>): Components {
@@ -134,12 +149,44 @@ function createComponents(imageDimensions: Record<string, ImageDimensions>): Com
     );
   },
   
-  // 引用
-  blockquote: ({ children }) => (
-    <blockquote className="border-l-4 border-cosmic-500 bg-cosmic-50/50 dark:bg-cosmic-900/20 pl-4 sm:pl-6 py-3 sm:py-4 my-4 sm:my-8 italic text-sm sm:text-base text-gray-700 dark:text-gray-100">
-      {children}
-    </blockquote>
-  ),
+  // 引用（先頭行が「コラム」で始まる場合は特別なコラムボックスとして表示）
+  blockquote: ({ children }) => {
+    // 改行のみの空白テキストノードが子要素に混ざることがあるため除去してから判定する
+    const childArray = (Array.isArray(children) ? children : [children]).filter((child) => {
+      if (typeof child === 'string') return child.trim() !== '';
+      return child !== null && child !== undefined && child !== false;
+    });
+    const [firstChild, ...restChildren] = childArray;
+    // 1行が長くてソフト改行を含む場合でも判定できるよう空白として正規化する
+    const firstLineText = extractText(firstChild).replace(/\s+/g, ' ').trim();
+    const columnMatch = firstLineText.match(COLUMN_MARKER_RE);
+
+    if (columnMatch) {
+      const subtitle = columnMatch[1]?.trim();
+      return (
+        <div className="my-6 sm:my-8 rounded-2xl overflow-hidden shadow-lg border border-nebula-200/50 dark:border-nebula-700/40 not-italic">
+          <div className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-nebula-600 to-cosmic-600">
+            <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
+            <span className="font-bold text-sm sm:text-base text-white tracking-wide">コラム</span>
+            {subtitle && (
+              <span className="font-semibold text-sm sm:text-base text-white/90 truncate">
+                — {subtitle}
+              </span>
+            )}
+          </div>
+          <div className="px-5 sm:px-6 py-4 sm:py-5 bg-gradient-to-br from-nebula-50/80 via-white to-cosmic-50/40 dark:from-nebula-900/20 dark:via-gray-800/60 dark:to-cosmic-900/10 text-sm sm:text-base text-gray-700 dark:text-gray-200 leading-relaxed [&>*:last-child]:mb-0">
+            {restChildren}
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <blockquote className="border-l-4 border-cosmic-500 bg-cosmic-50/50 dark:bg-cosmic-900/20 pl-4 sm:pl-6 py-3 sm:py-4 my-4 sm:my-8 italic text-sm sm:text-base text-gray-700 dark:text-gray-100">
+        {children}
+      </blockquote>
+    );
+  },
   
   // テーブル
   table: ({ children }) => (
