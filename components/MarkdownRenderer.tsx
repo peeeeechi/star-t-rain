@@ -25,6 +25,22 @@ function extractText(node: ReactNode): string {
 
 const COLUMN_MARKER_RE = /^コラム[:：]?\s*(.*)$/;
 
+// 【コラム】〜【コラム終わり】記法を、blockquoteベースの内部表現
+// （> **コラム: ...**\n>\n> 本文...）に変換してからReactMarkdownに渡す。
+// こう書く方が「>」を毎行付ける必要がなく書きやすいため、正式にサポートする。
+const BRACKET_COLUMN_RE = /【コラム(?:[:：]\s*([^】]*))?】\n([\s\S]*?)\n【コラム終わり】/g;
+
+function preprocessColumnMarkers(content: string): string {
+  return content.replace(BRACKET_COLUMN_RE, (_match, subtitle: string | undefined, body: string) => {
+    const quotedBody = body
+      .split('\n')
+      .map((line) => (line.trim() === '' ? '>' : `> ${line}`))
+      .join('\n');
+    const subtitlePart = subtitle?.trim() ? `: ${subtitle.trim()}` : '';
+    return `> **コラム${subtitlePart}**\n>\n${quotedBody}`;
+  });
+}
+
 // カスタムコンポーネント（画像は createComponents 内で imageDimensions を束縛して生成）
 function createComponents(imageDimensions: Record<string, ImageDimensions>): Components {
   return {
@@ -286,6 +302,7 @@ interface MarkdownRendererProps {
 
 export default function MarkdownRenderer({ content, className = '', imageDimensions = {} }: MarkdownRendererProps) {
   const components = createComponents(imageDimensions);
+  const processedContent = preprocessColumnMarkers(content);
 
   return (
     <div className={`prose prose-xl max-w-none ${className}`}>
@@ -303,7 +320,7 @@ export default function MarkdownRenderer({ content, className = '', imageDimensi
         ]}
         components={components}
       >
-        {content}
+        {processedContent}
       </ReactMarkdown>
     </div>
   );
