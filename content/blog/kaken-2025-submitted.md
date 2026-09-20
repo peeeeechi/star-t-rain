@@ -5,7 +5,7 @@ excerpt: "つぶやき。"
 category: "general"
 tags: ["科研費", "雑談"]
 author: "peeeeechi"
-published: true
+published: false
 ---
 
 この３連休はこのサイトの立ち上げと記事を書いてたのは、科研費の申請書類をまとめるための思考整理のためでもありました。

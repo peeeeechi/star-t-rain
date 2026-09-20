@@ -38,6 +38,15 @@ export const categories: CategoryInfo[] = [
   }
 ];
 
+// published !== false かつ date が現在時刻を過ぎているか（＝予約投稿の公開判定）
+function isPubliclyVisible(data: { published?: boolean; date?: string }): boolean {
+  if (data.published === false) return false;
+  if (!data.date) return true;
+  const publishAt = new Date(data.date).getTime();
+  if (Number.isNaN(publishAt)) return true;
+  return publishAt <= Date.now();
+}
+
 // すべてのブログ記事のメタデータを取得
 export function getAllPostsMetadata(): BlogMetadata[] {
   if (!fs.existsSync(blogDirectory)) {
@@ -62,7 +71,7 @@ export function getAllPostsMetadata(): BlogMetadata[] {
         tags: matterResult.data.tags || [],
         author: matterResult.data.author || '中村桃太朗',
         readTime: calculateReadTime(matterResult.content),
-        published: matterResult.data.published !== false
+        published: isPubliclyVisible(matterResult.data)
       };
     })
     .filter((post) => post.published)
@@ -71,17 +80,21 @@ export function getAllPostsMetadata(): BlogMetadata[] {
   return allPostsData;
 }
 
-// 特定のブログ記事を取得
+// 特定のブログ記事を取得（予約投稿でまだ公開時刻前の場合は null を返す＝404）
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(blogDirectory, `${slug}.md`);
-    
+
     if (!fs.existsSync(fullPath)) {
       return null;
     }
 
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
+
+    if (!isPubliclyVisible(matterResult.data)) {
+      return null;
+    }
 
     return {
       slug,
@@ -93,7 +106,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       tags: matterResult.data.tags || [],
       author: matterResult.data.author || '中村桃太朗',
       readTime: calculateReadTime(matterResult.content),
-      published: matterResult.data.published !== false
+      published: true
     };
   } catch (error) {
     console.error('Error reading blog post:', error);

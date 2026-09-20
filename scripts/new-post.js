@@ -15,10 +15,19 @@ function printUsageAndExit() {
   --author="<著者名>"    (既定: peeeeechi)
   --excerpt="<要約>"     (既定: TODOプレースホルダー)
   --tags=タグ1,タグ2      (既定: なし)
+  --date=YYYY-MM-DD      (既定: 今日。未来日付にすると予約投稿になる。下記参照)
   --publish              作成時点で published: true にする（既定は下書き=false）
+
+予約投稿について:
+  published: true のまま date を未来日付にすると「予約投稿」になります。
+  その日時が来るまでサイトには表示されず（一覧にも出ず、URLに直接アクセスしても404）、
+  日時を過ぎると毎日1回のバッチ処理で自動的に公開されます（再度のpush操作は不要）。
+  時刻まで指定したい場合は date に "2026-09-27T09:00:00+09:00" のようにISO形式で書けます
+  （日付だけの場合はUTC 0時＝日本時間9時に公開されます）。
 
 例:
   npm run new-post -- vlbi-2026-report "VLBI観測レポート2026" --category=research --publish
+  npm run new-post -- vlbi-2026-report-2 "続報" --category=research --publish --date=2026-10-04
 `);
   process.exit(1);
 }
@@ -75,13 +84,21 @@ function main() {
     : [];
   const published = Boolean(flags.publish);
 
+  const dateValue = typeof flags.date === 'string' ? flags.date : today();
+  const parsedDate = new Date(dateValue);
+  if (Number.isNaN(parsedDate.getTime())) {
+    console.error(`❌ dateが正しい日付として解釈できません。指定値: "${dateValue}"`);
+    process.exit(1);
+  }
+  const isScheduled = published && parsedDate.getTime() > Date.now();
+
   const tagsYaml = tags.length > 0
     ? `[${tags.map((t) => `"${t}"`).join(', ')}]`
     : '[]';
 
   const frontmatter = `---
 title: "${title}"
-date: "${today()}"
+date: "${dateValue}"
 excerpt: "${excerpt}"
 category: "${category}"
 tags: ${tagsYaml}
@@ -97,7 +114,11 @@ published: ${published}
   fs.writeFileSync(filePath, frontmatter);
 
   console.log(`✅ 作成しました: content/blog/${slug}.md`);
-  console.log(`   公開状態: ${published ? '公開 (published: true)' : '下書き (published: false)'}`);
+  if (isScheduled) {
+    console.log(`   公開状態: 予約投稿 (${dateValue} に自動公開)`);
+  } else {
+    console.log(`   公開状態: ${published ? '公開 (published: true)' : '下書き (published: false)'}`);
+  }
   if (!published) {
     console.log('   本文を書き終えたら published: true に変更し、commit & push してください。');
   }

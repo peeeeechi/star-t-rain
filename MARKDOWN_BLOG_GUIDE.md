@@ -18,6 +18,23 @@ published: true  # false にすると下書き状態
 ---
 ```
 
+### 予約投稿
+
+`published: true` のまま `date` を未来の日時にすると、その日時までは非公開（一覧に出ない、URLに直接アクセスしても404）で、日時を過ぎると自動的に公開されます。
+
+```yaml
+date: "2026-09-27"                    # 日付だけの場合、UTC 0時（日本時間9時）に公開
+date: "2026-09-27T09:00:00+09:00"     # 時刻まで指定したい場合はISO形式で
+```
+
+自動公開は毎日1回のバッチ処理（Vercel Cron Jobs、UTC 0時ごろ実行）でチェックされます。`npm run new-post`で`--date=`と`--publish`を組み合わせれば、まとめて未来日付の予約投稿を作成できます。
+
+```bash
+npm run new-post -- g358-mm1-followup "続報タイトル" --category=research --publish --date=2026-10-04
+```
+
+一方、`published: false` の下書きは日付に関わらず常に非公開です。
+
 ### 記事本文の構造
 
 ```markdown
