@@ -4,7 +4,7 @@ date: "2026-09-19"
 excerpt: "大質量原始星G24.33+0.14で発生した6.7 GHzメタノールメーザーのフレア現象を、VLBA・EVN・LBAによる多周波VLBI観測で追跡したKobak et al. (2023, A&A)を紹介します。メーザーの空間分布と円盤・アウトフロー構造の対応を探ります。"
 category: "research"
 tags: ["論文メモ", "メタノールメーザー", "VLBI", "大質量星形成", "フレア"]
-author: "中村桃太朗"
+author: "peeeeechi"
 published: true
 ---
 

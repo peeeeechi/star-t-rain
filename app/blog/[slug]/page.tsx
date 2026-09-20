@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  ArrowLeft, 
-  Calendar, 
-  Clock, 
-  User, 
+import Image from 'next/image';
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
   Tag,
   BookOpen
 } from 'lucide-react';
@@ -116,7 +116,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
               
               <div className="flex items-center">
-                <User className="w-5 h-5 mr-2" />
+                <Image
+                  src="/profile.png"
+                  alt={post.author}
+                  width={24}
+                  height={24}
+                  className="w-6 h-6 rounded-full object-cover mr-2"
+                />
                 {post.author}
               </div>
               

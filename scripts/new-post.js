@@ -12,7 +12,7 @@ function printUsageAndExit() {
 
 オプション:
   --category=<${VALID_CATEGORIES.join('|')}>  (既定: general)
-  --author="<著者名>"    (既定: 中村桃太朗)
+  --author="<著者名>"    (既定: peeeeechi)
   --excerpt="<要約>"     (既定: TODOプレースホルダー)
   --tags=タグ1,タグ2      (既定: なし)
   --publish              作成時点で published: true にする（既定は下書き=false）
@@ -68,7 +68,7 @@ function main() {
     process.exit(1);
   }
 
-  const author = flags.author || '中村桃太朗';
+  const author = flags.author || 'peeeeechi';
   const excerpt = flags.excerpt || 'TODO: 100〜150文字程度で記事の要約を書く';
   const tags = flags.tags
     ? flags.tags.split(',').map((t) => t.trim()).filter(Boolean)
