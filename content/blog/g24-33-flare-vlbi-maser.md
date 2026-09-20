@@ -12,10 +12,10 @@ published: true
 
 ## 論文情報
 
-**タイトル**: Multi-frequency VLBI observations of maser lines during the 6.7 GHz maser flare in the high-mass young stellar object G24.33+0.14
-**著者**: A. Kobak, A. Bartkiewicz, M. Szymczak, M. Olech, M. Durjasz, P. Wolak, J. O. Chibueze, T. Hirota, J. Eislöffel, B. Stecklum, A. Sobolev, O. Bayandina, G. Orosz, R. A. Burns, Kee-Tae Kim, S. P. van den Heever
-**雑誌**: Astronomy & Astrophysics, 671, A135 (2023)
-**DOI**: [10.1051/0004-6361/202244772](https://doi.org/10.1051/0004-6361/202244772)
+**タイトル**: Multi-frequency VLBI observations of maser lines during the 6.7 GHz maser flare in the high-mass young stellar object G24.33+0.14 
+**著者**: A. Kobak, A. Bartkiewicz, M. Szymczak, M. Olech, M. Durjasz, P. Wolak, J. O. Chibueze, T. Hirota, J. Eislöffel, B. Stecklum, A. Sobolev, O. Bayandina, G. Orosz, R. A. Burns, Kee-Tae Kim, S. P. van den Heever 
+**雑誌**: Astronomy & Astrophysics, 671, A135 (2023) 
+**DOI**: [10.1051/0004-6361/202244772](https://doi.org/10.1051/0004-6361/202244772) 
 
 ## 背景・研究動機
 
@@ -58,8 +58,7 @@ G24における熱波（励起状態の変化）の伝播速度は、G358-MM1に
 | 伝播速度 | 光速の約0.3〜0.5倍（平均して約0.33c、光速の約1/3）のサブルミナル（光速未満）速度で熱波が伝播 | 遠赤外線〜中赤外線の熱放射の伝播速度は、光速の約0.04〜0.08倍（0.04–0.08c）と推定 |
 | 構造変化（モルフォロジー） | フレア発生中の約2ヶ月間（66日間）の観測において、6.7 GHzメタノールメーザーの全体的な空間構造は壊れることなく極めて安定に維持 | わずか26日間という短期間で、メーザーの空間形態が極端に変化・変容したことが報告 |
 
-**物理的メカニズム・エネルギー規模の違い**
-
+**物理的メカニズム・エネルギー規模の違い** 
 G24でのフレアは、G358-MM1やS255-NIRS3で観測されたような非常に大規模な降着バースト（accretion burst）に比べると、エネルギー規模がずっと小さな降着イベント（赤外線光子の一時的な増加エピソード）によって引き起こされたと考えられています。
 このように熱波の伝播速度や構造の安定性に大きな違いがあるものの、どちらの天体においても「中心からの赤外線放射（熱波）が伝播することによってメーザーフレアが励起される」という基本メカニズム自体は共通して支持されています。
 【コラム終わり】

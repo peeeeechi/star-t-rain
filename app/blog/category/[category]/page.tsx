@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  ArrowLeft, 
-  Calendar, 
-  Clock, 
-  User, 
+import Image from 'next/image';
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
   Tag,
   Sparkles
 } from 'lucide-react';
@@ -85,7 +85,13 @@ function BlogPostCard({ post }: { post: BlogMetadata }) {
         <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
           <div className="flex items-center space-x-4">
             <div className="flex items-center">
-              <User className="w-4 h-4 mr-1" />
+              <Image
+                src="/profile.png"
+                alt={post.author}
+                width={20}
+                height={20}
+                className="w-5 h-5 rounded-full object-cover mr-1"
+              />
               {post.author}
             </div>
             <div className="flex items-center">
