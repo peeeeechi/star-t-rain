@@ -38,13 +38,23 @@ export const categories: CategoryInfo[] = [
   }
 ];
 
-// published !== false かつ date が現在時刻を過ぎているか（＝予約投稿の公開判定）
-function isPubliclyVisible(data: { published?: boolean; date?: string }): boolean {
-  if (data.published === false) return false;
-  if (!data.date) return true;
+// published: true のまま date が未来時刻＝「予約投稿」（その日時までは一覧にもURL直アクセスにも出さない）
+function isScheduledForFuture(data: { published?: boolean; date?: string }): boolean {
+  if (data.published === false) return false; // 下書きは「予約」ではなく、常にURL直アクセスではプレビュー可能にする
+  if (!data.date) return false;
   const publishAt = new Date(data.date).getTime();
-  if (Number.isNaN(publishAt)) return true;
-  return publishAt <= Date.now();
+  return !Number.isNaN(publishAt) && publishAt > Date.now();
+}
+
+// 一覧・カテゴリー一覧に出してよいか（下書き・未到来の予約投稿は除外）
+function isListable(data: { published?: boolean; date?: string }): boolean {
+  if (data.published === false) return false;
+  return !isScheduledForFuture(data);
+}
+
+// URLへの直接アクセスを許可してよいか（未到来の予約投稿のみ404にする。下書きはプレビュー用に許可）
+function isDirectlyAccessible(data: { published?: boolean; date?: string }): boolean {
+  return !isScheduledForFuture(data);
 }
 
 // すべてのブログ記事のメタデータを取得
@@ -71,7 +81,7 @@ export function getAllPostsMetadata(): BlogMetadata[] {
         tags: matterResult.data.tags || [],
         author: matterResult.data.author || '中村桃太朗',
         readTime: calculateReadTime(matterResult.content),
-        published: isPubliclyVisible(matterResult.data)
+        published: isListable(matterResult.data)
       };
     })
     .filter((post) => post.published)
@@ -80,7 +90,7 @@ export function getAllPostsMetadata(): BlogMetadata[] {
   return allPostsData;
 }
 
-// 特定のブログ記事を取得（予約投稿でまだ公開時刻前の場合は null を返す＝404）
+// 特定のブログ記事を取得（未到来の予約投稿は null を返す＝404。下書きはプレビューのため許可）
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(blogDirectory, `${slug}.md`);
@@ -92,7 +102,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
 
-    if (!isPubliclyVisible(matterResult.data)) {
+    if (!isDirectlyAccessible(matterResult.data)) {
       return null;
     }
 
