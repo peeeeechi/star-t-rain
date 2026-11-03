@@ -1,222 +1,124 @@
 'use client';
-
 import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import {
-  Calendar,
-  Clock,
-  Tag,
-  BookOpen,
-  Sparkles
-} from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { BlogMetadata, CategoryInfo } from '@/types/blog';
-import BlogFilter from '@/components/BlogFilter';
-import BlogFilterMobile from '@/components/BlogFilterMobile';
-
-interface BlogPageClientProps {
+import JournalCard from '@/components/JournalCard';
+export default function BlogPageClient({
+  initialPosts,
+  categories,
+}: {
   initialPosts: BlogMetadata[];
   categories: CategoryInfo[];
-}
-
-function CategoryBadge({ category, categories }: { category: string; categories: CategoryInfo[] }) {
-  const categoryInfo = categories.find(cat => cat.id === category);
-  if (!categoryInfo) return null;
-
-  const colorClasses = {
-    cosmic: 'bg-cosmic-100 text-cosmic-800 dark:bg-cosmic-900/30 dark:text-cosmic-300',
-    stellar: 'bg-stellar-100 text-stellar-800 dark:bg-stellar-900/30 dark:text-stellar-300',
-    nebula: 'bg-nebula-100 text-nebula-800 dark:bg-nebula-900/30 dark:text-nebula-300',
-    emerald: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300',
-    gray: 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300'
-  };
-
-  return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-      colorClasses[categoryInfo.color as keyof typeof colorClasses] || colorClasses.gray
-    }`}>
-      {categoryInfo.name}
-    </span>
+}) {
+  const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('all');
+  const [tags, setTags] = useState<string[]>([]);
+  const allTags = Array.from(
+    new Set(initialPosts.flatMap((post) => post.tags)),
   );
-}
-
-function BlogPostCard({ post, categories }: { post: BlogMetadata; categories: CategoryInfo[] }) {
+  const search = query.trim().toLowerCase();
+  const posts = initialPosts.filter(
+    (post) =>
+      (category === 'all' || post.category === category) &&
+      (!search ||
+        [post.title, post.excerpt, ...post.tags].some((text) =>
+          text.toLowerCase().includes(search),
+        )) &&
+      (!tags.length || tags.some((tag) => post.tags.includes(tag))),
+  );
+  const reset = () => {
+    setQuery('');
+    setCategory('all');
+    setTags([]);
+  };
   return (
-    <article className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden group hover:scale-105 border border-gray-100 dark:border-gray-700">
-      <div className="p-6 sm:p-8">
-        <div className="flex items-center justify-between mb-4">
-          <CategoryBadge category={post.category} categories={categories} />
-          <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <Calendar className="w-4 h-4 mr-1" />
-            {new Date(post.date).toLocaleDateString('ja-JP')}
-          </div>
-        </div>
-        
-        <h2 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-cosmic-600 dark:group-hover:text-cosmic-400 transition-colors line-clamp-2">
-          <Link href={`/blog/${post.slug}`} className="hover:underline">
-            {post.title}
-          </Link>
-        </h2>
-        
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 leading-relaxed">
-          {post.excerpt}
+    <div className="journal-page site-container">
+      <header className="journal-header">
+        <p className="eyebrow">FIELD NOTES / 研究ノート</p>
+        <h1>宇宙と、学びの余白に。</h1>
+        <p>
+          研究のこと、教室のこと、つくること。
+          <br />
+          まだ答えのない問いと、その途中の記録。
         </p>
-        
-        <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <Image
-                src="/profile.png"
-                alt={post.author}
-                width={20}
-                height={20}
-                className="w-5 h-5 rounded-full object-cover mr-1"
-              />
-              {post.author}
-            </div>
-            <div className="flex items-center">
-              <Clock className="w-4 h-4 mr-1" />
-              {post.readTime}分
-            </div>
-          </div>
-          
-          {post.tags.length > 0 && (
-            <div className="flex items-center">
-              <Tag className="w-4 h-4 mr-1" />
-              <span className="text-xs">
-                {post.tags.slice(0, 2).join(', ')}
-                {post.tags.length > 2 && '...'}
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-      
-      <div className="px-6 sm:px-8 pb-6">
-        <Link
-          href={`/blog/${post.slug}`}
-          className="inline-flex items-center text-cosmic-600 dark:text-cosmic-400 hover:text-cosmic-700 dark:hover:text-cosmic-300 font-medium group-hover:translate-x-1 transition-all duration-300"
-        >
-          続きを読む
-          <Sparkles className="w-4 h-4 ml-2 group-hover:animate-pulse" />
-        </Link>
-      </div>
-    </article>
-  );
-}
-
-export default function BlogPageClient({ initialPosts, categories }: BlogPageClientProps) {
-  const [filteredPosts, setFilteredPosts] = useState<BlogMetadata[]>(initialPosts);
-
-  const handleFilteredPostsChange = (posts: BlogMetadata[]) => {
-    setFilteredPosts(posts);
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-cosmic-50/30 dark:from-gray-900 dark:to-cosmic-900/20 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ヘッダー */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-cosmic-600 to-stellar-600 rounded-2xl mb-6">
-            <BookOpen className="w-8 h-8 text-white" />
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-cosmic-600 to-stellar-600 bg-clip-text text-transparent">
-              研究ブログ
-            </span>
-          </h1>
-          
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            天文学研究の最新動向、AI技術の活用事例、教育実践など、研究活動に関する記事や考察を発信しています。
-          </p>
-        </div>
-
-        {/* モバイル用フィルター */}
-        <BlogFilterMobile 
-          posts={initialPosts}
-          categories={categories}
-          onFilteredPostsChange={handleFilteredPostsChange}
+      </header>
+      <div className="journal-search">
+        <Search size={19} />
+        <label className="sr-only" htmlFor="journal-query">
+          研究ノートを検索
+        </label>
+        <input
+          id="journal-query"
+          type="search"
+          placeholder="キーワードから、ノートを探す"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
-
-        {/* メインコンテンツ - サイドバー付きレイアウト */}
-        <div className="grid lg:grid-cols-4 gap-8">
-          {/* サイドバー - デスクトップのみ表示 */}
-          <div className="hidden lg:block lg:col-span-1">
-            <div className="sticky top-8">
-              <BlogFilter 
-                posts={initialPosts}
-                categories={categories}
-                onFilteredPostsChange={handleFilteredPostsChange}
-              />
-            </div>
-          </div>
-
-          {/* メインコンテンツ */}
-          <div className="lg:col-span-3">
-            {/* 記事一覧 */}
-            {filteredPosts.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="max-w-md mx-auto">
-                  <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                    条件に一致する記事が見つかりません
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    別のキーワードやフィルターで検索してみてください。
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <>
-                {/* 結果カウント */}
-                <div className="mb-6">
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {filteredPosts.length}件の記事が見つかりました
-                    {filteredPosts.length !== initialPosts.length && (
-                      <span className="ml-2">({initialPosts.length}件中)</span>
-                    )}
-                  </p>
-                </div>
-
-                {/* 記事グリッド */}
-                <div className="grid xl:grid-cols-2 gap-6">
-                  {filteredPosts.map((post) => (
-                    <BlogPostCard key={post.slug} post={post} categories={categories} />
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* 統計情報 */}
-        <div className="mt-16 bg-gradient-to-r from-cosmic-500/10 to-stellar-500/10 rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            ブログ統計
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div>
-              <div className="text-3xl font-bold text-cosmic-600 dark:text-cosmic-400">
-                {initialPosts.length}
-              </div>
-              <div className="text-gray-600 dark:text-gray-400">記事数</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-stellar-600 dark:text-stellar-400">
-                {categories.length}
-              </div>
-              <div className="text-gray-600 dark:text-gray-400">カテゴリー</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-nebula-600 dark:text-nebula-400">
-                {Math.round(initialPosts.reduce((sum, post) => sum + post.readTime, 0) / initialPosts.length) || 0}
-              </div>
-              <div className="text-gray-600 dark:text-gray-400">平均読了時間（分）</div>
-            </div>
-          </div>
-        </div>
+        <span className="mono">
+          {String(posts.length).padStart(2, '0')} NOTES
+        </span>
       </div>
+      <div className="filter-tabs">
+        <button
+          aria-pressed={category === 'all'}
+          onClick={() => setCategory('all')}
+        >
+          すべて
+        </button>
+        {categories.map((item) => (
+          <button
+            key={item.id}
+            aria-pressed={category === item.id}
+            onClick={() => setCategory(item.id)}
+          >
+            {item.name}
+          </button>
+        ))}
+      </div>
+      <details className="tag-filter">
+        <summary>
+          タグで絞り込む {tags.length > 0 && `(${tags.length})`}
+        </summary>
+        <div className="tag-options">
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              aria-pressed={tags.includes(tag)}
+              onClick={() =>
+                setTags(
+                  tags.includes(tag)
+                    ? tags.filter((value) => value !== tag)
+                    : [...tags, tag],
+                )
+              }
+            >
+              # {tag}
+            </button>
+          ))}
+        </div>
+      </details>
+      {(query || category !== 'all' || tags.length > 0) && (
+        <button className="text-link reset-filter" onClick={reset}>
+          絞り込みをリセット <X size={14} />
+        </button>
+      )}
+      <p className="results-count" role="status">
+        {posts.length}件の研究ノート
+      </p>
+      <div className="journal-grid">
+        {posts.map((post) => (
+          <JournalCard key={post.slug} post={post} />
+        ))}
+      </div>
+      {!posts.length && (
+        <div className="empty-state">
+          <h2>ノートが見つかりませんでした。</h2>
+          <p>別のキーワードを試すか、絞り込みを解除してください。</p>
+          <button className="text-link" onClick={reset}>
+            すべてのノートを見る
+          </button>
+        </div>
+      )}
     </div>
   );
 }

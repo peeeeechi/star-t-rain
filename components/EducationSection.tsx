@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, GraduationCap, Globe2, FlaskConical, Users, Trophy, FileText } from 'lucide-react';
+import { GraduationCap, Globe2, FlaskConical, Users } from 'lucide-react';
 import Link from 'next/link';
+import SectionHeading from './SectionHeading';
+import { ArrowUpRight } from 'lucide-react';
 
 interface Course {
   id: string;
@@ -23,7 +25,9 @@ interface StudentProject {
 }
 
 export default function EducationSection() {
-  const [activeTab, setActiveTab] = useState<'courses' | 'supervision' | 'outreach' | 'blog'>('courses');
+  const [activeTab, setActiveTab] = useState<
+    'courses' | 'supervision' | 'outreach' | 'blog'
+  >('courses');
 
   const courses: Course[] = [
     {
@@ -33,7 +37,13 @@ export default function EducationSection() {
       semester: '通年',
       students: '~40',
       description: '情報工学の基礎概念と技術全般を学習',
-      topics: ['情報数学', 'ハードウェア・ソフトウェア', 'システム基礎', '経営・開発・技術戦略', 'AI・データ利活用'],
+      topics: [
+        '情報数学',
+        'ハードウェア・ソフトウェア',
+        'システム基礎',
+        '経営・開発・技術戦略',
+        'AI・データ利活用',
+      ],
     },
     {
       id: '2',
@@ -77,8 +87,14 @@ export default function EducationSection() {
       level: '情報工学科5年生',
       semester: '通年',
       students: '若干',
-      description: '専門教育の仕上げとして、情報工学の基礎知識をもとに課題に対して自ら計画を立て、継続的に研究や開発を行う',
-      topics: ['アプリ開発', '画像認識・AI活用', '天文データ分析・解析', '授業教材開発'],
+      description:
+        '専門教育の仕上げとして、情報工学の基礎知識をもとに課題に対して自ら計画を立て、継続的に研究や開発を行う',
+      topics: [
+        'アプリ開発',
+        '画像認識・AI活用',
+        '天文データ分析・解析',
+        '授業教材開発',
+      ],
     },
     {
       id: '7',
@@ -164,230 +180,105 @@ export default function EducationSection() {
     },
   ];
 
+  const tabs = {
+    courses: '担当授業',
+    supervision: '学生指導',
+    outreach: 'アウトリーチ',
+    blog: '活動記録',
+  };
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-nebula-600 to-cosmic-600 bg-clip-text text-transparent">
-              教育活動
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            次世代の科学技術者を育成し、科学技術の魅力を社会に伝える
+    <section id="education" className="site-section">
+      <SectionHeading
+        number="04"
+        label="LEARNING & MAKING"
+        title="好奇心を、つくる力に。"
+        description="教室での学びを、実験や開発、社会との接点へつないでいきます。"
+      />
+      <div className="filter-tabs">
+        {(Object.keys(tabs) as Array<keyof typeof tabs>).map((tab) => (
+          <button
+            key={tab}
+            aria-pressed={activeTab === tab}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tabs[tab]}
+          </button>
+        ))}
+      </div>
+      {activeTab === 'courses' && (
+        <div className="course-grid">
+          {courses.map((course, i) => (
+            <article key={course.id}>
+              <span className="mono course-number">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <p className="course-meta">
+                  {course.level} · {course.semester}
+                </p>
+                <h3>{course.title}</h3>
+                <p>{course.description}</p>
+                <div className="topic-list">
+                  {course.topics.map((topic) => (
+                    <span key={topic}>{topic}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+      {activeTab === 'supervision' && (
+        <div className="student-projects">
+          {studentProjects.map((project) => (
+            <article key={project.id}>
+              <span className="mono">{project.year}</span>
+              <div>
+                <h3>{project.title}</h3>
+                <p>{project.student}</p>
+                {project.award && <p className="award-note">{project.award}</p>}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+      {activeTab === 'outreach' && (
+        <div className="course-grid">
+          {outreachActivities.map((activity) => (
+            <article key={activity.title}>
+              <activity.Icon size={22} strokeWidth={1.2} />
+              <div>
+                <h3>{activity.title}</h3>
+                <p>{activity.description}</p>
+                <p className="course-meta">{activity.participants}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+      {activeTab === 'blog' && (
+        <div className="education-journal">
+          <p>
+            授業での試みや開発の過程、日々の気づきを、研究ノートに記録しています。
           </p>
+          <Link className="text-link" href="/blog">
+            活動記録を読む <ArrowUpRight size={16} />
+          </Link>
         </div>
-
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <button
-            onClick={() => setActiveTab('courses')}
-            className={`px-6 py-3 rounded-full transition-all flex items-center ${
-              activeTab === 'courses'
-                ? 'bg-nebula-600 text-white shadow-lg'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-            }`}
-          >
-            <BookOpen className="w-5 h-5 mr-2" />
-            担当授業
-          </button>
-          <button
-            onClick={() => setActiveTab('supervision')}
-            className={`px-6 py-3 rounded-full transition-all flex items-center ${
-              activeTab === 'supervision'
-                ? 'bg-nebula-600 text-white shadow-lg'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-            }`}
-          >
-            <GraduationCap className="w-5 h-5 mr-2" />
-            学生指導
-          </button>
-          <button
-            onClick={() => setActiveTab('outreach')}
-            className={`px-6 py-3 rounded-full transition-all flex items-center ${
-              activeTab === 'outreach'
-                ? 'bg-nebula-600 text-white shadow-lg'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-            }`}
-          >
-            <Globe2 className="w-5 h-5 mr-2" />
-            アウトリーチ
-          </button>
-          <button
-            onClick={() => setActiveTab('blog')}
-            className={`px-6 py-3 rounded-full transition-all flex items-center ${
-              activeTab === 'blog'
-                ? 'bg-nebula-600 text-white shadow-lg'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-            }`}
-          >
-            <FileText className="w-5 h-5 mr-2" />
-            ブログ・活動記録
-          </button>
+      )}
+      <div className="app-links">
+        <div>
+          <span className="eyebrow">FROM THE LAB</span>
+          <h3>研究室から生まれたアプリ</h3>
         </div>
-
-        {activeTab === 'courses' && (
-          <div className="grid md:grid-cols-2 gap-6">
-            {courses.map((course) => (
-              <div
-                key={course.id}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {course.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {course.level} • {course.semester}
-                    </p>
-                  </div>
-                  <span className="px-3 py-1 bg-nebula-100 dark:bg-nebula-900 text-nebula-700 dark:text-nebula-300 rounded-full text-sm">
-                    {course.students}名
-                  </span>
-                </div>
-                
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {course.description}
-                </p>
-                
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    主な内容:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {course.topics.map((topic, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm"
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {activeTab === 'supervision' && (
-          <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                最近の本研究室における演習・研究指導テーマ
-              </h3>
-              <div className="space-y-4">
-                {studentProjects.map((project) => (
-                  <div
-                    key={project.id}
-                    className="border-l-4 border-nebula-500 pl-4 py-2"
-                  >
-                    <h4 className="font-semibold text-gray-900 dark:text-white">
-                      {project.title}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {project.student} ({project.year}年度)
-                      {project.award && (
-                        <span className="ml-2 px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 rounded text-xs flex items-center">
-                          <Trophy className="w-3 h-3 mr-1" />
-                          {project.award}
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-gradient-to-br from-cosmic-100 to-stellar-100 dark:from-cosmic-900 dark:to-stellar-900 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-cosmic-700 dark:text-cosmic-300">10</div>
-                <div className="text-sm text-gray-700 dark:text-gray-300">卒業研究指導累計学生数</div>
-              </div>
-              <div className="bg-gradient-to-br from-stellar-100 to-nebula-100 dark:from-stellar-900 dark:to-nebula-900 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-stellar-700 dark:text-stellar-300">3</div>
-                <div className="text-sm text-gray-700 dark:text-gray-300">2025年度演習生受け入れ人数</div>
-              </div>
-              {/* <div className="bg-gradient-to-br from-nebula-100 to-cosmic-100 dark:from-nebula-900 dark:to-cosmic-900 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-nebula-700 dark:text-nebula-300">5</div>
-                <div className="text-sm text-gray-700 dark:text-gray-300">受賞学生</div>
-              </div> */}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'outreach' && (
-          <div className="grid md:grid-cols-2 gap-6">
-            {outreachActivities.map((activity, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-nebula-100 dark:bg-nebula-900/30 rounded-lg mr-4">
-                    <activity.Icon className="w-6 h-6 text-nebula-600 dark:text-nebula-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {activity.title}
-                  </h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-2">
-                  {activity.description}
-                </p>
-                <p className="text-sm text-nebula-600 dark:text-nebula-400 font-semibold">
-                  参加者: {activity.participants}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {activeTab === 'blog' && (
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-nebula-50 to-cosmic-50 dark:from-nebula-900/20 dark:to-cosmic-900/20 rounded-2xl p-8 text-center border border-nebula-200/30 dark:border-nebula-600/30">
-              <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-nebula-600 to-cosmic-600 rounded-2xl mb-6">
-                <FileText className="w-10 h-10 text-white" />
-              </div>
-              
-              <h3 className="text-3xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-nebula-600 to-cosmic-600 bg-clip-text text-transparent">
-                  ブログ・活動記録
-                </span>
-              </h3>
-              
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-                研究活動、教育実践、技術解説など最新の情報を発信しています。天文学研究の進捗から生成AI活用教育まで、幅広いトピックをカバーしています。
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-nebula-600 dark:text-nebula-400">研究記録</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">VLBI観測・大質量星形成</div>
-                </div>
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-cosmic-600 dark:text-cosmic-400">教育実践</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">AI活用・プログラミング教育</div>
-                </div>
-                <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
-                  <div className="text-2xl font-bold text-stellar-600 dark:text-stellar-400">技術解説</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">データ解析・開発ツール</div>
-                </div>
-              </div>
-
-              <Link
-                href="/blog"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-nebula-600 to-cosmic-600 text-white font-semibold rounded-full hover:from-cosmic-600 hover:to-nebula-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                <FileText className="w-5 h-5 mr-2" />
-                ブログを見る
-              </Link>
-
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-                3つの記事が公開済み • 定期的に更新中
-              </p>
-            </div>
-          </div>
-        )}
+        <Link href="/star-cone">
+          星プラっと <span>星空観測を、もっと身近に。</span>
+          <ArrowUpRight size={20} />
+        </Link>
+        <Link href="/kenreki">
+          研暦 <span>研究の時間を、整える。</span>
+          <ArrowUpRight size={20} />
+        </Link>
       </div>
     </section>
   );

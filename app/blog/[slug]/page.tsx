@@ -83,8 +83,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const imageDimensions = getLocalImageDimensions(post.content);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-cosmic-50/30 dark:from-gray-900 dark:to-cosmic-900/20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="article-page">
+      <div className="article-container">
         {/* 戻るリンク */}
         <Link 
           href="/blog" 
@@ -95,8 +95,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Link>
 
         {/* 記事ヘッダー */}
-        <article className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700">
-          <div className="p-8 sm:p-12">
+        <article className="article-paper">
+          <div className="article-inner">
             <div className="mb-6">
               <CategoryBadge category={post.category} />
             </div>
@@ -153,7 +153,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
 
             {/* 記事本文 */}
-            <MarkdownRenderer content={post.content} imageDimensions={imageDimensions} />
+            <div className="article-prose"><MarkdownRenderer content={post.content} imageDimensions={imageDimensions} /></div>
           </div>
 
           {/* シェアボタン */}

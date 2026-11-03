@@ -20,6 +20,7 @@ export function startCosmicIntro(
   canvas: HTMLCanvasElement,
   onComplete: () => void,
   onProgress: (percent: number) => void,
+  ambient = false,
 ): () => void {
   const mobile = window.innerWidth < 768;
   const renderer = new WebGLRenderer({ canvas, alpha: false, antialias: false, powerPreference: 'low-power' });
@@ -80,7 +81,7 @@ export function startCosmicIntro(
     materials.push(material);
     return material;
   };
-  const count = mobile ? 6500 : 13000;
+  const count = ambient ? (mobile ? 1800 : 5500) : (mobile ? 6500 : 13000);
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
   const sizes = new Float32Array(count);
@@ -173,6 +174,7 @@ export function startCosmicIntro(
   let pointerY = 0;
   let viewportHeight = 1;
   let previousTime = performance.now();
+  let lastRendered = -Infinity;
   const start = previousTime;
   const resize = () => {
     const bounds = canvas.getBoundingClientRect();
@@ -197,9 +199,14 @@ export function startCosmicIntro(
   };
   const render = (now: number) => {
     if (disposed) return;
+    if (ambient && (document.hidden || now - lastRendered < 50)) {
+      frame = requestAnimationFrame(render);
+      return;
+    }
+    lastRendered = now;
     const elapsed = now - start;
     const time = elapsed / 1000;
-    const progress = Math.min(elapsed / DURATION, 1);
+    const progress = ambient ? 0.5 + Math.sin(time * 0.025) * 0.2 : Math.min(elapsed / DURATION, 1);
     const damping = 1 - Math.exp(-Math.min(now - previousTime, 50) / 320);
     previousTime = now;
     const reveal = smooth(0, 0.8, time);
@@ -212,7 +219,7 @@ export function startCosmicIntro(
     stars.rotation.z = -progress * 0.007;
     for (const meteor of meteors) {
       const { settings, group, tail, head, uniforms, dustGeometry, dustMaterial, scatter, dustCount } = meteor;
-      const flight = (time - settings.start) / settings.duration;
+      const flight = ((ambient ? (time + 2) % 26 : time) - settings.start) / settings.duration;
       group.visible = flight >= 0 && flight <= 1;
       if (!group.visible) continue;
       const height = 2 * Math.tan(camera.fov * Math.PI / 360) * settings.depth;
@@ -251,11 +258,11 @@ export function startCosmicIntro(
     renderer.render(scene, camera);
     // Report the rendered opening sequence, rather than inventing download progress.
     const percent = Math.floor(progress * 100);
-    if (percent !== reportedProgress) {
+    if (!ambient && percent !== reportedProgress) {
       reportedProgress = percent;
       onProgress(percent);
     }
-    if (progress === 1 && !completed) {
+    if (!ambient && progress === 1 && !completed) {
       completed = true;
       onComplete();
     }

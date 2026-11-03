@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@fontsource/zen-kurenaido": "5.3.1",
     "gray-matter": "^4.0.3",
     "image-size": "^2.0.4",
     "lucide-react": "^0.544.0",

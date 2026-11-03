@@ -125,7 +125,7 @@ export default function CosmicIntro() {
         <span>loading ...</span>
         <span className={styles.percentage}>{String(progress).padStart(2, '0')}<span className={styles.percentSign}>%</span></span>
       </div>
-      <p className={styles.caption} aria-hidden="true">見えない宇宙に、耳を澄ます。</p>
+      <p className={styles.caption} aria-hidden="true">遠い星から、新しい「問い」へ。</p>
       <button ref={skipRef} type="button" onClick={finish} className={styles.skip}>
         スキップ <span aria-hidden="true">→</span>
       </button>
