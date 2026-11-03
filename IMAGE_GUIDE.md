@@ -9,7 +9,6 @@ public/
 └── images/
     └── blog/
         ├── star-life-cycle.png
-        ├── kaken_2025_submit.jpg
         └── ...
 ```
 

@@ -51,7 +51,7 @@ git checkout main
 ## 🛠️ セットアップ
 
 ### 必要な環境
-- Node.js 18以上
+- Node.js 20.9以上
 - npm, yarn, pnpm, bun のいずれか
 
 ### インストールと起動
