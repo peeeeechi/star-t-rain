@@ -1,0 +1,106 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  isolation: isolate;
+  background: #030611;
+  color: #f0f3fa;
+  opacity: 1;
+  transition: opacity 850ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay:focus { outline: none; }
+.leaving { opacity: 0; pointer-events: none; }
+
+.canvas, .vignette {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.vignette {
+  background:
+    linear-gradient(0deg, #030611c2, transparent 28%, transparent 85%, #03061130),
+    radial-gradient(ellipse at 50% 43%, transparent 32%, #03061166 100%);
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: baseline;
+  gap: 1.1em;
+  transform: translate(-50%, -50%);
+  color: #d7e3f2;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-size: clamp(0.7rem, 1.1vw, 0.8rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-shadow: 0 0 18px #b4d0ff55;
+  pointer-events: none;
+}
+
+.percentage {
+  width: 5.5ch;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.percentSign { margin-left: 0.3em; opacity: 0.6; }
+
+.caption {
+  position: absolute;
+  right: 1.5rem;
+  bottom: max(12vh, calc(env(safe-area-inset-bottom) + 2.5rem));
+  left: 1.5rem;
+  margin: 0;
+  color: #e3eafa;
+  font-family: 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
+  font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  line-height: 2;
+  text-align: center;
+  text-shadow: 0 0 25px #a9caff44;
+  opacity: 0;
+}
+
+.ready .caption { animation: whisper 4.6s both; }
+
+.skip {
+  position: absolute;
+  top: max(1.2rem, env(safe-area-inset-top));
+  right: max(1.4rem, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #b4c2d8;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 200ms, background 200ms;
+}
+
+.skip:hover { color: #fff; background: #ffffff08; }
+.skip:focus-visible { outline: 1px solid #d0def2; outline-offset: 3px; }
+
+@keyframes whisper {
+  0%, 30% { opacity: 0; transform: translateY(5px); }
+  55%, 100% { opacity: 0.85; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { transition: none; }
+  .ready .caption { animation: none; }
+}

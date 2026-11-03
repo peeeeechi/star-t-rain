@@ -1,4 +1,5 @@
 import HeroSection from '@/components/HeroSection';
+import CosmicIntro from '@/components/CosmicIntro';
 import NewsSection from '@/components/NewsSection';
 import ResearchSection from '@/components/ResearchSection';
 import PublicationsSection from '@/components/PublicationsSection';
@@ -10,6 +11,7 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <>
+      <CosmicIntro />
       <HeroSection />
       <NewsSection />
       <ResearchSection />
