@@ -143,7 +143,7 @@ export default function ResearchSection() {
         description="電波天文学と生成AI。ふたつの視点から、まだ見ぬ可能性を探究します。"
       />
       <div className="research-leads">
-        <article>
+        <article data-reveal="body">
           <span className="eyebrow">01 / RADIO ASTRONOMY</span>
           <Radio size={28} strokeWidth={1} />
           <h3>星が生まれる、その現場へ。</h3>
@@ -154,7 +154,7 @@ export default function ResearchSection() {
             VLBI <span>／</span> メーザー <span>／</span> 大質量星形成
           </div>
         </article>
-        <article>
+        <article data-reveal="body" data-reveal-delay="100">
           <span className="eyebrow">02 / AI & EDUCATION</span>
           <Bot size={28} strokeWidth={1} />
           <h3>つくることから、学びを変える。</h3>
@@ -181,7 +181,7 @@ export default function ResearchSection() {
       </div>
       <div className="research-index">
         {filteredItems.map((item, index) => (
-          <article className="research-item" key={item.id}>
+          <article className="research-item" key={item.id} data-reveal="body">
             <button
               onClick={() =>
                 setExpandedItem(expandedItem === item.id ? null : item.id)

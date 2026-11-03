@@ -11,12 +11,12 @@ export default function SectionHeading({
 }) {
   return (
     <header className="section-heading">
-      <p className="eyebrow">
+      <p className="eyebrow" data-reveal="body">
         <span>{number}</span> {label}
       </p>
       <div>
-        <h2>{title}</h2>
-        {description && <p className="section-description">{description}</p>}
+        <h2 data-reveal="title" data-reveal-delay="90">{title}</h2>
+        {description && <p className="section-description" data-reveal="body" data-reveal-delay="180">{description}</p>}
       </div>
     </header>
   );

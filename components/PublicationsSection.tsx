@@ -219,7 +219,7 @@ export default function PublicationsSection() {
       </div>
       <div className="publication-list">
         {filteredPublications.map((pub) => (
-          <article key={pub.id} className="publication-row">
+          <article key={pub.id} className="publication-row" data-reveal="body">
             <div className="publication-year mono">
               {pub.year}
               <small>{typeLabels[pub.type]}</small>

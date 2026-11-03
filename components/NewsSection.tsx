@@ -94,7 +94,7 @@ export default function NewsSection() {
       />
       <div className="news-list">
         {(all ? newsItems : newsItems.slice(0, 3)).map((item) => (
-          <article className="news-row" key={item.id}>
+          <article className="news-row" key={item.id} data-reveal="body" data-reveal-delay="100">
             <time className="mono">{item.date}</time>
             <span className="category-label">{labels[item.category]}</span>
             <div>

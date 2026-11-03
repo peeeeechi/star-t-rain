@@ -63,10 +63,11 @@ export default function BlogSection({
         </div>
       </div>
       <div className={`journal-grid ${list ? 'journal-list' : ''}`}>
-        {posts.slice(0, 6).map((post) => (
+        {posts.slice(0, 6).map((post, index) => (
           <JournalCard
             key={post.slug}
             post={post}
+            revealDelay={(index % 3) * 80}
             featured={featuredPosts.some((item) => item.slug === post.slug)}
           />
         ))}

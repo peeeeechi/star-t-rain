@@ -1,5 +1,5 @@
 import HeroSection from '@/components/HeroSection';
-import CosmicIntro from '@/components/CosmicIntro';
+import HomeReveal from '@/components/HomeReveal';
 import NewsSection from '@/components/NewsSection';
 import ResearchSection from '@/components/ResearchSection';
 import PublicationsSection from '@/components/PublicationsSection';
@@ -9,8 +9,7 @@ import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
   return (
-    <>
-      <CosmicIntro />
+    <HomeReveal>
       <HeroSection />
       <NewsSection />
       <ResearchSection />
@@ -18,6 +17,6 @@ export default function Home() {
       <EducationSection />
       <BlogSectionWrapper />
       <ContactSection />
-    </>
+    </HomeReveal>
   );
 }

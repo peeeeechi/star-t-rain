@@ -75,6 +75,19 @@
   scroll-margin-top: 86px;
   border-top: 1px solid var(--line);
 }
+/* Progressive enhancement: server-rendered text stays visible without JS. */
+@media (prefers-reduced-motion: no-preference) {
+  .home-reveal [data-reveal-pending] {
+    opacity: 0;
+  }
+}
+@media print {
+  .home-reveal [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
 .mono,
 .eyebrow {
   font-family: var(--mono);
@@ -356,7 +369,10 @@
   color: var(--ink);
   text-shadow: 0 2px 40px #02071440;
 }
-.hero-copy h1 span {
+.hero-line {
+  display: inline-block;
+}
+.hero-copy h1 .hero-line-indent {
   padding-left: 0.55em;
 }
 .hero-translation {
@@ -1542,7 +1558,7 @@
     letter-spacing: 0.055em;
     line-height: 1.9;
   }
-  .hero-copy h1 span {
+  .hero-copy h1 .hero-line-indent {
     padding-left: 0.2em;
   }
   .hero-copy > .eyebrow {

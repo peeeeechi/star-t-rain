@@ -115,7 +115,7 @@ export default function ContactSection() {
         title="問いの先で、つながる。"
       />
       <div className="contact-grid">
-        <div>
+        <div data-reveal="body">
           <div className="researcher-profile">
             <Image
               src="/profile.png"
@@ -181,7 +181,7 @@ export default function ContactSection() {
             </div>
           </dl>
         </div>
-        <div className="contact-form-wrap">
+        <div className="contact-form-wrap" data-reveal="body" data-reveal-delay="100">
           <p className="eyebrow">START A CONVERSATION</p>
           <h3>
             研究や教育のこと、

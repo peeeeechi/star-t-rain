@@ -208,7 +208,7 @@ export default function EducationSection() {
       {activeTab === 'courses' && (
         <div className="course-grid">
           {courses.map((course, i) => (
-            <article key={course.id}>
+            <article key={course.id} data-reveal="body" data-reveal-delay={i % 2 === 1 ? '90' : '0'}>
               <span className="mono course-number">
                 {String(i + 1).padStart(2, '0')}
               </span>
@@ -266,7 +266,7 @@ export default function EducationSection() {
           </Link>
         </div>
       )}
-      <div className="app-links">
+      <div className="app-links" data-reveal="body">
         <div>
           <span className="eyebrow">FROM THE LAB</span>
           <h3>研究室から生まれたアプリ</h3>

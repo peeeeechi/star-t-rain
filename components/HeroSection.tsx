@@ -5,26 +5,26 @@ export default function HeroSection() {
   return (
     <section className="observatory-hero" aria-labelledby="hero-heading">
       <div className="hero-copy">
-        <p className="eyebrow">
+        <p className="eyebrow" data-reveal="body">
           <span className="signal-dot" /> RADIO ASTRONOMY & AI EDUCATION
         </p>
         <h1 id="hero-heading">
-          遠い星から、
+          <span className="hero-line" data-reveal="title" data-reveal-delay="100">遠い星から、</span>
           <br />
-          <span>新しい「問い」へ。</span>
+          <span className="hero-line hero-line-indent" data-reveal="title" data-reveal-delay="240">新しい「問い」へ。</span>
         </h1>
-        <p className="hero-translation" lang="en">
+        <p className="hero-translation" lang="en" data-reveal="body" data-reveal-delay="380">
           From distant stars to new questions.
         </p>
-        <p className="hero-description">
+        <p className="hero-description" data-reveal="body" data-reveal-delay="470">
           電波で、星が生まれる場所を探る。
           <br />
           AIで、学びの新しい可能性をひらく。
         </p>
-        <p className="hero-affiliation">
+        <p className="hero-affiliation" data-reveal="body" data-reveal-delay="550">
           中村桃太朗研究室 <span>／</span> 大島商船高等専門学校
         </p>
-        <div className="hero-actions">
+        <div className="hero-actions" data-reveal="body" data-reveal-delay="620">
           <Link href="/#research" className="outline-link">
             研究を知る <ArrowUpRight size={17} />
           </Link>
@@ -33,7 +33,7 @@ export default function HeroSection() {
           </Link>
         </div>
       </div>
-      <div className="hero-bottom">
+      <div className="hero-bottom" data-reveal="body" data-reveal-delay="680">
         <a href="#news" className="scroll-cue">
           <span>SCROLL TO EXPLORE</span>
           <ArrowDown size={15} />

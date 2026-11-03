@@ -6,7 +6,7 @@ import styles from './CosmicIntro.module.css';
 
 const SESSION_KEY = 'star-t-rain:intro-seen:v2';
 
-export default function CosmicIntro() {
+export default function CosmicIntro({ onComplete }: { onComplete?: () => void }) {
   const [visible, setVisible] = useState(false);
   const [ready, setReady] = useState(false);
   const [leaving, setLeaving] = useState(false);
@@ -23,23 +23,26 @@ export default function CosmicIntro() {
     setLeaving(true);
     try { sessionStorage.setItem(SESSION_KEY, '1'); } catch { /* Storage is optional. */ }
     const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 850;
-    exitTimerRef.current = window.setTimeout(() => setVisible(false), delay);
-  }, []);
+    exitTimerRef.current = window.setTimeout(() => {
+      setVisible(false);
+      onComplete?.();
+    }, delay);
+  }, [onComplete]);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     const replay = new URLSearchParams(window.location.search).get('intro') === '1';
-    if (reducedMotion || connection?.saveData) return;
-    if (!replay && (window.location.hash || window.scrollY > 24)) return;
+    if (reducedMotion || connection?.saveData) { onComplete?.(); return; }
+    if (!replay && (window.location.hash || window.scrollY > 24)) { onComplete?.(); return; }
 
     try {
-      if (!replay && sessionStorage.getItem(SESSION_KEY)) return;
+      if (!replay && sessionStorage.getItem(SESSION_KEY)) { onComplete?.(); return; }
     } catch {
       // Storage restrictions do not prevent the site from opening.
     }
     setVisible(true);
-  }, []);
+  }, [onComplete]);
 
   useEffect(() => {
     if (!visible) return;

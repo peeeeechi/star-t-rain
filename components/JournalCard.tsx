@@ -11,12 +11,14 @@ const names: Record<string, string> = {
 export default function JournalCard({
   post,
   featured = false,
+  revealDelay = 0,
 }: {
   post: BlogMetadata;
   featured?: boolean;
+  revealDelay?: number;
 }) {
   return (
-    <article className={`journal-card ${featured ? 'journal-featured' : ''}`}>
+    <article className={`journal-card ${featured ? 'journal-featured' : ''}`} data-reveal="body" data-reveal-delay={revealDelay}>
       <div className="journal-card-meta">
         <span className="category-label">
           {names[post.category] || post.category}
