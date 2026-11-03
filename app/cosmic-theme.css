@@ -157,22 +157,28 @@
   opacity: 0.9;
 }
 .sky-fallback {
+  transition: opacity 1.6s;
   background:
     radial-gradient(ellipse at 65% 40%, #5f5d8724, transparent 45%),
     radial-gradient(ellipse at 28% 60%, #4a759c22, transparent 45%);
+}
+.sky-fallback-hidden {
+  opacity: 0;
 }
 .sky-fallback::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 21% 24%, #b3c9f077 0 0.7px, transparent 1px),
-    radial-gradient(circle at 78% 57%, #dce9ff77 0 0.6px, transparent 1px),
-    radial-gradient(circle at 38% 82%, #99bbe577 0 0.7px, transparent 1px);
-  background-size:
-    283px 237px,
-    347px 313px,
-    193px 401px;
+  background: url('/sky/orion-desktop.svg') center / auto 100% no-repeat;
+  opacity: 0.18;
+}
+.dark .sky-fallback::after {
+  opacity: 0.85;
+}
+@media (max-width: 767px) {
+  .sky-fallback::after {
+    background-image: url('/sky/orion-mobile.svg');
+  }
 }
 .sky-shade {
   background: linear-gradient(90deg, var(--sky), transparent 75%);
@@ -407,60 +413,6 @@
   font: 8px var(--mono);
   color: var(--faint);
   letter-spacing: 0.1em;
-}
-.hero-orbit {
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  top: 25%;
-  right: 2%;
-  opacity: 0.65;
-  pointer-events: none;
-}
-.orbit-ring {
-  position: absolute;
-  inset: 0;
-  border: 1px solid #a8c7f01c;
-  border-radius: 50%;
-  transform: rotate(-28deg) scaleY(0.65);
-}
-.orbit-ring-inner {
-  inset: 70px;
-  transform: rotate(42deg) scaleY(0.68);
-  border-color: #abc2e025;
-}
-.orbit-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: #e3efff;
-  border-radius: 50%;
-  box-shadow:
-    0 0 5px 2px #dbeaff,
-    0 0 24px 5px #89b4ee99,
-    0 0 100px 40px #7f9edc16;
-}
-.orbit-core::before,
-.orbit-core::after {
-  content: '';
-  position: absolute;
-  background: linear-gradient(90deg, transparent, #dcecff, transparent);
-  width: 42px;
-  height: 1px;
-  left: -19px;
-  top: 2px;
-}
-.orbit-core::after {
-  transform: rotate(90deg);
-}
-.orbit-cross {
-  position: absolute;
-  left: 12%;
-  top: 20%;
-  color: var(--faint);
-  font: 18px var(--mono);
 }
 /* Section rhythm and news */
 .section-heading {
@@ -1323,6 +1275,15 @@
   font-size: 8px;
   letter-spacing: 0.15em;
 }
+.sky-credit {
+  margin-top: 16px;
+  color: var(--faint);
+  font: 9px var(--mono);
+  letter-spacing: 0.03em;
+}
+.sky-credit a:hover {
+  color: var(--ink);
+}
 .back-to-top {
   position: fixed;
   right: 22px;
@@ -1335,11 +1296,6 @@
   border: 1px solid var(--line);
   color: var(--accent);
   z-index: 40;
-}
-@media (min-width: 1600px) {
-  .hero-orbit {
-    right: calc((100vw - 1350px) / 2);
-  }
 }
 @media (max-width: 1100px) {
   .observatory-nav {
@@ -1355,10 +1311,6 @@
   .site-container,
   .site-section {
     width: calc(100% - 72px);
-  }
-  .hero-orbit {
-    right: -12%;
-    opacity: 0.4;
   }
   .section-heading {
     grid-template-columns: 180px 1fr;
@@ -1429,11 +1381,6 @@
   }
   .hero-affiliation {
     font-size: 9px;
-  }
-  .hero-orbit {
-    top: 24%;
-    right: -200px;
-    opacity: 0.25;
   }
   .hero-bottom {
     left: 35px;

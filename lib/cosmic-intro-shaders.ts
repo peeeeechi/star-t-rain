@@ -101,6 +101,30 @@ export const starFragment = `
   }
 `;
 
+// Catalog stars live on a celestial sphere, so magnitude, not artificial depth,
+// controls their size. The camera stays at the center of the sphere.
+export const catalogStarVertex = `
+  attribute vec3 color;
+  attribute float starSize;
+  attribute float brightness;
+  attribute float phase;
+  attribute float flare;
+  uniform float time;
+  uniform float pixelRatio;
+  uniform float opacity;
+  varying vec3 starColor;
+  varying float intensity;
+  varying float diffraction;
+  void main() {
+    starColor = color;
+    diffraction = flare;
+    float glint = pow(max(0.0, sin(time * 1.1 + phase)), 10.0) * flare;
+    intensity = opacity * brightness * (0.88 + 0.12 * sin(time * 0.8 + phase) + glint * 0.24);
+    gl_PointSize = clamp(starSize * pixelRatio, 1.0, 64.0 * pixelRatio);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
 export const meteorVertex = `
   varying vec2 vUv;
   void main() {

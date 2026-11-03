@@ -56,6 +56,10 @@ export default function Footer() {
         <span>© {new Date().getFullYear()} Momotaro Nakamura</span>
         <span className="mono">LOOK UP. KEEP WONDERING.</span>
       </div>
+      <p className="sky-credit">
+        Star data: <a href="/sky/credits.txt">HYG / David Nash</a>
+        {' · '}<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+      </p>
     </footer>
   );
 }

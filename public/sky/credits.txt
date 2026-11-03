@@ -1,0 +1,23 @@
+Star field data
+==============
+HYG Database v4.1, compiled by David Nash / Astronexus
+https://github.com/astronexus/HYG-Database
+Current upstream: https://codeberg.org/astronexus/hyg
+License: Creative Commons Attribution-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Source revision: c7f7f883fe678cc7680169a50ccd7dcc49b060ce
+Source file: hyg/CURRENT/hygdata_v41.csv
+Source SHA-256: d9f69fd86bbf90a4e4d52b4c5c53eacfa6dfc0bfdef85bfd94f095e0bebe4ebd
+
+Changes for STAR-T-RAIN: selected stars through visual magnitude 8 around
+Orion, retained J2000.0 right ascension, declination, visual magnitude and
+B-V color index, and generated perspective projections and static SVGs.
+The derived catalog and SVGs are available under the same CC BY-SA 4.0 license.
+Reproduction: scripts/generate-catalog-sky.mjs with the pinned CSV above.
+
+The star pattern follows catalog coordinates as viewed from Earth. It is a
+fixed composition, not a real-time sky at the visitor's location or date.
+Colors and the magnitude range are adapted for display. Twinkling, meteors
+and the diffuse blue/violet glow are artistic effects, not observations.
+The opening loading animation remains an artistic, procedural star field.

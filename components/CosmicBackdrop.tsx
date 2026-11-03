@@ -32,7 +32,7 @@ export default function CosmicBackdrop() {
           if (cancelled || !canvas.current) return;
           dispose = startCosmicIntro(
             canvas.current,
-            () => {},
+            () => setPaused(true),
             () => {},
             true,
           );
@@ -51,7 +51,7 @@ export default function CosmicBackdrop() {
   return (
     <>
       <div className="cosmic-backdrop" aria-hidden="true">
-        <div className="sky-fallback" />
+        <div className={`sky-fallback${ready ? ' sky-fallback-hidden' : ''}`} />
         <canvas
           key={paused ? 'still' : 'live'}
           ref={canvas}

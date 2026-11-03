@@ -33,12 +33,6 @@ export default function HeroSection() {
           </Link>
         </div>
       </div>
-      <div className="hero-orbit" aria-hidden="true">
-        <div className="orbit-ring" />
-        <div className="orbit-ring orbit-ring-inner" />
-        <div className="orbit-core" />
-        <span className="orbit-cross">+</span>
-      </div>
       <div className="hero-bottom">
         <a href="#news" className="scroll-cue">
           <span>SCROLL TO EXPLORE</span>

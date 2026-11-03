@@ -4,9 +4,11 @@ import {
   Points, Scene, ShaderMaterial, Vector2, WebGLRenderer, WebGLRenderTarget,
 } from 'three';
 import {
-  meteorHeadFragment, meteorVertex, nebulaFragment, screenVertex,
+  catalogStarVertex, meteorHeadFragment, meteorVertex, nebulaFragment, screenVertex,
   starFragment, starVertex, trailFragment,
 } from './cosmic-intro-shaders';
+import { createCatalogSky } from './catalog-sky';
+import { SKY_VIEW, skyYaw } from './sky-model.mjs';
 
 const DURATION = 4600;
 const smooth = (a: number, b: number, value: number) => {
@@ -27,7 +29,7 @@ export function startCosmicIntro(
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.25 : 1.5));
   renderer.setClearColor(0x030611, 1);
   const scene = new Scene();
-  const camera = new PerspectiveCamera(62, 1, 0.1, 1800);
+  const camera = new PerspectiveCamera(ambient ? SKY_VIEW.verticalFovDegrees : 62, 1, 0.1, 1800);
   const screenGeometry = new PlaneGeometry(2, 2);
   const billboardGeometry = new PlaneGeometry(1, 1);
   const geometries: BufferGeometry[] = [screenGeometry, billboardGeometry];
@@ -72,16 +74,17 @@ export function startCosmicIntro(
     return seed / 4294967296;
   };
   const palette = [0xcbdfff, 0xe1ebff, 0xafc9ee, 0xe8e7f3, 0xd2bde5, 0xf0dab5].map((hex) => new Color(hex));
-  const makeStarMaterial = () => {
+  const makeStarMaterial = (catalog = false) => {
     const material = new ShaderMaterial({
       transparent: true, depthWrite: false, depthTest: false, blending: AdditiveBlending,
       uniforms: { time: { value: 0 }, opacity: { value: 1 }, pixelRatio: { value: renderer.getPixelRatio() } },
-      vertexShader: starVertex, fragmentShader: starFragment,
+      vertexShader: catalog ? catalogStarVertex : starVertex, fragmentShader: starFragment,
     });
     materials.push(material);
     return material;
   };
-  const count = ambient ? (mobile ? 1800 : 5500) : (mobile ? 6500 : 13000);
+  // Preserve the cinematic opening; only the persistent background uses HYG.
+  const count = ambient ? 0 : (mobile ? 6500 : 13000);
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
   const sizes = new Float32Array(count);
@@ -101,15 +104,19 @@ export function startCosmicIntro(
     phases[i] = random() * Math.PI * 2;
     flares[i] = bright ? 1 : 0;
   }
-  const starGeometry = new BufferGeometry();
-  starGeometry.setAttribute('position', new Float32BufferAttribute(positions, 3));
-  starGeometry.setAttribute('color', new Float32BufferAttribute(colors, 3));
-  starGeometry.setAttribute('starSize', new Float32BufferAttribute(sizes, 1));
-  starGeometry.setAttribute('phase', new Float32BufferAttribute(phases, 1));
-  starGeometry.setAttribute('flare', new Float32BufferAttribute(flares, 1));
+  const starGeometry = ambient ? createCatalogSky(mobile) : new BufferGeometry();
+  if (!ambient) {
+    starGeometry.setAttribute('position', new Float32BufferAttribute(positions, 3));
+    starGeometry.setAttribute('color', new Float32BufferAttribute(colors, 3));
+    starGeometry.setAttribute('starSize', new Float32BufferAttribute(sizes, 1));
+    starGeometry.setAttribute('phase', new Float32BufferAttribute(phases, 1));
+    starGeometry.setAttribute('flare', new Float32BufferAttribute(flares, 1));
+  }
   geometries.push(starGeometry);
-  const starMaterial = makeStarMaterial();
+  const starMaterial = makeStarMaterial(ambient);
   const stars = new Points(starGeometry, starMaterial);
+  let catalogYaw = skyYaw(mobile);
+  if (ambient) stars.rotation.y = catalogYaw;
   stars.renderOrder = 1;
   scene.add(stars);
 
@@ -183,6 +190,7 @@ export function startCosmicIntro(
     viewportHeight = height;
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
+    catalogYaw = skyYaw(width < 768);
     camera.updateProjectionMatrix();
     cloudMaterial.uniforms.aspect.value = camera.aspect;
     const cloudScale = Math.min(mobile ? 0.4 : 0.5, 1000 / width, 700 / height);
@@ -213,10 +221,17 @@ export function startCosmicIntro(
     starMaterial.uniforms.time.value = time;
     starMaterial.uniforms.opacity.value = reveal;
     skyMaterial.uniforms.reveal.value = reveal;
-    camera.position.z = 90 - 48 * smooth(0, 1, progress);
-    camera.position.x += (pointerX * 8 - camera.position.x) * damping;
-    camera.position.y += (-pointerY * 5 - camera.position.y) * damping;
-    stars.rotation.z = -progress * 0.007;
+    if (ambient) {
+      // A tiny, rigid change of viewing direction preserves angular separations.
+      // Never translate through catalog stars or invent distance-dependent parallax.
+      stars.rotation.x += (-pointerY * 0.006 - stars.rotation.x) * damping;
+      stars.rotation.y += (catalogYaw + pointerX * 0.008 - stars.rotation.y) * damping;
+    } else {
+      camera.position.z = 90 - 48 * smooth(0, 1, progress);
+      camera.position.x += (pointerX * 8 - camera.position.x) * damping;
+      camera.position.y += (-pointerY * 5 - camera.position.y) * damping;
+      stars.rotation.z = -progress * 0.007;
+    }
     for (const meteor of meteors) {
       const { settings, group, tail, head, uniforms, dustGeometry, dustMaterial, scatter, dustCount } = meteor;
       const flight = ((ambient ? (time + 2) % 26 : time) - settings.start) / settings.duration;
@@ -248,7 +263,7 @@ export function startCosmicIntro(
     // The gas moves slowly enough to update at <=25fps in a smaller framebuffer.
     if (cloudDirty || now - lastCloudFrame >= 40) {
       cloudMaterial.uniforms.time.value = time;
-      cloudMaterial.uniforms.drift.value.set(camera.position.x / 8, camera.position.y / 5);
+      cloudMaterial.uniforms.drift.value.set(ambient ? pointerX : camera.position.x / 8, ambient ? -pointerY : camera.position.y / 5);
       renderer.setRenderTarget(cloudTarget);
       renderer.render(cloudScene, cloudCamera);
       renderer.setRenderTarget(null);
