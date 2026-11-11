@@ -28,7 +28,7 @@ export default function NewsSection() {
       date: '2026.04.30',
       title: '日本高専学会誌の特集「高専教育とAI」に記事掲載',
       description:
-        '「学生とつくる学校生活支援DXアプリ―生成AIを開発支援に活用した1年半の実践と評価―」が、日本高専学会誌31巻2号（pp. 19–24）に掲載されました。著者：中村 桃太朗、地迫 優衣、宮川 智美、Munkhkhrol CHULUUNSUKH。',
+        '「学生とつくる学校生活支援DXアプリ―生成AIを開発支援に活用した1年半の実践と評価―」が、日本高専学会誌31巻2号（pp. 19–24）に掲載されました。',
       category: 'research',
       link: 'https://jglobal.jst.go.jp/detail?JGLOBAL_ID=202602276398347287',
     },
